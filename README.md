@@ -1,5 +1,13 @@
 # Vandolie
+
 Digital controversy mapping for high school students
+
+
+# Install
+
+```
+npm install
+```
 
 # How to
 
