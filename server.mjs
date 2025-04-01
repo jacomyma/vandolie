@@ -14,8 +14,21 @@ const server = createServer((req, res) => {
       return res.end();
     });
   } else {
+    
+    // If it's HTML and in the same folder, load it
+    if (req.url.endsWith('.html')) {
+      fs.readFile(req.url.slice(1), (err, data) => {
+        if (err) {
+          res.writeHead(404, { 'Content-Type': 'text/html' });
+          return res.end('404 Not Found');
+        }
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.write(data);
+        return res.end();
+      });
+
     // If it's JS and in the same folder, load it
-    if (req.url.endsWith('.js')) {
+    } else if (req.url.endsWith('.js')) {
       fs.readFile(req.url.slice(1), (err, data) => {
         if (err) {
           res.writeHead(404, { 'Content-Type': 'text/html' });
