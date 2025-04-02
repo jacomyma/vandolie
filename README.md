@@ -2,6 +2,11 @@
 
 Digital controversy mapping for high school students
 
+## Credentials
+
+Created by Mathieu Jacomy, Matilde Ficozzi, Cathrine Hofmann Fried and Jesper Wad Larsen
+
+Funded by [IT-Vest](https://www.it-vest.dk/)
 
 # Install
 
