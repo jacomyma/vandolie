@@ -38,16 +38,16 @@ footer {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Documents</a>
+              <a class="nav-link" href="#">Documents</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" aria-disabled="true">Module 1</a>
+              <a class="nav-link" href="#">Count the words</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" aria-disabled="true">Module 2</a>
+              <a class="nav-link" href="#">Co-word network</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" aria-disabled="true">Module 3</a>
+              <a class="nav-link" href="#">Semantic map</a>
             </li>
           </ul>
           <div class="dropdown">
@@ -75,11 +75,42 @@ footer {
         </div>
 
         <div class="container">
-          <div class="row row-cols-1 row-cols-md-2 row-cols-xxl-4 g-3">
+          <div class="row row-cols-1 row-cols-md-3 row-cols-xl-4 g-3">
+            <!-- Colors from https://www.colourlovers.com/palette/4963891/friendly_vikings -->
 
             <!-- Card -->
             <div class="col">
-              <div class="card shadow-sm text-bg-primary">
+              <div class="card shadow-sm" style="background-color: #7DD3A0;">
+                <img src="img/count-words.jpg" class="card-img-top" alt="Count words">
+                <div class="card-body">
+                  <h5 class="card-title">Count the words</h5>
+                  <p class="card-text">
+                    Extract the most important words, and see in which documents they are.
+                    Are there words that appear in only a certain category?
+                  </p>
+                  <a href="#" class="btn btn-primary">Count the words</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card -->
+            <div class="col">
+              <div class="card shadow-sm" style="background-color: #EEE790;">
+                <img src="img/co-word-network.jpg" class="card-img-top" alt="Co-word network">
+                <div class="card-body">
+                  <h5 class="card-title">Co-word network</h5>
+                  <p class="card-text">
+                    It extracts the important words from the documents, and connects them when they appear together.
+
+                  </p>
+                  <a href="#" class="btn btn-primary">Make a co-word network</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card -->
+            <div class="col">
+              <div class="card shadow-sm" style="background-color: #EDBE69;">
                 <img src="img/semantic-map.jpg" class="card-img-top" alt="Semantic map">
                 <div class="card-body">
                   <h5 class="card-title">Semantic map</h5>
@@ -87,6 +118,7 @@ footer {
                     It groups documents with a similar content.
                     Will the groups reflect your categories?
                   </p>
+                  <a href="#" class="btn btn-primary">Make a semantic map</a>
                 </div>
               </div>
             </div>
