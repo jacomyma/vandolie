@@ -11,7 +11,7 @@ body {
   width: 100%;
   max-height: 100vh;
   min-height: 100vh;
-  background-color: steelblue;
+  background-color: #085b79;
   display: flex;
   flex-direction: column;
 }
@@ -45,12 +45,48 @@ footer {
     </style>
   </head>
   <body>
-    <main>
+    <nav class="navbar navbar-expand-lg" style="background-color: #f9e3a2;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="/img/vandolie-logo.svg" alt="Logo" width="30" height="24">
+          Vandolie
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Input documents</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" aria-disabled="true">Module 1</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" aria-disabled="true">Module 2</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" aria-disabled="true">Module 3</a>
+            </li>
+          </ul>
+          <div class="dropdown">
+            <button class="btn btn-outline dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              🇬🇧 English
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">🇬🇧 English</a></li>
+              <li><a class="dropdown-item" href="#">🇩🇰 Danish</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
 
-      <div class="container" style="background-color: #FFF; padding-bottom: 24px;">
+    <main>
+      <div class="container bg-body pb-4">
         
         <div class="container">
-          <h1>VANDOLIE prototype</h1>
+          <h1>Input documents</h1>
           <br>
         </div>
 
@@ -146,7 +182,7 @@ footer {
       </div>
     </main>
 
-    <footer class="footer bg-body-tertiary p-3">
+    <footer class="footer bg-body-secondary p-3">
       <div class="container text-center">
         <button type="button" class="btn btn-outline-danger"><i class="bi bi-x-lg"></i> Clear all</button>
         <div class="btn-group">
