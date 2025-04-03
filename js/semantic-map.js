@@ -22,7 +22,7 @@ const processor = (() => {
         ns.docsToEmbed = data;
         
         // Loadbar
-        const progressBar = document.querySelector('#semantic-map-progress-bar');
+        const progressBar = document.querySelector('#embeddings-progress-bar');
         progressBar.textContent = `0/${data.length} documents embedded`;
 
         // Allow the UI to update before starting the async operation
@@ -45,7 +45,7 @@ const processor = (() => {
             });
 
             // Loadbar
-            const progressBar = document.querySelector('#semantic-map-progress-bar');
+            const progressBar = document.querySelector('#embeddings-progress-bar');
             progressBar.textContent = `${ns.embeddedDocs.length}/${ns.embeddedDocs.length+ns.docsToEmbed.length} documents embedded`;
             progressBar.style.width = `${Math.ceil(100 * ns.embeddedDocs.length / (ns.embeddedDocs.length+ns.docsToEmbed.length))}%`
 
@@ -58,17 +58,39 @@ const processor = (() => {
             }, 100);
         } else {
             console.log("All documents processed.");
-            ns.flatten();
+
+            // Allow the UI to update before starting the async operation
+            setTimeout(() => {
+              ns.flatten()
+                .catch(error => {
+                  console.error('Error reducing dimensionality:', error);
+                });
+            }, 100);
         }
     };
-    ns.flatten = function() {
+    ns.flatten = async function() {
+        const epochs = 1000
         const embeddings = ns.embeddedDocs.map((d)=>d.v.data);
-        const projection = new umap.UMAP({
+        const umapper = new umap.UMAP({
             nComponents: 2,
             minDist: 0.1,
             nNeighbors: 4,
-        }).fit(embeddings)
-        // console.log("Projection:\n[", projection.map(d=>'['+d[0]+', '+d[1]+']').join(",\n"),']');
+            nEpochs: epochs,
+        })
+        // const projection = umapper.fit(embeddings)
+        const projection = await umapper.fitAsync(embeddings, epochNumber => {
+            if (epochNumber%100 == 0) {
+                setTimeout(() => {
+                    // Loadbar
+                    const percent = Math.ceil(100 * epochNumber / epochs)
+                    const progressBar = document.querySelector('#umap-progress-bar');
+                    progressBar.textContent = `${percent}% 2D projection`;
+                    progressBar.style.width = `${percent}%`
+                }, 100);
+            }
+
+        })
+
         ns.integrateProjection(projection);
         ns.vis();
     };
