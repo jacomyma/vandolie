@@ -18,38 +18,22 @@ const processor = (() => {
     ns.embeddedDocs = [];
     ns.init = function(data) {
         console.log("Datapoints to process: " + data.length);
+        
         ns.docsToEmbed = data;
-        ns.embedNextDoc();
+        
+        // Loadbar
+        const progressBar = document.querySelector('#semantic-map-progress-bar');
+        progressBar.textContent = `0/${data.length} documents embedded`;
 
-        // let projection = [
-        //     [-3.1714369016815254, -7.475679893073411],
-        //     [-2.0035443138876925, -5.888052779889111],
-        //     [-3.007152629814964, -7.850578286476373],
-        //     [-2.7426828694509484, -6.011778689629628],
-        //     [-2.2421134060634915, -6.928525854872057],
-        //     [-2.655162344680103, -7.306464293408742],
-        //     [-3.0428725157229524, -6.520761481044093],
-        //     [-2.152243971028823, -6.402741137222516],
-        //     [-1.875808056404194, -5.442310708523259],
-        //     [-2.4944082863040853, -7.914464099136181],
-        //     [-0.06985479089812538, -4.7922323396471125],
-        //     [-0.6326100110975504, -3.829008652575101],
-        //     [0.029310930739031994, -4.160725790439101],
-        //     [0.49696808203395615, -5.074900363191845],
-        //     [-1.078042432244016, -3.9805734756232702],
-        //     [-0.5633475259921292, -4.7687203489382215],
-        //     [0.6929975352279846, -4.423275701600571],
-        //     [0.6958619267592293, -3.594443712299577],
-        //     [0.1313692719775703, -3.607204573136327],
-        //     [0.8688565442390246, -3.862513454854215]
-        // ];
-        // ns.embeddedDocs = ns.docsToEmbed.map(doc => { return {
-        //     "doc": doc,
-        //     "v": []
-        // }});
-        // ns.integrateProjection(projection);
-        // ns.vis();
+        // Allow the UI to update before starting the async operation
+        setTimeout(() => {
+          ns.embedNextDoc()
+            .catch(error => {
+              console.error('Error embedding documents:', error);
+            });
+        }, 100);
     };
+
     ns.embedNextDoc = async function() {
         if (ns.docsToEmbed.length > 0) {
             const doc = this.docsToEmbed.shift();
@@ -59,7 +43,19 @@ const processor = (() => {
                 "doc": doc,
                 "v": features
             });
-            ns.embedNextDoc()
+
+            // Loadbar
+            const progressBar = document.querySelector('#semantic-map-progress-bar');
+            progressBar.textContent = `${ns.embeddedDocs.length}/${ns.embeddedDocs.length+ns.docsToEmbed.length} documents embedded`;
+            progressBar.style.width = `${Math.ceil(100 * ns.embeddedDocs.length / (ns.embeddedDocs.length+ns.docsToEmbed.length))}%`
+
+            // Allow the UI to update before starting the async operation
+            setTimeout(() => {
+              ns.embedNextDoc()
+                .catch(error => {
+                  console.error('Error embedding documents:', error);
+                });
+            }, 100);
         } else {
             console.log("All documents processed.");
             ns.flatten();
