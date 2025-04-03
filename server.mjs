@@ -53,15 +53,27 @@ const server = createServer((req, res) => {
    
     // If it's CSV and in the same folder, load it
     } else if (req.url.endsWith('.csv')) {
-    fs.readFile(req.url.slice(1), (err, data) => {
-      if (err) {
-        res.writeHead(404, { 'Content-Type': 'text/html' });
-        return res.end('404 Not Found');
-      }
-      res.writeHead(200, { 'Content-Type': 'text/csv' });
-      res.write(data);
-      return res.end();
-    });
+      fs.readFile(req.url.slice(1), (err, data) => {
+        if (err) {
+          res.writeHead(404, { 'Content-Type': 'text/html' });
+          return res.end('404 Not Found');
+        }
+        res.writeHead(200, { 'Content-Type': 'text/csv' });
+        res.write(data);
+        return res.end();
+      });
+
+    // If it's SVG and in the same folder, load it
+    } else if (req.url.endsWith('.svg')) {
+      fs.readFile(req.url.slice(1), (err, data) => {
+        if (err) {
+          res.writeHead(404, { 'Content-Type': 'text/html' });
+          return res.end('404 Not Found');
+        }
+        res.writeHead(200, { 'Content-Type': 'image/svg+xml' });
+        res.write(data);
+        return res.end();
+      });
   
     } else {
       res.writeHead(404, { 'Content-Type': 'text/html' });
