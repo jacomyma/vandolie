@@ -9,15 +9,15 @@ const processor = (() => {
         
         ns.data = data;
 
-        console.log(ns.docsToBagOfWords())
+        ns.makeNetwork()
     };
 
-    ns.docsToBagOfWords = function() {
+    ns.makeNetwork = function() {
         // Options
         const options = {
-            includeTitle: true,
+            includeTitle: document.getElementById("settings-include-title").checked,
         }
-
+        console.log(options.includeTitle)
         var documents
         if (options.includeTitle) {
             documents = ns.data.map(d => d.Title+" \n"+d.Text)
@@ -53,10 +53,7 @@ const processor = (() => {
             return counts;
         });
 
-        return {
-            vocabulary: vocabularyArray,
-            bagOfWords: bagOfWords
-        };
+        console.log(vocabulary)
     };
         
 
@@ -70,4 +67,5 @@ d3.csv("test/genocide.csv")
         console.log(error);
     });
 
-    
+// Listen to some UI stuff to re-trigger
+document.getElementById("settings-include-title").addEventListener("change", processor.makeNetwork)
