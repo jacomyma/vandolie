@@ -61,6 +61,9 @@ const processor = (() => {
             return counts;
         });
 
+        // Update the interface
+        document.getElementById('count-occurrences-result').textContent = vocabulary.size
+
         console.log(vocabulary)
     };
         

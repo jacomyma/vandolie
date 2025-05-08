@@ -76,24 +76,23 @@ footer {
 
         <div class="container">
           <h2>1. Count word occurrences</h2>
-          <p>How many times each word appears?</p>
-
+          
           <!-- Settings (in a card) -->
           <div class="card">
             <div class="card-header">
-              Settings
+              How to count the words?
             </div>
             <div class="card-body">
 
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="settings-include-title">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" value="" id="settings-include-title">
                 <label class="form-check-label" for="settings-include-title">
                   Include title in the text
                 </label>
               </div>
 
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="settings-count-multi-per-doc">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" value="" id="settings-count-multi-per-doc">
                 <label class="form-check-label" for="settings-count-multi-per-doc">
                   Take into account when a word appears multiple times in the same document
                 </label>
@@ -101,8 +100,18 @@ footer {
 
             </div>
           </div>
+          <br>
 
           <!-- Results -->
+          <div class="card text-bg-primary">
+            <h5 class="card-header">Result</h5>
+            <div class="card-body">
+              <p class="card-text">
+                <span id="count-occurrences-result" style="font-family:monospace;"></span> distinct words found.
+              </p>
+            </div>
+          </div>
+
 
 
         </div>
