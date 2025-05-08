@@ -20,6 +20,20 @@ const processor = (() => {
         ns.makeNetwork()
     };
 
+    ns.calculatePPMI = function(wordACount, wordBCount, coOccurrenceCount, totalDocuments) {
+        // Calculate individual probabilities
+        const probA = wordACount / totalDocuments;
+        const probB = wordBCount / totalDocuments;
+
+        // Calculate joint probability
+        const probAB = coOccurrenceCount / totalDocuments;
+
+        // Calculate PMI
+        const pmi = Math.log(probAB / (probA * probB));
+
+        return Math.max(0, pmi);
+    }
+
     ns.makeNetwork = function() {
         // Options
         const options = {
@@ -30,6 +44,7 @@ const processor = (() => {
             stopwordsDK: document.getElementById("settings-remove-stoplist-dk").checked,
             cooccurrenceThreshold: +document.getElementById("settings-cooccurrence-threshold").value,
             removeOrphans: document.getElementById("settings-cooccurrence-remove-orphans").checked,
+            usePmi: document.getElementById("settings-cooccurrence-pmi").checked,
         }
 
         var documents
@@ -152,9 +167,23 @@ const processor = (() => {
         vocabularyData_filtered.forEach(d => {
             g.addNode(d.token, {label: d.token, x:Math.random()*100-50, y:Math.random()*100-50, size:1+Math.log(1+3*d.count)})
         })
+        if (options.usePmi) {
+            var occurrencesIndex = {}
+            vocabularyData_filtered.forEach(d => {
+                occurrencesIndex[d.token] = d.count
+            })
+        }
         cooccurrences.forEach(d => {
             let [nid1, nid2] = d[0].split("|")
-            g.addEdge(nid1, nid2, {weight: Math.log(1+2*d[1])})
+            var w
+            if (options.usePmi) {
+                w = ns.calculatePPMI(occurrencesIndex[nid1], occurrencesIndex[nid2], d[1], documents.length)
+            } else {
+                w = d[1]
+            }
+            if (w>0) {
+                g.addEdge(nid1, nid2, {weight: w})
+            }
         })
         if (options.removeOrphans) {
             // Remove orphans
@@ -266,3 +295,4 @@ document.getElementById("settings-remove-stoplist-en").addEventListener("change"
 document.getElementById("settings-remove-stoplist-dk").addEventListener("change", processor.makeNetwork)
 document.getElementById("settings-cooccurrence-threshold").addEventListener("change", processor.makeNetwork)
 document.getElementById("settings-cooccurrence-remove-orphans").addEventListener("change", processor.makeNetwork)
+document.getElementById("settings-cooccurrence-pmi").addEventListener("change", processor.makeNetwork)
