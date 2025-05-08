@@ -80,19 +80,19 @@ footer {
           <!-- Settings (in a card) -->
           <div class="card">
             <div class="card-header">
-              How to count the words?
+              Settings: how to count the words?
             </div>
             <div class="card-body">
 
               <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" value="" id="settings-include-title">
+                <input class="form-check-input" type="checkbox" role="switch" id="settings-include-title">
                 <label class="form-check-label" for="settings-include-title">
                   Include title in the text
                 </label>
               </div>
 
               <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" value="" id="settings-count-multi-per-doc">
+                <input class="form-check-input" type="checkbox" role="switch" id="settings-count-multi-per-doc" checked>
                 <label class="form-check-label" for="settings-count-multi-per-doc">
                   Take into account when a word appears multiple times in the same document
                 </label>
@@ -117,6 +117,44 @@ footer {
           </div>
 
 
+          <h2 class="mt-3">2. Remove unnecessary words</h2>
+
+          <!-- Settings (in a card) -->
+          <div class="card">
+            <div class="card-header">
+              Settings: which words to remove?
+            </div>
+            <div class="card-body">  
+
+              <select class="form-select mb-1" id="settings-remove-threshold">
+                <option value="1" selected>Remove words appearing only once</option>
+                <option value="2">Remove words appearing once or twice</option>
+                <option value="3">Remove words appearing 3 times or less</option>
+                <option value="4">Remove words appearing 4 times or less</option>
+                <option value="5">Remove words appearing 5 times or less</option>
+                <option value="10">Remove words appearing 10 times or less</option>
+                <option value="20">Remove words appearing 20 times or less</option>
+                <option value="50">Remove words appearing 50 times or less</option>
+                <option value="100">Remove words appearing 100 times or less</option>
+              </select>
+
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" value="" id="settings-remove-stoplist-en">
+                <label class="form-check-label" for="settings-remove-stoplist-en">
+                  Remove stop words from English language
+                </label>
+              </div>
+
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" value="" id="settings-remove-stoplist-dk">
+                <label class="form-check-label" for="settings-remove-stoplist-dk">
+                  Remove stop words from Danish language
+                </label>
+              </div>
+
+            </div>
+          </div>
+          <br>
 
         </div>
 
