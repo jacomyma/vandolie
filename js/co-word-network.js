@@ -31,7 +31,7 @@ const processor = (() => {
         const vocabulary = new Set();
         const tokenizedDocs = documents.map(doc => {
             // Tokenize: convert to lowercase, remove punctuation, split by whitespace
-            const tokens = doc.toLowerCase().replace(/[^\w\s]/g, '').split(/\s+/);
+            const tokens = doc.toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, '').split(/\s+/);
             // Add to vocabulary
             tokens.forEach(token => vocabulary.add(token));
             return tokens;
