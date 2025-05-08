@@ -20,6 +20,7 @@ const processor = (() => {
             threshold: +document.getElementById("settings-remove-threshold").value,
             stopwordsEN: +document.getElementById("settings-remove-stoplist-en").checked,
             stopwordsDK: +document.getElementById("settings-remove-stoplist-dk").checked,
+            cooccurrenceThreshold: +document.getElementById("settings-cooccurrence-threshold").value,
         }
 
         var documents
@@ -33,7 +34,7 @@ const processor = (() => {
         const vocabulary = new Set();
         const tokenizedDocs = documents.map(doc => {
             // Tokenize: convert to lowercase, remove punctuation, split by whitespace
-            const tokens = doc.toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, '').split(/\s+/);
+            const tokens = doc.toLowerCase().replace(/[^\p{L}\s]/gu, '').split(/\s+/);
             // Add to vocabulary
             tokens.forEach(token => vocabulary.add(token));
             return tokens;
@@ -93,10 +94,45 @@ const processor = (() => {
         if (options.stopwordsDK) {
             stopwords = stopwords.concat(ns.stopwords.da)            
         }
-        stopwords = stopwords.map(token => token.replace(/[^\p{L}\p{N}\s]/gu, '')).filter(d => d.length>0) // Remove punctuation
+        stopwords = stopwords.map(token => token.replace(/[^\p{L}\s]/gu, '')).filter(d => d.length>0) // Remove punctuation
         stopwords.sort()
         vocabularyData.forEach(d => {d.keep = d.keep && stopwords.indexOf(d.token)<0})
         const vocabularyData_filtered = vocabularyData.filter(d => d.keep)
+
+        // Step 7: Count co-occurrences
+        const coocc = {}
+        bagOfWords.forEach(counts => {
+            for (let i in counts) {
+                if (vocabularyData[i].keep && counts[i]>0) {
+                    for (let j in counts) {
+                        if (i<j && vocabularyData[j].keep && counts[j]>0) {
+                            const pair = vocabularyData[i].token + "|" + vocabularyData[j].token
+                            coocc[pair] = (coocc[pair] || 0) + 1
+                        }
+                    }
+                }
+            }
+        })
+
+        // Step 8: Remove co-occurrences under threshold
+        var keysToRemove = []
+        for (let k in coocc) {
+            if (coocc[k] <= options.cooccurrenceThreshold) {
+                keysToRemove.push(k)
+            }
+        }
+        keysToRemove.forEach(k => {delete coocc[k]})
+        var cooccurrences = Object.entries(coocc)
+        cooccurrences.sort((a,b) => {
+            const diff = b[1]-a[1]
+            if (diff == 0){
+                const tA = a[0]
+                const tB = b[0]
+                if (tA < tB) return -1;
+                if (tA > tB) return 1;
+                return 0;
+            } else return diff
+        })
 
         // Update the interface
         document.getElementById('count-occurrences-result-count').textContent = vocabulary.size
@@ -114,8 +150,12 @@ const processor = (() => {
             .filter((d,i) => i<50)
             .map((d, i) => `${i+1}. ${d.token} (${d.count})`)
             .join('\n')
+        document.getElementById('cooccurrence-result-count').textContent = cooccurrences.length
+        document.getElementById('cooccurrence-result-top-pairs').textContent = cooccurrences
+            .filter((d,i) => i<50)
+            .map((d, i) => `${i+1}. ${d[0].replace('|', ' + ')} (${d[1]})`)
+            .join('\n')
 
-        // console.log(vocabularyData)
     };
 
     // From https://github.com/stopwords-iso
@@ -137,3 +177,5 @@ document.getElementById("settings-count-multi-per-doc").addEventListener("change
 document.getElementById("settings-remove-threshold").addEventListener("change", processor.makeNetwork)
 document.getElementById("settings-remove-stoplist-en").addEventListener("change", processor.makeNetwork)
 document.getElementById("settings-remove-stoplist-dk").addEventListener("change", processor.makeNetwork)
+document.getElementById("settings-cooccurrence-threshold").addEventListener("change", processor.makeNetwork)
+document.getElementById("settings-cooccurrence-remove-orphans").addEventListener("change", processor.makeNetwork)

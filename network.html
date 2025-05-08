@@ -69,13 +69,13 @@ footer {
     <main>
       <div class="container bg-body pb-4">
         
-        <div class="container">
+        <div class="container pt-5">
           <h1>Co-word network</h1>
           <p>Follow the steps of the algorithm, and see the resulting network in the end.</p>
         </div>
 
         <div class="container">
-          <h2>1. Count word occurrences</h2>
+          <h2 class="mt-5">1. Count word occurrences</h2>
           
           <!-- Settings (in a card) -->
           <div class="card">
@@ -112,7 +112,7 @@ footer {
             </div>
           </div>
 
-          <h2 class="mt-3">2. Remove unnecessary words</h2>
+          <h2 class="mt-5">2. Remove unnecessary words</h2>
 
           <!-- Settings (in a card) -->
           <div class="card">
@@ -129,7 +129,7 @@ footer {
               </div>
 
               <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" value="" id="settings-remove-stoplist-dk">
+                <input class="form-check-input" type="checkbox" role="switch" value="" id="settings-remove-stoplist-dk" checked>
                 <label class="form-check-label" for="settings-remove-stoplist-dk">
                   Remove <em>stop words</em> from Danish language
                 </label>
@@ -137,8 +137,8 @@ footer {
 
               <select class="form-select mt-2" id="settings-remove-threshold">
                 <option value="1">Remove words appearing only once</option>
-                <option value="2" selected>Remove words appearing only once or twice</option>
-                <option value="3">Remove words appearing 3 times or less</option>
+                <option value="2">Remove words appearing only once or twice</option>
+                <option value="3" selected>Remove words appearing 3 times or less</option>
                 <option value="4">Remove words appearing 4 times or less</option>
                 <option value="5">Remove words appearing 5 times or less</option>
                 <option value="10">Remove words appearing 10 times or less</option>
@@ -149,10 +149,9 @@ footer {
 
             </div>
           </div>
-          <br>
 
           <!-- Info -->
-          <div class="form-floating">
+          <div class="form-floating mt-3">
             <textarea class="form-control form-control-sm font-monospace" id="remove-result-stop-words" readonly style="height: 100px"></textarea>
             <label for="remove-result-stop-words" class="form-label">Stop words</label>
           </div>
@@ -164,6 +163,52 @@ footer {
               <div class="form-floating">
                 <textarea class="form-control font-monospace" id="remove-result-top-words" readonly style="height: 180px"></textarea>
                 <label for="remove-result-top-words" class="form-label">Top 50 remaining words</label>
+              </div>
+            </div>
+          </div>
+
+
+          <h2 class="mt-5">3. Count word co-occurrences</h2>
+
+          <p>Count in how many documents each two words (from the list above) appear at the same time ("co-occur").</p>
+
+          <!-- Settings (in a card) -->
+          <div class="card">
+            <div class="card-header">
+              Settings: how to count co-occurrences?
+            </div>
+            <div class="card-body">  
+
+              <select class="form-select" id="settings-cooccurrence-threshold">
+                <option value="0">Keep all co-occurring pairs</option>
+                <option value="1">Remove pairs co-occurring only once</option>
+                <option value="2" selected>Remove pairs co-occurring only once or twice</option>
+                <option value="3">Remove pairs co-occurring 3 times or less</option>
+                <option value="4">Remove pairs co-occurring 4 times or less</option>
+                <option value="5">Remove pairs co-occurring 5 times or less</option>
+                <option value="10">Remove pairs co-occurring 10 times or less</option>
+                <option value="20">Remove pairs co-occurring 20 times or less</option>
+                <option value="50">Remove pairs co-occurring 50 times or less</option>
+                <option value="100">Remove pairs co-occurring 100 times or less</option>
+              </select>
+
+              <div class="form-check form-switch mt-3">
+                <input class="form-check-input" type="checkbox" role="switch" value="" id="settings-cooccurrence-remove-orphans" checked>
+                <label class="form-check-label" for="settings-cooccurrence-remove-orphans">
+                  Remove words that co-occur with no other word (Recommended)
+                </label>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Results (in a card) -->
+          <div class="card mt-3 text-bg-primary">
+            <h5 class="card-header">Result: <span id="cooccurrence-result-count" class="font-monospace"></span> word pairs.</h5>
+            <div class="card-body">
+              <div class="form-floating">
+                <textarea class="form-control font-monospace" id="cooccurrence-result-top-pairs" readonly style="height: 180px"></textarea>
+                <label for="cooccurrence-result-top-pairs" class="form-label">Top 50 most co-occurring word pairs</label>
               </div>
             </div>
           </div>
