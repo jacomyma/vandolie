@@ -107,7 +107,11 @@ const processor = (() => {
                     for (let j in counts) {
                         if (i<j && vocabularyData[j].keep && counts[j]>0) {
                             const pair = vocabularyData[i].token + "|" + vocabularyData[j].token
-                            coocc[pair] = (coocc[pair] || 0) + 1
+                            if (options.multiPerDoc) {
+                                coocc[pair] = (coocc[pair] || 0) + Math.min(counts[i], counts[j])
+                            } else {
+                                coocc[pair] = (coocc[pair] || 0) + 1
+                            }
                         }
                     }
                 }
@@ -134,6 +138,47 @@ const processor = (() => {
             } else return diff
         })
 
+        // Step 9: Create the network
+        const g = new graphology.Graph();
+        vocabularyData_filtered.forEach(d => {
+            g.addNode(d.token, {label: d.token, x:Math.random()*100-50, y:Math.random()*100-50, size:1+Math.log(1+3*d.count)})
+        })
+        cooccurrences.forEach(d => {
+            let [nid1, nid2] = d[0].split("|")
+            g.addEdge(nid1, nid2, {weight: Math.log(1+2*d[1])})
+        })
+        // Remove orphans
+        g.nodes().forEach(nid => {
+            if (g.degree(nid) <= 0) {
+                g.dropNode(nid)
+            }
+        })
+        // Layout
+        const fa2Settings = graphologyLibrary.layoutForceAtlas2.inferSettings(g);
+        fa2Settings.strongGravityMode = true
+        fa2Settings.gravity = 0.1
+        fa2Settings.edgeWeightInfluence = 0.3
+        fa2Settings.slowDown = 1
+        graphologyLibrary.layoutForceAtlas2.assign(g, {
+          iterations: 100,
+          settings: fa2Settings
+        });
+        fa2Settings.linLogMode = true
+        fa2Settings.scalingRatio /= 20
+        fa2Settings.gravity = 0.0001
+        fa2Settings.slowDown = 1
+        graphologyLibrary.layoutForceAtlas2.assign(g, {
+          iterations: 200,
+          settings: fa2Settings
+        });
+        fa2Settings.slowDown = 10
+        fa2Settings.adjustSizes = true
+        graphologyLibrary.layoutForceAtlas2.assign(g, {
+          iterations: 50,
+          settings: fa2Settings
+        });
+
+
         // Update the interface
         document.getElementById('count-occurrences-result-count').textContent = vocabulary.size
         document.getElementById('count-occurrences-result-top-words').textContent = vocabularyData
@@ -156,6 +201,10 @@ const processor = (() => {
             .map((d, i) => `${i+1}. ${d[0].replace('|', ' + ')} (${d[1]})`)
             .join('\n')
 
+        if (ns.sigmaInstance) {
+            ns.sigmaInstance.kill()
+        }
+        ns.sigmaInstance = new Sigma(g, document.getElementById("sigmaContainer"));
     };
 
     // From https://github.com/stopwords-iso
