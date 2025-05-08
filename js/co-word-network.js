@@ -16,8 +16,9 @@ const processor = (() => {
         // Options
         const options = {
             includeTitle: document.getElementById("settings-include-title").checked,
+            multiPerDoc: document.getElementById("settings-count-multi-per-doc").checked,
         }
-        console.log(options.includeTitle)
+
         var documents
         if (options.includeTitle) {
             documents = ns.data.map(d => d.Title+" \n"+d.Text)
@@ -44,8 +45,15 @@ const processor = (() => {
             // Initialize counts for this document
             const counts = new Array(vocabularyArray.length).fill(0);
 
+            var tokens_
+            if (options.multiPerDoc) {
+                tokens_ = tokens
+            } else {
+                tokens_ = new Set(tokens)
+            }
+
             // Count occurrences of each token
-            tokens.forEach(token => {
+            tokens_.forEach(token => {
                 const index = vocabularyArray.indexOf(token);
                 counts[index]++;
             });
@@ -69,3 +77,4 @@ d3.csv("test/genocide.csv")
 
 // Listen to some UI stuff to re-trigger
 document.getElementById("settings-include-title").addEventListener("change", processor.makeNetwork)
+document.getElementById("settings-count-multi-per-doc").addEventListener("change", processor.makeNetwork)
