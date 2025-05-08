@@ -3,6 +3,14 @@ import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 const processor = (() => {
     var ns = {}; // Namespace
     ns.data
+    ns.palette = [
+        "#777acd",
+        "#cab21f",
+        "#5ba965",
+        "#ca5e4a",
+        "#c55a9f",
+    ]
+    ns.palette_default = "#919191"
     ns.init = function(data) {
         console.log("Datapoints to process: " + data.length);
         console.log("Data", data)
@@ -18,9 +26,10 @@ const processor = (() => {
             includeTitle: document.getElementById("settings-include-title").checked,
             multiPerDoc: document.getElementById("settings-count-multi-per-doc").checked,
             threshold: +document.getElementById("settings-remove-threshold").value,
-            stopwordsEN: +document.getElementById("settings-remove-stoplist-en").checked,
-            stopwordsDK: +document.getElementById("settings-remove-stoplist-dk").checked,
+            stopwordsEN: document.getElementById("settings-remove-stoplist-en").checked,
+            stopwordsDK: document.getElementById("settings-remove-stoplist-dk").checked,
             cooccurrenceThreshold: +document.getElementById("settings-cooccurrence-threshold").value,
+            removeOrphans: document.getElementById("settings-cooccurrence-remove-orphans").checked,
         }
 
         var documents
@@ -147,11 +156,40 @@ const processor = (() => {
             let [nid1, nid2] = d[0].split("|")
             g.addEdge(nid1, nid2, {weight: Math.log(1+2*d[1])})
         })
-        // Remove orphans
-        g.nodes().forEach(nid => {
-            if (g.degree(nid) <= 0) {
-                g.dropNode(nid)
+        if (options.removeOrphans) {
+            // Remove orphans
+            g.nodes().forEach(nid => {
+                if (g.degree(nid) <= 0) {
+                    g.dropNode(nid)
+                }
+            })
+        }
+        // Louvain
+        const assignment = new graphologyLibrary.communitiesLouvain(g);
+        var communities = {}
+        Object.entries(assignment).forEach(entry => {
+            let [nid, c] = entry
+            communities[c] = (communities[c] || 0) + 1
+        })
+        communities = Object.entries(communities).map(entry => {return {id:entry[0], count:entry[1]}})
+        communities.sort((a,b) => b.count-a.count)
+        communities.forEach((d, i) => {
+            if (i<ns.palette.length) {
+                d.color = ns.palette[i]
+            } else {
+                d.color = ns.palette_default
             }
+        })
+        g.nodes().forEach(nid => {
+            let n = g.getNodeAttributes(nid)
+            let c
+            communities.some(d => {
+                if (assignment[nid]==d.id) {
+                    c = d
+                    return true
+                } else return false
+            })
+            n.color = c.color
         })
         // Layout
         const fa2Settings = graphologyLibrary.layoutForceAtlas2.inferSettings(g);
