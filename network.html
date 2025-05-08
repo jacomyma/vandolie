@@ -107,8 +107,12 @@ footer {
             <h5 class="card-header">Result</h5>
             <div class="card-body">
               <p class="card-text">
-                <span id="count-occurrences-result" style="font-family:monospace;"></span> distinct words found.
+                <span id="count-occurrences-result-count" class="font-monospace"></span> distinct words found.
               </p>
+              <div>
+                <label for="count-occurrences-result-top-words" class="form-label">Top 50 words occuring the most:</label>
+                <textarea class="form-control font-monospace" id="count-occurrences-result-top-words" rows="5" readonly></textarea>
+              </div>
             </div>
           </div>
 

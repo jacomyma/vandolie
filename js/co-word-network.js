@@ -61,12 +61,34 @@ const processor = (() => {
             return counts;
         });
 
-        // Update the interface
-        document.getElementById('count-occurrences-result').textContent = vocabulary.size
+        // Step 4: Count total occurrences per word
+        var vocabularyData = vocabularyArray.map((token, index) => {return {index, token, count:0}})
+        bagOfWords.forEach(counts => {
+            for (let i in counts) {
+                let count = counts[i]
+                vocabularyData[i].count += count
+            }
+        })
+        vocabularyData.sort((a,b) => {
+            const diff = b.count-a.count
+            if (diff == 0){
+                const tA = a.token
+                const tB = b.token
+                if (tA < tB) return -1;
+                if (tA > tB) return 1;
+                return 0;
+            } else return diff
+        })
 
-        console.log(vocabulary)
+        // Update the interface
+        document.getElementById('count-occurrences-result-count').textContent = vocabulary.size
+        document.getElementById('count-occurrences-result-top-words').textContent = vocabularyData
+            .filter((d,i) => i<50)
+            .map((d, i) => `${i+1}. ${d.token} (${d.count})`)
+            .join('\n')
+
+        console.log(vocabularyData)
     };
-        
 
     return ns;
 })();
