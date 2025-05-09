@@ -172,43 +172,6 @@ footer {
 
           <p>Count in how many documents each two words (from the list above) appear at the same time ("co-occur").</p>
 
-          <!-- Settings (in a card) -->
-          <div class="card">
-            <div class="card-header">
-              Settings: how to count co-occurrences?
-            </div>
-            <div class="card-body">  
-
-              <select class="form-select" id="settings-cooccurrence-threshold">
-                <option value="0" selected>Keep all co-occurring pairs</option>
-                <option value="1">Remove pairs co-occurring only once</option>
-                <option value="2">Remove pairs co-occurring only once or twice</option>
-                <option value="3">Remove pairs co-occurring 3 times or less</option>
-                <option value="4">Remove pairs co-occurring 4 times or less</option>
-                <option value="5">Remove pairs co-occurring 5 times or less</option>
-                <option value="10">Remove pairs co-occurring 10 times or less</option>
-                <option value="20">Remove pairs co-occurring 20 times or less</option>
-                <option value="50">Remove pairs co-occurring 50 times or less</option>
-                <option value="100">Remove pairs co-occurring 100 times or less</option>
-              </select>
-
-              <div class="form-check form-switch mt-3">
-                <input class="form-check-input" type="checkbox" role="switch" value="" id="settings-cooccurrence-remove-orphans" checked>
-                <label class="form-check-label" for="settings-cooccurrence-remove-orphans">
-                  Remove words that co-occur with no other word (Recommended)
-                </label>
-              </div>
-
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" value="" id="settings-cooccurrence-pmi" checked>
-                <label class="form-check-label" for="settings-cooccurrence-pmi">
-                  Use <a href="https://en.wikipedia.org/wiki/Pointwise_mutual_information" target="_blank">pointwise mutual information</a> for counting (Recommended)
-                </label>
-              </div>
-
-            </div>
-          </div>
-
           <!-- Results (in a card) -->
           <div class="card mt-3 text-bg-primary">
             <h5 class="card-header">Result: <span id="cooccurrence-result-count" class="font-monospace"></span> word pairs.</h5>
@@ -223,11 +186,37 @@ footer {
 
           <h2 class="mt-5">4. Display network</h2>
 
-          <div class="card text-bg-primary">
+          <!-- Settings (in a card) -->
+          <div class="card">
+            <div class="card-header">
+              Settings
+            </div>
+            <div class="card-body">
+
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" value="" id="settings-cooccurrence-pmi" checked>
+                <label class="form-check-label" for="settings-cooccurrence-pmi">
+                  Use <a href="https://en.wikipedia.org/wiki/Pointwise_mutual_information" target="_blank">pointwise mutual information</a> to normalize co-occurrence (Recommended)
+                </label>
+              </div>
+
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" value="" id="settings-cooccurrence-remove-orphans" checked>
+                <label class="form-check-label" for="settings-cooccurrence-remove-orphans">
+                  Remove disconnected words (Recommended)
+                </label>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Results (in a card) -->
+          <div class="card mt-3 text-bg-primary">
             <h5 class="card-header">Network</h5>
             <div class="" style="height: 500px; background-color:#DDD;" id="sigmaContainer">
             </div>
           </div>
+
 
         </div>
 

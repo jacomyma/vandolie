@@ -42,7 +42,6 @@ const processor = (() => {
             threshold: +document.getElementById("settings-remove-threshold").value,
             stopwordsEN: document.getElementById("settings-remove-stoplist-en").checked,
             stopwordsDK: document.getElementById("settings-remove-stoplist-dk").checked,
-            cooccurrenceThreshold: +document.getElementById("settings-cooccurrence-threshold").value,
             removeOrphans: document.getElementById("settings-cooccurrence-remove-orphans").checked,
             usePmi: document.getElementById("settings-cooccurrence-pmi").checked,
         }
@@ -295,6 +294,5 @@ document.getElementById("settings-count-multi-per-doc").addEventListener("change
 document.getElementById("settings-remove-threshold").addEventListener("change", processor.makeNetwork)
 document.getElementById("settings-remove-stoplist-en").addEventListener("change", processor.makeNetwork)
 document.getElementById("settings-remove-stoplist-dk").addEventListener("change", processor.makeNetwork)
-document.getElementById("settings-cooccurrence-threshold").addEventListener("change", processor.makeNetwork)
 document.getElementById("settings-cooccurrence-remove-orphans").addEventListener("change", processor.makeNetwork)
 document.getElementById("settings-cooccurrence-pmi").addEventListener("change", processor.makeNetwork)
