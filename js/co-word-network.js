@@ -182,7 +182,7 @@ const processor = (() => {
                 w = d[1]
             }
             if (w>0) {
-                g.addEdge(nid1, nid2, {weight: w})
+                g.addEdge(nid1, nid2, {weight: w, color:"#FFF"})
             }
         })
         if (options.removeOrphans) {
@@ -193,7 +193,8 @@ const processor = (() => {
                 }
             })
         }
-        // Louvain
+
+        // Step 10: Compute Louvain
         const assignment = new graphologyLibrary.communitiesLouvain(g);
         var communities = {}
         Object.entries(assignment).forEach(entry => {
@@ -220,7 +221,8 @@ const processor = (() => {
             })
             n.color = c.color
         })
-        // Layout
+
+        // Step 11: Compute Layout
         const fa2Settings = graphologyLibrary.layoutForceAtlas2.inferSettings(g);
         fa2Settings.strongGravityMode = true
         fa2Settings.gravity = 0.1
