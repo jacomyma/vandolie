@@ -21,7 +21,22 @@ const processor = (() => {
     };
 
     ns.countWords = function() {
+        // Delete documents
+        document.getElementById("documents").innerHTML = "";
 
+        // Respawn documents
+        ns.data.forEach(d => {
+            const div = document.createElement("div")
+            div.classList.add("col")
+            div.innerHTML = `<div class="card shadow-sm card-doc-saved">
+                <div class="card-header doc-title">
+                  ${d.Title}
+                </div>
+                <div class="card-body">lol</div>
+            </div>`
+
+            document.getElementById("documents").appendChild(div);
+        })
     };
     
     return ns;

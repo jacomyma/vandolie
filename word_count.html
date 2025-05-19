@@ -23,6 +23,22 @@ footer {
   flex: none;
   height: 100px;
 }
+.doc-title {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.doc-text {
+  height: 195px;
+  overflow: hidden;
+}
+.doc-new {
+  height: 322px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
     </style>
   </head>
   <body>
@@ -72,12 +88,24 @@ footer {
         <div class="container pt-4">
           <h1>Count the words</h1>
 
-          
+          <!-- Settings (in a card) -->
+          <div class="card">
+            <div class="card-header">
+              Settings: what word to count?
+            </div>
+            <div class="card-body">
 
-          
+              TODO
 
+            </div>
+          </div>
         </div>
 
+        <div class="container mt-3" style="min-height: 200px">
+          <div id="documents" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-4 g-3">
+          </div>
+        </div>
+          
       </div>
     </main>
 
