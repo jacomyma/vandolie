@@ -21,21 +21,47 @@ const processor = (() => {
     };
 
     ns.countWords = function() {
-        // Delete documents
+        // Compute categories
+        var categoriesIndex = {}
+        ns.data.forEach((d,i) => {
+            const cat = d.Category
+            categoriesIndex[cat] = (categoriesIndex[cat] || 0)+1
+        })
+        var categories = Object.entries(categoriesIndex).map(entry => {return {id:entry[0], count:entry[1]}})
+        categories.sort((a,b) => b.count-a.count)
+        categories.forEach((d, i) => {
+            if (i<ns.palette.length) {
+                d.color = ns.palette[i]
+            } else {
+                d.color = ns.palette_default
+            }
+            categoriesIndex[d.id] = d
+        })
+        categories.reverse()
+
+        // Delete documents (HTML)
         document.getElementById("documents").innerHTML = "";
 
-        // Respawn documents
-        ns.data.forEach(d => {
-            const div = document.createElement("div")
-            div.classList.add("col")
-            div.innerHTML = `<div class="card shadow-sm card-doc-saved">
-                <div class="card-header doc-title">
-                  ${d.Title}
-                </div>
-                <div class="card-body">lol</div>
-            </div>`
+        // Respawn documents (HTML)
+        // Note: in order of the categories, from most to least represented
+        categories.forEach(cat => {
+            ns.data
+                .filter(d => {return d.Category == cat.id})
+                .forEach(d => {
+                    const color = categoriesIndex[d.Category].color
+                    const div = document.createElement("div")
+                    div.classList.add("col")
+                    div.innerHTML = `<div class="card shadow-sm card-doc-saved">
+                        <div class="card-header doc-title">
+                          ${d.Title}
+                        </div>
+                        <div class="card-body">
+                            <span class="badge" style="background-color:${color};">${d.Category}</span>
+                        </div>
+                    </div>`
 
-            document.getElementById("documents").appendChild(div);
+                    document.getElementById("documents").appendChild(div);
+                })
         })
     };
     
