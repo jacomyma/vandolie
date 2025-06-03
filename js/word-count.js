@@ -231,6 +231,31 @@ const processor = (() => {
                     .attr("height", y.bandwidth())
                     .attr("width", function(d) { return x(d[1]) - x(d[0]); })
 
+        // Add percentage labels
+        svg.append("g")
+            .selectAll("text")
+            .data(data)
+            .enter().append("text")
+                .attr("y", function(d) { return y(d.id) + y.bandwidth()/2; })
+                .attr("x", function(d) { 
+                    // Position the label at the center of the bar
+                    return x(d.present/2); 
+                })
+                .attr("dy", "0.35em") // Center vertically
+                .attr("text-anchor", "middle")
+                .style("fill", "white")
+                .style("font-size", "12px")
+                .style("font-weight", "bold")
+                .style("text-shadow", "1px 1px 1px rgba(0,0,0,0.5)")
+                .text(function(d) { 
+                    return d.present.toFixed(0) + "%"; 
+                })
+                .style("display", function(d) {
+                    // Only show label if bar is wide enough (at least 5% width)
+                    return d.present < 5 ? "none" : "block";
+                });
+
+
     }
 
     // From https://github.com/stopwords-iso
