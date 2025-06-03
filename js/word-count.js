@@ -53,7 +53,7 @@ const processor = (() => {
         wordCounts.sort((a,b) => b.count-a.count)
 
         // Display on the page
-        const top = 50
+        const top = 30
         wordCounts.filter(d => d.count>=2).slice(0,top).forEach(d => {
             const b = document.createElement("button")
             b.classList.add("btn")
@@ -62,9 +62,16 @@ const processor = (() => {
             b.classList.add("m-1")
             b.innerHTML = `${d.word} <span style="opacity:0.5">(${d.count})</span>`
 
+            b.addEventListener("click", (()=>{ns.inputWordAndSearch(d.word)}))
+
             document.getElementById("top-words").appendChild(b);
         })
     }
+
+    ns.inputWordAndSearch = function(w){
+        document.getElementById("input-search").value = w
+        ns.countWords()
+    };
 
     ns.extractPassage = function(text, query, contextLength = 50) {
       // If query is a string, escape it for regex
