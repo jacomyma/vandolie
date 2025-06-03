@@ -56,7 +56,7 @@ const processor = (() => {
         wordCounts.sort((a,b) => b.count-a.count)
 
         // Pre-truncate
-        wordCounts = wordCounts.slice(0, 2*top)
+        wordCounts = wordCounts.slice(0, 1.5*top)
 
         /*
         Why do we pre-truncate?
@@ -89,6 +89,7 @@ const processor = (() => {
 
 
         // Display on the page
+        document.getElementById("top-words").innerHTML = "";
         wordCounts.filter(d => d.count>=2).slice(0,top).forEach(d => {
             const b = document.createElement("button")
             b.classList.add("btn")
@@ -309,5 +310,6 @@ d3.csv("test/genocide.csv")
 
 // Listen to some UI stuff to re-trigger
 document.getElementById("button-search").addEventListener("click", processor.countWords)
+document.getElementById("settings-full-words").addEventListener("change", processor.computeTopWords)
 document.getElementById("settings-full-words").addEventListener("change", processor.countWords)
 
