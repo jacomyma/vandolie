@@ -41,7 +41,10 @@ const processor = (() => {
         stopwords = stopwords.concat(ns.stopwords.da) // Add Danish stopwords
         stopwords = stopwords.map(token => token.replace(/[^\p{L}\s]/gu, '')).filter(d => d.length>0) // Remove punctuation
         
-        // Count
+        // Truncation
+        const top = 25
+
+        // Count (efficient)
         var wordCounts = Array.from(vocabulary)
         .filter(w => stopwords.indexOf(w)<0)
         .map(w => {
@@ -52,8 +55,40 @@ const processor = (() => {
         })
         wordCounts.sort((a,b) => b.count-a.count)
 
+        // Pre-truncate
+        wordCounts = wordCounts.slice(0, 2*top)
+
+        /*
+        Why do we pre-truncate?
+        And why do we recompute the scores?
+
+        We cannot compute the search on every word extracted, because it is too
+        costly and there are too many. So we count in an efficient way, based on
+        a bag-of-words model.
+
+        This creates a discrepancy if we display that score and it does not
+        match the count displayed in the bar chart and details. So we recount properly
+        on the truncated set.
+
+        Now, in some cases the recount changes which words are on top. To mitigate that,
+        we pre-truncate with a bit more than we need, before recounting and re-truncating.
+        */
+
+        // Recount (quality)
+        wordCounts.forEach(d => {
+            d.count = documents
+                .filter(doc => {
+                    return ns.extractPassage(doc.toLowerCase(), d.word) != null
+                })
+                .length
+        })
+        wordCounts.sort((a,b) => b.count-a.count)
+
+        // Truncate
+        wordCounts = wordCounts.slice(0, top)
+
+
         // Display on the page
-        const top = 25
         wordCounts.filter(d => d.count>=2).slice(0,top).forEach(d => {
             const b = document.createElement("button")
             b.classList.add("btn")
