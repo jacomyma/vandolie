@@ -94,12 +94,21 @@ footer {
               Settings: what word to count?
             </div>
             <div class="card-body">
-              <div class="input-group mb-3">
+              <div class="input-group mb-1">
                 <input type="text" class="form-control" placeholder="Word to search and count" aria-label="Word to search and count" aria-describedby="button-search" id="input-search">
                 <button class="btn btn-primary" type="button" id="button-search">Search and count</button>
               </div>
-              <h5>Top words <span style="opacity:0.5">(click to search)</span></h5>
+
+              <div class="form-check form-switch mb-3">
+                <input class="form-check-input" type="checkbox" role="switch" id="settings-full-words">
+                <label class="form-check-label" for="settings-full-words">
+                  Full word only
+                </label>
+              </div>
+
+              <h5 class="mt-3">Top words <span style="opacity:0.5">(click to search)</span></h5>
               <div id="top-words"></div>
+
             </div>
           </div>
         </div>

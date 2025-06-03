@@ -53,7 +53,7 @@ const processor = (() => {
         wordCounts.sort((a,b) => b.count-a.count)
 
         // Display on the page
-        const top = 30
+        const top = 20
         wordCounts.filter(d => d.count>=2).slice(0,top).forEach(d => {
             const b = document.createElement("button")
             b.classList.add("btn")
@@ -74,30 +74,30 @@ const processor = (() => {
     };
 
     ns.extractPassage = function(text, query, contextLength = 50) {
-      // If query is a string, escape it for regex
-      const pattern = typeof query === 'string' 
-        ? new RegExp(`(.{0,${contextLength}})(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})(.{0,${contextLength}})`, 'i')
-        : new RegExp(`(.{0,${contextLength}})(${query.source})(.{0,${contextLength}})`, query.flags);
-      
-      const match = text.match(pattern);
-      
-      if (match) {
-        return {
-          passage: match[1] + match[2] + match[3],
-          before: match[1],
-          matched: match[2],
-          after: match[3],
-          index: match.index + match[1].length
-        };
-      }
+        const fullWordsOnly = document.getElementById("settings-full-words").checked;
 
-      return null;
+        const pattern = fullWordsOnly
+            ? new RegExp(`(.{0,${contextLength}})\\b(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})\\b(.{0,${contextLength}})`, 'i')
+            : new RegExp(`(.{0,${contextLength}})(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})(.{0,${contextLength}})`, 'i');
+
+        const match = text.match(pattern);
+
+        if (match) {
+            return {
+                passage: match[1] + match[2] + match[3],
+                before: match[1],
+                matched: match[2],
+                after: match[3],
+                index: match.index + match[1].length
+            };
+        }
+
+        return null;
     };
 
     ns.countWords = function() {
         const query = document.getElementById("input-search").value
-        console.log("Query:", query)
-
+        
         // Compute categories
         var categoriesIndex = {}
         ns.data.forEach((d,i) => {
@@ -168,4 +168,5 @@ d3.csv("test/genocide.csv")
 
 // Listen to some UI stuff to re-trigger
 document.getElementById("button-search").addEventListener("click", processor.countWords)
+document.getElementById("settings-full-words").addEventListener("change", processor.countWords)
 
