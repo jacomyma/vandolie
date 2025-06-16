@@ -1,0 +1,132 @@
+---
+import { ClientRouter } from "astro:transitions";
+
+import {
+  APPLICATION_PAGES,
+  type ApplicationPage,
+  langToLocale,
+  LANGUAGE_CODES,
+  type LanguageCode,
+} from "../core/consts";
+import { useTranslate } from "../i18n/useTranslate";
+
+import "../styles/commons.scss";
+import "../styles/application.scss";
+
+interface Props {
+  title?: string;
+  pageId?: ApplicationPage;
+  lang?: LanguageCode;
+  metas?: {
+    name?: string;
+    property?: string;
+    content: string;
+  }[];
+}
+
+const { title: _title, lang = Astro.currentLocale as LanguageCode, metas, pageId } = Astro.props;
+
+const { t } = useTranslate(lang);
+
+const title = _title || t("site-name");
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <ClientRouter />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={t("site-description")} />
+    <meta property="og:locale" content={langToLocale[lang]} />
+    {metas && metas.map((meta) => <meta property={meta.property} name={meta.name} content={meta.content} />)}
+    <title>{title}</title>
+    <style>
+      body {
+        width: 100%;
+        max-height: 100vh;
+        min-height: 100vh;
+        background-color: steelblue;
+        display: flex;
+        flex-direction: column;
+      }
+      main {
+        flex-grow: 1;
+        overflow: auto;
+      }
+      footer {
+        flex: none;
+        height: 100px;
+      }
+      .card-doc-saved {
+        cursor: pointer;
+      }
+      .doc-title {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .doc-text {
+        height: 195px;
+        overflow: hidden;
+      }
+      .doc-new {
+        height: 322px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg" style="background-color: #f9e3a2;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/app">
+          <img src="/img/vandolie-logo.svg" alt="Logo" width="30" height="24" />
+          {t("site-name")}
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            {
+              APPLICATION_PAGES.map((page) => (
+                <li class="nav-item">
+                  <a class:list={["nav-link", { active: page === pageId }]} href={`/${lang}/app/${page}`}>
+                    {t(`app-${page}`)}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            {
+              LANGUAGE_CODES.map((l) => (
+                <li class="nav-item">
+                  <a
+                    class:list={["nav-link", { active: lang === l, "aria-disabled": "lang === l" }]}
+                    href={`/${l}/app/${pageId}`}
+                  >
+                    {t(`lang-${l}`)}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <slot />
+  </body>
+</html>

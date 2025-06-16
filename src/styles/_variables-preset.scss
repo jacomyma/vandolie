@@ -1,0 +1,19 @@
+$light-blue: #e4eff5;
+$transparent-white: #ffffffdd;
+$blue: #2a4657;
+$primary: $blue;
+
+$font-weight-lighter: 300;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 400;
+$font-weight-semibold: 400;
+$font-weight-bold: 400;
+$font-weight-bolder: 400;
+
+$font-family-sans-serif: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+$custom-theme-colors: (
+  "light-blue": $light-blue,
+  "transparent-white": $transparent-white,
+);
