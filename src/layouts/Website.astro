@@ -1,22 +1,71 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import { langToLocale, LANGUAGE_CODES, type LanguageCode } from "../core/consts";
+import { useTranslate } from "../core/i18n/useTranslate";
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+import "../styles/commons.scss";
+import "../styles/website.scss";
+
+interface Props {
+  title?: string;
+  lang?: LanguageCode;
+  metas?: {
+    name?: string;
+    property?: string;
+    content: string;
+  }[];
+}
+
+const { title: _title, lang = Astro.currentLocale as LanguageCode, metas, pageId } = Astro.props;
+
+const { t } = useTranslate(lang);
+
+const title = _title || t("site-name");
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={t("site-description")} />
+    <meta property="og:locale" content={langToLocale[lang]} />
+    {metas && metas.map((meta) => <meta property={meta.property} name={meta.name} content={meta.content} />)}
+    <title>{title}</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg" style="background-color: #f9e3a2;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href={`/${lang}`}>
+          <img src="/img/vandolie-logo.svg" alt="Logo" width="30" height="24" />
+          {t("site-name")}
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            {
+              LANGUAGE_CODES.map((l) => (
+                <li class="nav-item">
+                  <a class:list={["nav-link", { active: lang === l, "aria-disabled": "lang === l" }]} href={`/${l}`}>
+                    {t(`lang-${l}`)}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <slot />
+  </body>
+</html>

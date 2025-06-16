@@ -1,6 +1,7 @@
 import type { FC, ReactNode } from "react";
 
-import { type LanguageCode, type Translation, type TranslationObject, type Translations, useTranslatedPath } from ".";
+import type { LanguageCode, Translation, TranslationObject, Translations } from "../consts.ts";
+import { useTranslatedPath } from "./index.ts";
 import commonTranslations from "./translations.ts";
 
 export function renderTranslation(Value: Translation, params?: Record<string, unknown>): ReactNode | string {

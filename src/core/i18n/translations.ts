@@ -1,11 +1,12 @@
-import type { Translations } from "../core/consts.ts";
+import type { Translations } from "../consts.ts";
 
 const commonTranslations: Translations = {
   en: {
     "site-name": "Vandolie",
     "lang-en": "🇬🇧 English",
     "lang-da": "🇩🇰 Danish",
-    "app-index.html": "Home",
+    "javascript-needed": "You need to enable JavaScript to display this page.",
+    "app-home": "Home",
     "app-data": "Documents",
     "app-count": "Count the words",
     "app-network": "Co-word network",

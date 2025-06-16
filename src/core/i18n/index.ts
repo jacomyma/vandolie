@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 
-import astroConfig from "../../astro.config.mjs";
-import { type LanguageCode, dateFormats, locales } from "../core/consts.ts";
+import astroConfig from "../../../astro.config.mjs";
+import { type LanguageCode, dateFormats, locales } from "../consts.ts";
 
 const i18n = {
   defaultLocale: "en",
