@@ -1,8 +1,17 @@
 import type { FC, ReactNode } from "react";
 
 import type { LanguageCode, Translation, TranslationObject, Translations } from "../consts.ts";
-import { useTranslatedPath } from "./index.ts";
-import commonTranslations from "./translations.ts";
+import { useAppContext } from "../context.ts";
+import commonTranslations from "./translations.tsx";
+
+const i18n = {
+  defaultLocale: "en",
+  locales: ["en", "da"],
+  routing: {
+    prefixDefaultLocale: false,
+  },
+};
+export default i18n;
 
 export function renderTranslation(Value: Translation, params?: Record<string, unknown>): ReactNode | string {
   return typeof Value === "function" ? <Value {...(params || {})} /> : Value;
@@ -25,7 +34,11 @@ export function translateObject(
   return renderTranslation(translation[lang] || "", params);
 }
 
-export const useTranslate = (lang: LanguageCode, translations?: Translations) => {
+/**
+ * This function returns various translation helpers.
+ * This can be used both from server-side Astro files, and client-side React component.
+ */
+export const getTranslationsHelpers = (lang: LanguageCode, translations?: Translations) => {
   const translationsWithCommons = {
     en: { ...commonTranslations.en, ...(translations || {}).en },
     da: { ...commonTranslations.da, ...(translations || {}).da },
@@ -36,7 +49,6 @@ export const useTranslate = (lang: LanguageCode, translations?: Translations) =>
   const TO: FC<{ o: TranslationObject; params?: Record<string, unknown> }> = ({ o, params }) => {
     return <>{translateObject(o, lang, params)}</>;
   };
-  const translatePath = useTranslatedPath(lang);
 
   return {
     T: Translate,
@@ -44,6 +56,14 @@ export const useTranslate = (lang: LanguageCode, translations?: Translations) =>
     to: (object: TranslationObject, params?: Record<string, unknown>) =>
       translateObject(object, lang, params) as string,
     TO,
-    translatePath,
   };
+};
+
+/**
+ * This hook makes it easier to get translations helpers from a client-side React components context.
+ */
+export const useTranslate = () => {
+  const { lang } = useAppContext();
+
+  return getTranslationsHelpers(lang);
 };

@@ -2,17 +2,14 @@
 import Application from "../../../layouts/Application.astro";
 import { APPLICATION_PAGES, LANGUAGE_CODES } from "../../../core/consts";
 import { ApplicationComponent } from "../../../components/app";
-import { useTranslate } from "../../../core/i18n/useTranslate";
 
 export const getStaticPaths = () => {
   return LANGUAGE_CODES.flatMap((lang) => APPLICATION_PAGES.map((page) => ({ params: { lang, page } })));
 };
 
 const { lang, page } = Astro.params;
-
-const { t } = useTranslate(lang);
 ---
 
 <Application pageId={page} lang={lang}>
-  <ApplicationComponent client:only="react" page={page} />
+  <ApplicationComponent client:only="react" page={page} lang={lang} />
 </Application>

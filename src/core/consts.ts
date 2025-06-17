@@ -1,10 +1,5 @@
 import { type Locale, da, enUS } from "date-fns/locale";
-import type { ComponentType, FC, ReactNode } from "react";
-
-import { CountComponent } from "../components/app/Count.tsx";
-import { DataComponent } from "../components/app/Data.tsx";
-import { NetworkComponent } from "../components/app/Network.tsx";
-import { SemanticComponent } from "../components/app/Semantic.tsx";
+import type { FC, ReactNode } from "react";
 
 /**
  * Navigation management:
@@ -12,12 +7,6 @@ import { SemanticComponent } from "../components/app/Semantic.tsx";
 
 export const APPLICATION_PAGES = ["data", "count", "network", "semantic"] as const;
 export type ApplicationPage = (typeof APPLICATION_PAGES)[number];
-export const APPLICATION_COMPONENTS: Record<ApplicationPage, ComponentType> = {
-  data: DataComponent,
-  count: CountComponent,
-  network: NetworkComponent,
-  semantic: SemanticComponent,
-};
 
 /**
  * Internationalization management:
@@ -56,10 +45,12 @@ export const localeToLang: { [key: string]: string } = {
 
 export type Document = {
   title: string;
-  content: string;
+  text: string;
   category: string;
 };
 
 export type Dataset = {
   documents: Document[];
 };
+
+export const SAMPLES = [{ url: "/data/sample-1.csv", title: "Sample 1" }];

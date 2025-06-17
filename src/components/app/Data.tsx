@@ -1,20 +1,29 @@
+import { Loader } from "@ouestware/loaders";
+import { useModal } from "@ouestware/modals";
+import { Tooltip } from "@ouestware/tooltip";
+import { saveAs } from "file-saver";
 import { type FC, useMemo, useState } from "react";
 import { BsDownload, BsFileEarmarkPlusFill, BsTrash, BsUpload, BsX } from "react-icons/bs";
 
-import type { Document } from "../../core/consts.ts";
+import { type Document, SAMPLES } from "../../core/consts.ts";
 import { useAppContext } from "../../core/context.ts";
+import { loadDataset, parseDataset, unparseDataset } from "../../core/data.ts";
+import { useTranslate } from "../../core/i18n";
+import { ConfirmModal } from "../modals/ConfirmModal.tsx";
+import { UploadFileModal } from "../modals/UploadFileModal.tsx";
 
 const DocumentComponent: FC<{ document: Document; onClick: () => void }> = ({ document, onClick }) => {
+  const { t } = useTranslate();
+
   return (
     <div className="col" onClick={onClick}>
       <div className="card shadow-sm card-doc-saved">
         <div className="card-header doc-title">{document.title}</div>
         <div className="card-body">
-          <div className="mb-3 doc-text">{document.content}</div>
+          <div className="mb-3 doc-text">{document.text}</div>
 
           <div className="input-group">
-            {/* TODO: Translate */}
-            <span className="input-group-text">Category</span>
+            <span className="input-group-text">{t("data-doc-category")}</span>
             <input type="text" className="form-control" value={document.category} disabled readOnly />
           </div>
         </div>
@@ -29,10 +38,16 @@ const DocumentEditComponent: FC<{
   onDelete: () => void;
   onSubmit: (newDocument: Document) => void;
 }> = ({ document, onCancel, onDelete, onSubmit }) => {
+  const { t } = useTranslate();
+
   const [doc, setDoc] = useState({ ...document });
   const disabled = useMemo(
-    () => doc.title === document.title && doc.content === document.content && doc.category === document.category,
-    [doc.title, document.title, doc.content, document.content, doc.category, document.category],
+    () =>
+      !doc.title ||
+      !doc.text ||
+      !doc.category ||
+      (doc.title === document.title && doc.text === document.text && doc.category === document.category),
+    [doc.title, document.title, doc.text, document.text, doc.category, document.category],
   );
 
   return (
@@ -47,10 +62,11 @@ const DocumentEditComponent: FC<{
       >
         <div className="card-header">
           <input
+            autoFocus
             type="text"
             className="form-control"
-            placeholder="Document title..."
-            aria-label="Document title"
+            placeholder={t("data-doc-title") + "..."}
+            aria-label={t("data-doc-title")}
             value={doc.title}
             onChange={(e) => setDoc({ ...doc, title: e.target.value })}
           />
@@ -61,18 +77,18 @@ const DocumentEditComponent: FC<{
             <textarea
               className="form-control"
               rows={5}
-              placeholder="Paste text content here..."
-              value={doc.content}
-              onChange={(e) => setDoc({ ...doc, content: e.target.value })}
+              placeholder={t("data-doc-content-placeholder")}
+              value={doc.text}
+              onChange={(e) => setDoc({ ...doc, text: e.target.value })}
             ></textarea>
           </div>
 
           <div className="input-group mb-3">
-            <span className="input-group-text">Category</span>
+            <span className="input-group-text">{t("data-doc-category")}</span>
             <input
               type="text"
               className="form-control"
-              placeholder="Describe document type..."
+              placeholder={t("data-doc-category-placeholder")}
               value={doc.category}
               onChange={(e) => setDoc({ ...doc, category: e.target.value })}
             />
@@ -81,15 +97,15 @@ const DocumentEditComponent: FC<{
           <div className="d-flex justify-content-between align-items-center">
             <div className="btn-group">
               <button type="button" className="btn btn-sm btn-outline-danger" onClick={onDelete}>
-                <BsTrash /> Delete
+                <BsTrash /> {t("delete")}
               </button>
             </div>
             <div className="btn-group">
               <button type="button" className="btn btn-sm btn-outline-secondary" onClick={onCancel}>
-                Cancel
+                {t("cancel")}
               </button>
               <button type="submit" className="btn btn-sm btn-primary" disabled={disabled}>
-                Save
+                {t("save")}
               </button>
             </div>
           </div>
@@ -100,20 +116,19 @@ const DocumentEditComponent: FC<{
 };
 
 export const DataComponent: FC = () => {
+  const { t } = useTranslate();
+  const { openModal } = useModal();
   const { dataset, setDataset } = useAppContext();
   const [editedDocIndex, setEditedDocIndex] = useState<number | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <>
       <main>
         <div className="container bg-body pb-4">
           <div className="container pt-4">
-            <h1>Documents</h1>
-            <p>
-              Input documents here, or load an example dataset. Each document could be a newspaper article, a post on
-              social media, or anything else consisting of just text. Copy-paste the text content in the main field,
-              give a title, and choose a category. We recommend 10 to 50 documents, and 2 to 5 different categories.
-            </p>
+            <h1>{t("data-documents")}</h1>
+            <p>{t("data-intro")}</p>
           </div>
 
           <div className="container">
@@ -159,14 +174,14 @@ export const DataComponent: FC = () => {
                           ...dataset,
                           documents: (dataset?.documents || []).concat({
                             title: "",
-                            content: "",
+                            text: "",
                             category: "",
                           }),
                         });
                         setEditedDocIndex(dataset?.documents.length || 0);
                       }}
                     >
-                      <BsFileEarmarkPlusFill /> Add document
+                      <BsFileEarmarkPlusFill /> {t("data-add-document")}
                     </button>
                   </div>
                 </div>
@@ -178,42 +193,89 @@ export const DataComponent: FC = () => {
 
       <footer className="footer bg-body-secondary p-3">
         <div className="container text-center">
-          <button type="button" className="btn btn-outline-danger me-1">
-            <BsX /> Clear all
+          <button
+            type="button"
+            className="btn btn-outline-danger me-1"
+            disabled={!dataset?.documents?.length}
+            onClick={() =>
+              openModal(
+                <ConfirmModal
+                  title={t("data-clear-dataset")}
+                  message={t("data-clear-dataset-confirm-message")}
+                  confirmText={t("yes")}
+                  cancelText={t("no")}
+                  onConfirm={() => {
+                    setDataset(undefined);
+                  }}
+                />,
+              )
+            }
+          >
+            <BsX /> {t("clear-all")}
           </button>
-          <div className="btn-group me-1">
+          <Tooltip rootClassName="me-1">
             <button
               className="btn btn-info dropdown-toggle"
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Load example
+              {t("data-load-example")}
             </button>
-            <ul className="dropdown-menu">
-              <li>
-                <a className="dropdown-item" href="#">
-                  Example dataset #1
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Example dataset #2
-                </a>
-              </li>
-            </ul>
-          </div>
-          <button type="button" className="btn btn-outline-secondary me-1">
-            <BsUpload /> Upload (CSV)
+            <section className="tooltip-inner">
+              {SAMPLES.map(({ url, title }) => (
+                <button
+                  key={url}
+                  className="dropdown-item btn btn-link"
+                  onClick={async () => {
+                    setIsLoading(true);
+                    setDataset(await loadDataset(url));
+                    setIsLoading(false);
+                  }}
+                >
+                  {title}
+                </button>
+              ))}
+            </section>
+          </Tooltip>
+          <button
+            type="button"
+            className="btn btn-outline-secondary me-1"
+            onClick={() =>
+              openModal(
+                <UploadFileModal
+                  title={t("data-upload-csv")}
+                  message={t("data-upload-csv-message")}
+                  onConfirm={async (file) => {
+                    setIsLoading(true);
+                    setDataset(await parseDataset(file));
+                    setIsLoading(false);
+                  }}
+                />,
+              )
+            }
+          >
+            <BsUpload /> {t("data-upload-csv")}
           </button>
-          <button type="button" className="btn btn-outline-secondary me-1">
-            <BsDownload /> Save (CSV)
+          <button
+            type="button"
+            className="btn btn-outline-secondary me-1"
+            onClick={() => {
+              if (!dataset?.documents?.length) return;
+              const csv = unparseDataset(dataset);
+              saveAs(new File([csv], "documents.csv", { type: "text/plain;charset=utf-8" }));
+            }}
+            disabled={!dataset?.documents?.length}
+          >
+            <BsDownload /> {t("data-save-csv")}
           </button>
           <button type="button" className="btn btn-primary px-3">
-            OK
+            {t("ok")}
           </button>
         </div>
       </footer>
+
+      {isLoading && <Loader />}
     </>
   );
 };

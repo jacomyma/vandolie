@@ -1,6 +1,6 @@
 ---
 import { langToLocale, LANGUAGE_CODES, type LanguageCode } from "../core/consts";
-import { useTranslate } from "../core/i18n/useTranslate";
+import { getTranslationsHelpers } from "../core/i18n";
 
 import "../styles/commons.scss";
 import "../styles/website.scss";
@@ -15,9 +15,9 @@ interface Props {
   }[];
 }
 
-const { title: _title, lang = Astro.currentLocale as LanguageCode, metas, pageId } = Astro.props;
+const { title: _title, lang = Astro.currentLocale as LanguageCode, metas } = Astro.props;
 
-const { t } = useTranslate(lang);
+const { t } = getTranslationsHelpers(lang);
 
 const title = _title || t("site-name");
 ---
