@@ -1,8 +1,10 @@
 import { type SizeState, withSize } from "@ouestware/hoc";
+import { useStorage } from "@ouestware/hooks";
 import { axisBottom, axisLeft, scaleBand, scaleLinear, select, stack } from "d3";
 import { type FC, useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { useAppContext } from "../../core/context.ts";
+import { useTranslate } from "../../core/i18n";
 import { computeTopWords, countCategories, extractPassage } from "../../core/wordsCount.ts";
 
 const CategoriesChart = withSize<{ categories: ReturnType<typeof countCategories> } & SizeState>(
@@ -93,14 +95,15 @@ const CategoriesChart = withSize<{ categories: ReturnType<typeof countCategories
 );
 
 export const CountComponent: FC = () => {
+  const { t } = useTranslate();
   const { dataset } = useAppContext();
-  const [computed, setComputed] = useState<null | {
+  const [computed, setComputed] = useStorage<{
     query: string;
     exactWordOnly: boolean;
     categories: ReturnType<typeof countCategories>;
-  }>(null);
-  const [query, setQuery] = useState<string | undefined>(undefined);
-  const [exactWordOnly, setExactWordOnly] = useState(false);
+  }>("localStorage", "vandolie-count-cache");
+  const [query, setQuery] = useState<string | undefined>(computed?.query);
+  const [exactWordOnly, setExactWordOnly] = useState(!!computed?.exactWordOnly);
   const topWords = useMemo(() => computeTopWords(dataset, exactWordOnly), [dataset, exactWordOnly]);
 
   const compute = useCallback(
@@ -112,7 +115,7 @@ export const CountComponent: FC = () => {
       setExactWordOnly(newExactWordOnly);
 
       if (!newQuery) {
-        setComputed(null);
+        setComputed(undefined);
       } else {
         setComputed({
           query: newQuery,
@@ -121,17 +124,17 @@ export const CountComponent: FC = () => {
         });
       }
     },
-    [query, exactWordOnly, dataset],
+    [query, exactWordOnly, dataset, setComputed],
   );
 
   return (
     <main>
       <div className="container bg-body pb-4">
         <div className="container pt-4">
-          <h1>Count the words</h1>
+          <h1>{t("count-title")}</h1>
 
           <div className="card">
-            <div className="card-header">Settings: what word to count?</div>
+            <div className="card-header">{t("count-settings")}</div>
             <div className="card-body">
               <form
                 className="input-group mb-1"
@@ -143,15 +146,15 @@ export const CountComponent: FC = () => {
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Word to search and count"
-                  aria-label="Word to search and count"
+                  placeholder={t("count-query-placeholder")}
+                  aria-label={t("count-query-placeholder")}
                   aria-describedby="button-search"
                   id="input-search"
                   value={query || ""}
                   onChange={(e) => setQuery(e.target.value || undefined)}
                 />
                 <button type="submit" className="btn btn-primary" id="button-search">
-                  Search and count
+                  {t("count-search-and-count")}
                 </button>
               </form>
               <div className="form-check form-switch mb-3">
@@ -166,14 +169,12 @@ export const CountComponent: FC = () => {
                   }}
                 />
                 <label className="form-check-label" htmlFor="settings-full-words">
-                  Exact word
+                  {t("count-exact-words")}
                 </label>
               </div>
               {topWords && (
                 <>
-                  <h5 className="mt-3">
-                    Top words <span className="opacity-50">(click to search)</span>
-                  </h5>
+                  <h5 className="mt-3">{t("count-top-words-title")}</h5>
                   <div id="top-words">
                     {topWords.map(({ word, count }) => (
                       <button
@@ -195,11 +196,11 @@ export const CountComponent: FC = () => {
 
         {computed && (
           <div className="container mt-3" style={{ minHeight: 200 }}>
-            <h2>Count by category</h2>
+            <h2>{t("count-by-category")}</h2>
             <div id="counts-by-category">
               <CategoriesChart categories={computed.categories} />
             </div>
-            <h2 className="mt-5">Details</h2>
+            <h2 className="mt-5">{t("count-details")}</h2>
             <div id="documents" className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-4 g-3">
               {computed.categories.flatMap((category) =>
                 dataset.documents
@@ -215,7 +216,7 @@ export const CountComponent: FC = () => {
                               {result ? "..." + result.before : ""}
                               <strong>{result ? result.matched : ""}</strong>
                               {result ? result.after + "..." : ""}
-                              <em className="opacity-50">{result ? "" : "Absent"}</em>
+                              <em className="opacity-50">{result ? "" : t("count-missing")}</em>
                             </p>
                             <span className="badge" style={{ backgroundColor: category.color }}>
                               {category.id}

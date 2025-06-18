@@ -58,6 +58,20 @@ const commonTranslations: Translations = {
       </>
     ),
     "data-save-csv": "Save (CSV)",
+    // "Count the words" page:
+    "count-title": "Count the words",
+    "count-settings": "Settings: what word to count?",
+    "count-query-placeholder": "Word to search and count",
+    "count-search-and-count": "Search and count",
+    "count-exact-words": "Exact word",
+    "count-top-words-title": (
+      <>
+        Top words <span className="opacity-50">(click to search)</span>
+      </>
+    ),
+    "count-by-category": "Count by category",
+    "count-details": "Details",
+    "count-missing": "Missing",
   },
   da: {
     "site-name": "Vandolie",
