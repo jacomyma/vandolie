@@ -53,4 +53,10 @@ export type Dataset = {
   documents: Document[];
 };
 
+export function getEmptyDataset(): Dataset {
+  return {
+    documents: [],
+  };
+}
+
 export const SAMPLES = [{ url: "/data/sample-1.csv", title: "Sample 1" }];

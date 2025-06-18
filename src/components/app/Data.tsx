@@ -5,7 +5,7 @@ import { saveAs } from "file-saver";
 import { type FC, useMemo, useState } from "react";
 import { BsDownload, BsFileEarmarkPlusFill, BsTrash, BsUpload, BsX } from "react-icons/bs";
 
-import { type Document, SAMPLES } from "../../core/consts.ts";
+import { type Document, SAMPLES, getEmptyDataset } from "../../core/consts.ts";
 import { useAppContext } from "../../core/context.ts";
 import { loadDataset, parseDataset, unparseDataset } from "../../core/data.ts";
 import { useTranslate } from "../../core/i18n";
@@ -143,7 +143,7 @@ export const DataComponent: FC = () => {
                       onDelete={() => {
                         setDataset({
                           ...dataset,
-                          documents: (dataset?.documents || []).filter((document, index) => index !== editedDocIndex),
+                          documents: (dataset?.documents || []).filter((_document, index) => index !== editedDocIndex),
                         });
                         setEditedDocIndex(null);
                       }}
@@ -205,7 +205,7 @@ export const DataComponent: FC = () => {
                   confirmText={t("yes")}
                   cancelText={t("no")}
                   onConfirm={() => {
-                    setDataset(undefined);
+                    setDataset(getEmptyDataset());
                   }}
                 />,
               )

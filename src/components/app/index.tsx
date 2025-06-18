@@ -2,7 +2,7 @@ import { useStorage } from "@ouestware/hooks";
 import { ModalProvider } from "@ouestware/modals";
 import type { ComponentType, FC, PropsWithChildren } from "react";
 
-import type { ApplicationPage, Dataset, LanguageCode } from "../../core/consts.ts";
+import { type ApplicationPage, type Dataset, type LanguageCode, getEmptyDataset } from "../../core/consts.ts";
 import { AppContext } from "../../core/context.ts";
 import { CountComponent } from "./Count";
 import { DataComponent } from "./Data";
@@ -20,7 +20,9 @@ export const ApplicationComponent: FC<PropsWithChildren<{ page: ApplicationPage;
   page,
   lang,
 }) => {
-  const [dataset, setDataset] = useStorage<Dataset>("localStorage", "vandolie-dataset");
+  const [dataset, setDataset] = useStorage("localStorage", "vandolie-dataset", {
+    defaultValue: getEmptyDataset(),
+  });
 
   const Component = APPLICATION_COMPONENTS[page];
 

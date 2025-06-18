@@ -1,15 +1,15 @@
 import { createContext, useContext } from "react";
 
-import { type Dataset, LANGUAGE_CODES, type LanguageCode } from "./consts.ts";
+import { type Dataset, type LanguageCode, getEmptyDataset } from "./consts.ts";
 
 export type ContextType = {
-  dataset: Dataset | undefined;
-  setDataset: (dataset: Dataset | undefined) => void;
+  dataset: Dataset;
+  setDataset: (dataset: Dataset) => void;
   lang: LanguageCode;
 };
 
 export const AppContext = createContext<ContextType>({
-  dataset: undefined,
+  dataset: getEmptyDataset(),
   setDataset: () => {},
   lang: "en",
 });
