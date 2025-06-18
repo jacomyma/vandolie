@@ -112,7 +112,7 @@ export function countCategories(
     categoriesCounts[category] = (categoriesCounts[category] || 0) + 1;
   });
   const categories = sortBy(toPairs(categoriesCounts), 1).map((entry, i) => {
-    return { id: entry[0], count: entry[1], matches: 0, color: i < palette.length ? palette[i] : paletteDefault };
+    return { id: entry[0], count: entry[1], matches: 0, color: palette[i] || paletteDefault };
   });
 
   if (query) {

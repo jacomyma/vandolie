@@ -34,9 +34,9 @@ export const langToLocale: Record<LanguageCode, string> = {
   da: "da_DK",
 };
 
-export const localeToLang: { [key: string]: string } = {
-  en_US: "en",
-  da_DK: "da",
+export const langToJSLocale: Record<LanguageCode, string> = {
+  en: "en-US",
+  da: "da-DK",
 };
 
 /**

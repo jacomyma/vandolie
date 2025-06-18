@@ -1,6 +1,12 @@
 import type { FC, ReactNode } from "react";
 
-import type { LanguageCode, Translation, TranslationObject, Translations } from "../consts.ts";
+import {
+  type LanguageCode,
+  type Translation,
+  type TranslationObject,
+  type Translations,
+  langToJSLocale,
+} from "../consts.ts";
 import { useAppContext } from "../context.ts";
 import commonTranslations from "./translations.tsx";
 
@@ -52,7 +58,10 @@ export const getTranslationsHelpers = (lang: LanguageCode, translations?: Transl
 
   return {
     T: Translate,
-    t: (k: string, params?: Record<string, unknown>) => translate(translationsWithCommons, lang, k, params) as string,
+    t: (k: string | number, params?: Record<string, unknown>) =>
+      typeof k === "number"
+        ? k.toLocaleString(langToJSLocale[lang])
+        : (translate(translationsWithCommons, lang, k, params) as string),
     to: (object: TranslationObject, params?: Record<string, unknown>) =>
       translateObject(object, lang, params) as string,
     TO,
