@@ -19,16 +19,16 @@ export const NetworkComponent: FC = () => {
     <main>
       <div className="container bg-body pb-4">
         <div className="container pt-4">
-          <h1>Co-word network</h1>
-          <p>Follow the steps of the algorithm, and see the resulting network in the end.</p>
+          <h1>{t("network-title")}</h1>
+          <p>{t("network-subtitle")}</p>
         </div>
 
         <div className="container">
-          <h2 className="mt-5">1. Count word occurrences</h2>
+          <h2 className="mt-5">{t("network-1-count")}</h2>
 
           {/* Settings (in a card) */}
           <div className="card">
-            <div className="card-header">Settings: how to count the words?</div>
+            <div className="card-header">{t("network-1-how-to-count")}</div>
             <div className="card-body">
               <div className="form-check form-switch">
                 <input
@@ -40,7 +40,7 @@ export const NetworkComponent: FC = () => {
                   onChange={(e) => setOptions((o) => ({ ...o, includeTitle: e.target.checked }))}
                 />
                 <label className="form-check-label" htmlFor="settings-include-title">
-                  Include title in the text
+                  {"network-1-settings-include-title"}
                 </label>
               </div>
 
@@ -54,7 +54,7 @@ export const NetworkComponent: FC = () => {
                   onChange={(e) => setOptions((o) => ({ ...o, multiPerDoc: e.target.checked }))}
                 />
                 <label className="form-check-label" htmlFor="settings-count-multi-per-doc">
-                  Count how many times a word appears in a same document (Not recommended)
+                  {t("network-1-settings-count-multi-per-doc")}
                 </label>
               </div>
             </div>
@@ -62,13 +62,7 @@ export const NetworkComponent: FC = () => {
 
           {/* Results (in a card) */}
           <div className="card mt-3 text-bg-primary">
-            <h5 className="card-header">
-              Result:{" "}
-              <span id="count-occurrences-result-count" className="font-monospace">
-                {t(vocabulary.size)}
-              </span>{" "}
-              distinct words found.
-            </h5>
+            <h5 className="card-header">{t("network-1-result", { count: t(vocabulary.size) })}</h5>
             <div className="card-body">
               <div className="form-floating">
                 <textarea
@@ -82,17 +76,17 @@ export const NetworkComponent: FC = () => {
                   readOnly
                 ></textarea>
                 <label htmlFor="count-occurrences-result-top-words" className="form-label">
-                  Top 50 most occurring words
+                  {t("network-1-top-50")}
                 </label>
               </div>
             </div>
           </div>
 
-          <h2 className="mt-5">2. Remove unnecessary words</h2>
+          <h2 className="mt-5">{t("network-2-remove")}</h2>
 
           {/* Settings (in a card) */}
           <div className="card">
-            <div className="card-header">Settings: which words to remove?</div>
+            <div className="card-header">{t("network-2-which-words")}</div>
             <div className="card-body">
               <div className="form-check form-switch">
                 <input
@@ -104,7 +98,7 @@ export const NetworkComponent: FC = () => {
                   onChange={(e) => setOptions((o) => ({ ...o, stopWordsEN: e.target.checked }))}
                 />
                 <label className="form-check-label" htmlFor="settings-remove-stoplist-en">
-                  Remove <em>stop words</em> from English language
+                  {t("network-2-settings-remove-stoplist-en")}
                 </label>
               </div>
 
@@ -118,7 +112,7 @@ export const NetworkComponent: FC = () => {
                   onChange={(e) => setOptions((o) => ({ ...o, stopWordsDK: e.target.checked }))}
                 />
                 <label className="form-check-label" htmlFor="settings-remove-stoplist-dk">
-                  Remove <em>stop words</em> from Danish language
+                  {t("network-2-settings-remove-stoplist-dk")}
                 </label>
               </div>
 
@@ -128,15 +122,15 @@ export const NetworkComponent: FC = () => {
                 value={options.threshold}
                 onChange={(e) => setOptions((o) => ({ ...o, threshold: +e.target.value }))}
               >
-                <option value="1">Remove words appearing only once</option>
-                <option value="2">Remove words appearing only once or twice</option>
-                <option value="3">Remove words appearing 3 times or less</option>
-                <option value="4">Remove words appearing 4 times or less</option>
-                <option value="5">Remove words appearing 5 times or less</option>
-                <option value="10">Remove words appearing 10 times or less</option>
-                <option value="20">Remove words appearing 20 times or less</option>
-                <option value="50">Remove words appearing 50 times or less</option>
-                <option value="100">Remove words appearing 100 times or less</option>
+                <option value="1">{t("network-2-threshold-1")}</option>
+                <option value="2">{t("network-2-threshold-2")}</option>
+                <option value="3">{t("network-2-threshold-3")}</option>
+                <option value="4">{t("network-2-threshold-4")}</option>
+                <option value="5">{t("network-2-threshold-5")}</option>
+                <option value="10">{t("network-2-threshold-10")}</option>
+                <option value="20">{t("network-2-threshold-20")}</option>
+                <option value="50">{t("network-2-threshold-50")}</option>
+                <option value="100">{t("network-2-threshold-100")}</option>
               </select>
             </div>
           </div>
@@ -151,19 +145,13 @@ export const NetworkComponent: FC = () => {
               value={stopWords.length ? stopWords.join(", ") : "(No stop words)"}
             ></textarea>
             <label htmlFor="remove-result-stop-words" className="form-label">
-              Stop words
+              {t("network-2-stop-words")}
             </label>
           </div>
 
           {/* Results (in a card) */}
           <div className="card mt-3 text-bg-primary">
-            <h5 className="card-header">
-              Result:{" "}
-              <span id="remove-result-count" className="font-monospace">
-                {t(filteredVocabularyData.length)}
-              </span>{" "}
-              remaining words.
-            </h5>
+            <h5 className="card-header">{t("network-2-result", { count: t(filteredVocabularyData.length) })}</h5>
             <div className="card-body">
               <div className="form-floating">
                 <textarea
@@ -177,25 +165,19 @@ export const NetworkComponent: FC = () => {
                     .join("\n")}
                 ></textarea>
                 <label htmlFor="remove-result-top-words" className="form-label">
-                  Top 50 remaining words
+                  {t("network-2-top-50")}
                 </label>
               </div>
             </div>
           </div>
 
-          <h2 className="mt-5">3. Count word co-occurrences</h2>
+          <h2 className="mt-5">{t("network-3-count-cooccurrences")}</h2>
 
-          <p>Count in how many documents each two words (from the list above) appear at the same time ("co-occur").</p>
+          <p>{t("network-3-how-to")}</p>
 
           {/* Results (in a card) */}
           <div className="card mt-3 text-bg-primary">
-            <h5 className="card-header">
-              Result:{" "}
-              <span id="cooccurrence-result-count" className="font-monospace">
-                {t(cooccurrences.length)}
-              </span>{" "}
-              word pairs.
-            </h5>
+            <h5 className="card-header">{t("network-3-result", { count: t(cooccurrences.length) })}</h5>
             <div className="card-body">
               <div className="form-floating">
                 <textarea
@@ -215,11 +197,11 @@ export const NetworkComponent: FC = () => {
             </div>
           </div>
 
-          <h2 className="mt-5">4. Display network</h2>
+          <h2 className="mt-5">{t("network-4-display")}</h2>
 
           {/* Settings (in a card) */}
           <div className="card">
-            <div className="card-header">Settings</div>
+            <div className="card-header">{t("network-4-settings")}</div>
             <div className="card-body">
               <div className="form-check form-switch">
                 <input
@@ -231,11 +213,7 @@ export const NetworkComponent: FC = () => {
                   onChange={(e) => setOptions((o) => ({ ...o, usePmi: e.target.checked }))}
                 />
                 <label className="form-check-label" htmlFor="settings-cooccurrence-pmi">
-                  Use{" "}
-                  <a href="https://en.wikipedia.org/wiki/Pointwise_mutual_information" target="_blank">
-                    pointwise mutual information
-                  </a>{" "}
-                  to normalize co-occurrence (Recommended)
+                  {t("network-4-settings-pmi")}
                 </label>
               </div>
 
@@ -249,7 +227,7 @@ export const NetworkComponent: FC = () => {
                   onChange={(e) => setOptions((o) => ({ ...o, removeOrphans: e.target.checked }))}
                 />
                 <label className="form-check-label" htmlFor="settings-cooccurrence-remove-orphans">
-                  Remove disconnected words (Recommended)
+                  {t("network-4-settings-cooccurrence-remove-orphans")}
                 </label>
               </div>
             </div>
@@ -257,7 +235,7 @@ export const NetworkComponent: FC = () => {
 
           {/* Results (in a card) */}
           <div className="card mt-3 text-bg-primary">
-            <h5 className="card-header">Network</h5>
+            <h5 className="card-header">{t("network-4-network")}</h5>
             <SigmaContainer graph={graph} style={{ height: 500, backgroundColor: "#DDD" }} />
           </div>
         </div>

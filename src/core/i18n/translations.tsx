@@ -72,6 +72,81 @@ const commonTranslations: Translations = {
     "count-by-category": "Count by category",
     "count-details": "Details",
     "count-missing": "Missing",
+    // "Co-word network" page:
+    "network-title": "Co-word network",
+    "network-subtitle": "Follow the steps of the algorithm, and see the resulting network in the end.",
+    "network-1-count": "1. Count word occurrences",
+    "network-1-how-to-count": "Settings: how to count the words?",
+    "network-1-settings-include-title": "Include title in the text",
+    "network-1-settings-count-multi-per-doc":
+      "Count how many times a word appears in a same document (Not recommended)",
+    "network-1-result": (props) => (
+      <>
+        Result:{" "}
+        <span id="count-occurrences-result-count" className="font-monospace">
+          {props.count as string}
+        </span>{" "}
+        distinct words found.
+      </>
+    ),
+    "network-1-top-50": "Top 50 most occurring words",
+    "network-2-remove": "2. Remove unnecessary words",
+    "network-2-which-words": "Settings: which words to remove?",
+    "network-2-settings-remove-stoplist-en": (
+      <>
+        Remove <em>stop words</em> from English language
+      </>
+    ),
+    "network-2-settings-remove-stoplist-dk": (
+      <>
+        Remove <em>stop words</em> from Danish language
+      </>
+    ),
+    "network-2-threshold-1": "Remove words appearing only once",
+    "network-2-threshold-2": "Remove words appearing only once or twice",
+    "network-2-threshold-3": "Remove words appearing 3 times or less",
+    "network-2-threshold-4": "Remove words appearing 4 times or less",
+    "network-2-threshold-5": "Remove words appearing 5 times or less",
+    "network-2-threshold-10": "Remove words appearing 10 times or less",
+    "network-2-threshold-20": "Remove words appearing 20 times or less",
+    "network-2-threshold-50": "Remove words appearing 50 times or less",
+    "network-2-threshold-100": "Remove words appearing 100 times or less",
+    "network-2-stop-words": "Stop words",
+    "network-2-result": (props) => (
+      <>
+        Result:{" "}
+        <span id="remove-result-count" className="font-monospace">
+          {props.count as string}
+        </span>{" "}
+        remaining words.
+      </>
+    ),
+    "network-2-top-50": "Top 50 remaining words",
+    "network-3-count-cooccurrences": "3. Count word co-occurrences",
+    "network-3-how-to":
+      'Count in how many documents each two words (from the list above) appear at the same time ("co-occur").',
+    "network-3-result": (props) => (
+      <>
+        Result:{" "}
+        <span id="cooccurrence-result-count" className="font-monospace">
+          {props.count as string}
+        </span>{" "}
+        word pairs.
+      </>
+    ),
+    "network-4-display": "4. Display network",
+    "network-4-settings": "Settings",
+    "network-4-settings-pmi": (
+      <>
+        Use{" "}
+        <a href="https://en.wikipedia.org/wiki/Pointwise_mutual_information" target="_blank">
+          pointwise mutual information
+        </a>{" "}
+        to normalize co-occurrence (Recommended)
+      </>
+    ),
+    "network-4-settings-cooccurrence-remove-orphans": "Remove disconnected words (Recommended)",
+    "network-4-network": "Network",
   },
   da: {
     "site-name": "Vandolie",
