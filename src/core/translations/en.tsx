@@ -29,6 +29,18 @@ const translations: Record<string, Translation> = {
   "app-count": "Count the words",
   "app-network": "Co-word network",
   "app-semantic": "Semantic map",
+  "app-no-data": (
+    <>
+      <p>To use this page, you first need to gather some documents, or import some sample data.</p>
+      <p>
+        You can manage your corpus from the{" "}
+        <a href="/en/app/data" className="fw-bold">
+          Documents
+        </a>{" "}
+        page.
+      </p>
+    </>
+  ),
 
   // Data page:
   "data-documents": "Documents",

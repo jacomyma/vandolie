@@ -1,6 +1,5 @@
 import { Loader } from "@ouestware/loaders";
 import { useModal } from "@ouestware/modals";
-import { Tooltip } from "@ouestware/tooltip";
 import { saveAs } from "file-saver";
 import { type FC, useMemo, useState } from "react";
 import { BsDownload, BsFileEarmarkPlusFill, BsTrash, BsUpload, BsX } from "react-icons/bs";
@@ -11,6 +10,7 @@ import { loadDataset, parseDataset, unparseDataset } from "../../core/data.ts";
 import { useTranslate } from "../../core/translation";
 import { ConfirmModal } from "../modals/ConfirmModal.tsx";
 import { UploadFileModal } from "../modals/UploadFileModal.tsx";
+import { BtnGroup } from "./BtnGroup.tsx";
 
 const DocumentComponent: FC<{ document: Document; onClick: () => void }> = ({ document, onClick }) => {
   const { t } = useTranslate();
@@ -213,31 +213,18 @@ export const DataComponent: FC = () => {
           >
             <BsX /> {t("clear-all")}
           </button>
-          <Tooltip rootClassName="me-1">
-            <button
-              className="btn btn-info dropdown-toggle"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              {t("data-load-example")}
-            </button>
-            <section className="tooltip-inner">
-              {SAMPLES.map(({ url, title }) => (
-                <button
-                  key={url}
-                  className="dropdown-item btn btn-link"
-                  onClick={async () => {
-                    setIsLoading(true);
-                    setDataset(await loadDataset(url));
-                    setIsLoading(false);
-                  }}
-                >
-                  {title}
-                </button>
-              ))}
-            </section>
-          </Tooltip>
+          <BtnGroup
+            className="me-1"
+            label={t("data-load-example")}
+            values={SAMPLES.map(({ url, title }) => ({
+              label: title,
+              onClick: async () => {
+                setIsLoading(true);
+                setDataset(await loadDataset(url));
+                setIsLoading(false);
+              },
+            }))}
+          />
           <button
             type="button"
             className="btn btn-outline-secondary me-1"
@@ -268,9 +255,6 @@ export const DataComponent: FC = () => {
             disabled={!dataset?.documents?.length}
           >
             <BsDownload /> {t("data-save-csv")}
-          </button>
-          <button type="button" className="btn btn-primary px-3">
-            {t("ok")}
           </button>
         </div>
       </footer>

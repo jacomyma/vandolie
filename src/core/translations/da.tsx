@@ -7,8 +7,8 @@ const translations: Record<string, Translation> = {
 
   // Static files:
   "site-name": "Vandolie",
-  "site-description": "Digital kontrovers-kortlægning for gymnasieelever",
-  "site-start-application": "Kom i gang",
+  "site-description": "Digital controversy mapping for high school students",
+  "site-start-application": "Get started",
   "javascript-needed": "Du skal aktivere JavaScript for at vise denne side.",
 
   // Common:
@@ -29,6 +29,18 @@ const translations: Record<string, Translation> = {
   "app-count": "Tæl ordene",
   "app-network": "Samord-netværk",
   "app-semantic": "Semantisk kort",
+  "app-no-data": (
+    <>
+      <p>For at bruge denne side skal du først indsamle nogle dokumenter eller importere nogle eksempeldata.</p>
+      <p>
+        Du kan administrere dit korpus fra{" "}
+        <a href="/da/app/data" className="fw-bold">
+          Dokumenter
+        </a>{" "}
+        siden.
+      </p>
+    </>
+  ),
 
   // Data page:
   "data-documents": "Dokumenter",
