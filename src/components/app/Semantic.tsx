@@ -2,8 +2,8 @@ import { SigmaContainer, useRegisterEvents, useSigma } from "@react-sigma/core";
 import { type FC, useEffect, useMemo, useState } from "react";
 
 import { useAppContext } from "../../core/context.ts";
-import { useTranslate } from "../../core/translation";
 import { type DocumentNode, getGraph, useEmbedding, useExtractor, useUMAP } from "../../core/semantic.ts";
+import { useTranslate } from "../../core/translation";
 
 const GraphEventsController: FC<{
   activeNodeId: string | undefined;
@@ -98,9 +98,7 @@ export const SemanticComponent: FC = () => {
               )}
               {!selectedNode && !!projectedDocuments?.length && (
                 <div className="h-100 p-4 d-flex align-items-center justify-content-center">
-                  <p className="text-center text-muted">{
-                    t('semantic-network-placeholder')
-                  }</p>
+                  <p className="text-center text-muted">{t("semantic-network-placeholder")}</p>
                 </div>
               )}
             </div>

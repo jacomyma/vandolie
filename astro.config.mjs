@@ -13,4 +13,8 @@ export default defineConfig({
     },
   },
   integrations: [react(), mdx()],
+  redirects: {
+    "/": "/da",
+    "/[lang]/app": "/[lang]/app/data",
+  },
 });

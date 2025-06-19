@@ -1,14 +1,8 @@
 ---
 import { ClientRouter } from "astro:transitions";
 
-import {
-  APPLICATION_PAGES,
-  type ApplicationPage,
-  langToLocale,
-  LANGUAGE_CODES,
-  type LanguageCode,
-} from "../core/consts";
-import { getTranslationsHelpers } from "../core/translation";
+import { APPLICATION_PAGES, type ApplicationPage } from "../core/consts";
+import { getTranslationsHelpers, langToLocale, LANGUAGE_CODES, type LanguageCode } from "../core/translation";
 
 import "../styles/commons.scss";
 import "../styles/application.scss";
@@ -56,17 +50,11 @@ const title = _title || t("site-name");
           data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
-          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class:list={["nav-link", { active: pageId === "home" }]} href={`/${lang}/app`}>
-                {t(`app-home`)}
-              </a>
-            </li>
             {
               APPLICATION_PAGES.map((page) => (
                 <li class="nav-item">
@@ -83,7 +71,7 @@ const title = _title || t("site-name");
                 <li class="nav-item">
                   <a
                     class:list={["nav-link", { active: lang === l, "aria-disabled": "lang === l" }]}
-                    href={pageId === "home" ? `/${l}/app` : `/${l}/app/${pageId}`}
+                    href={`/${l}/app/${pageId}`}
                   >
                     {t(`lang-${l}`)}
                   </a>

@@ -1,12 +1,5 @@
 import type { FC, ReactNode } from "react";
 
-import {
-  type LanguageCode,
-  type Translation,
-  type TranslationObject,
-  type Translations,
-  langToJSLocale,
-} from "./consts.ts";
 import { useAppContext } from "./context.ts";
 import DA from "./translations/da.tsx";
 import EN from "./translations/en.tsx";
@@ -16,14 +9,35 @@ const commonTranslations: Translations = {
   da: DA,
 };
 
-const i18n = {
-  defaultLocale: "en",
-  locales: ["en", "da"],
-  routing: {
-    prefixDefaultLocale: false,
-  },
+/**
+ * Useful types:
+ */
+
+export const LANGUAGE_CODES = ["en", "da"] as const;
+export type LanguageCode = (typeof LANGUAGE_CODES)[number];
+
+export type Translation = string | ReactNode | FC<Record<string, unknown>>;
+export type Translations = Record<LanguageCode, Record<string, Translation>>;
+export type TranslationObject = Record<LanguageCode, Translation>;
+
+/**
+ * Useful indices (useful to generate proper HTML meta-tags, or call JS
+ * functions, such as Number#toLocaleString):
+ */
+
+export const langToLocale: Record<LanguageCode, string> = {
+  en: "en_US",
+  da: "da_DK",
 };
-export default i18n;
+
+export const langToJSLocale: Record<LanguageCode, string> = {
+  en: "en-US",
+  da: "da-DK",
+};
+
+/**
+ * Actual translation helpers:
+ */
 
 export function renderTranslation(Value: Translation, params?: Record<string, unknown>): ReactNode | string {
   return typeof Value === "function" ? <Value {...(params || {})} /> : Value;

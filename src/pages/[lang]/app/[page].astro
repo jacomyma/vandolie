@@ -1,7 +1,8 @@
 ---
 import Application from "../../../layouts/Application.astro";
-import { APPLICATION_PAGES, LANGUAGE_CODES } from "../../../core/consts";
+import { APPLICATION_PAGES } from "../../../core/consts";
 import { ApplicationComponent } from "../../../components/app";
+import { LANGUAGE_CODES } from "../../../core/translation";
 
 export const getStaticPaths = () => {
   return LANGUAGE_CODES.flatMap((lang) => APPLICATION_PAGES.map((page) => ({ params: { lang, page } })));

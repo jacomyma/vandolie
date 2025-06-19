@@ -1,9 +1,14 @@
-import type { Translation } from "../consts.ts";
+import type { Translation } from "../translation.tsx";
 
 const translations: Record<string, Translation> = {
-  "site-name": "Vandolie",
+  // Available languages:
   "lang-en": "🇬🇧 English",
   "lang-da": "🇩🇰 Danish",
+
+  // Static files:
+  "site-name": "Vandolie",
+  "site-description": "Digital controversy mapping for high school students",
+  "site-start-application": "Get started",
   "javascript-needed": "You need to enable JavaScript to display this page.",
 
   // Common:

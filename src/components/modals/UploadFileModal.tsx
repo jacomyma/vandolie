@@ -1,5 +1,5 @@
 import { Modal, useModal } from "@ouestware/modals";
-import { type FC, type ReactNode, useCallback, useState } from "react";
+import { type FC, type ReactNode, useState } from "react";
 
 import { useTranslate } from "../../core/translation";
 
