@@ -4,7 +4,6 @@ import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://jacomyma.github.io/vandolie",
   i18n: {
     defaultLocale: "en",
     locales: ["en", "da"],
@@ -13,11 +12,18 @@ export default defineConfig({
     },
   },
   integrations: [react(), mdx()],
+
+  // This piece here is quite important for deploying the application:
+  site: "https://jacomyma.github.io/vandolie",
+  base: "/vandolie/",
+  // This "base" management seems honestly quite bad...
+  // Anyway, future code traveller, please think of updating these redirection
+  // targets when you update the website base:
   redirects: {
-    "/": "/da",
+    "/": "/vandolie/da",
     // We have to declare a redirection rule for each language, because of that
     // bug: https://github.com/withastro/astro/issues/12036
-    "/en/app": "/en/app/data",
-    "/da/app": "/da/app/data",
+    "/en/app": "/vandolie/en/app/data",
+    "/da/app": "/vandolie/da/app/data",
   },
 });

@@ -34,7 +34,7 @@ const translations: Record<string, Translation> = {
       <p>To use this page, you first need to gather some documents, or import some sample data.</p>
       <p>
         You can manage your corpus from the{" "}
-        <a href="/en/app/data" className="fw-bold">
+        <a href={`${import.meta.env.BASE_URL}en/app/data`} className="fw-bold">
           Documents
         </a>{" "}
         page.

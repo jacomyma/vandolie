@@ -15,7 +15,7 @@ const { t } = getTranslationsHelpers(lang);
   <main class="container">
     <section class="row py-5 my-5">
       <h1 class="text-center">
-        <img src="/img/vandolie-logo.svg" alt="Logo" width="30" height="24" />
+        <img src={`${import.meta.env.BASE_URL}img/vandolie-logo.svg`} alt="Logo" width="30" height="24" />
         {t("site-name")}
       </h1>
       <h2 class="text-center fs-4">{t("site-description")}</h2>

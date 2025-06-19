@@ -27,7 +27,7 @@ export function getEmptyDataset(): Dataset {
   };
 }
 
-export const SAMPLES = [{ url: "/data/sample-1.csv", title: "Sample 1" }];
+export const SAMPLES = [{ url: `${import.meta.env.BASE_URL}data/sample-1.csv`, title: "Sample 1" }];
 
 /**
  * Local storage management

@@ -34,7 +34,7 @@ const translations: Record<string, Translation> = {
       <p>For at bruge denne side skal du først indsamle nogle dokumenter eller importere nogle eksempeldata.</p>
       <p>
         Du kan administrere dit korpus fra{" "}
-        <a href="/da/app/data" className="fw-bold">
+        <a href={`${import.meta.env.BASE_URL}da/app/data`} className="fw-bold">
           Dokumenter
         </a>{" "}
         siden.

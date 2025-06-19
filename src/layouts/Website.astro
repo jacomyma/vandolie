@@ -34,8 +34,8 @@ const title = _title || t("site-name");
   <body>
     <nav class="navbar navbar-expand-lg" style="background-color: #f9e3a2;">
       <div class="container-fluid">
-        <a class="navbar-brand" href={`/${lang}`}>
-          <img src="/img/vandolie-logo.svg" alt="Logo" width="30" height="24" />
+        <a class="navbar-brand" href={`${import.meta.env.BASE_URL}${lang}`}>
+          <img src={`${import.meta.env.BASE_URL}img/vandolie-logo.svg`} alt="Logo" width="30" height="24" />
           {t("site-name")}
         </a>
         <button
@@ -52,7 +52,7 @@ const title = _title || t("site-name");
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href={`/${lang}/app`}>
+              <a class="nav-link" href={`${import.meta.env.BASE_URL}${lang}/app`}>
                 {t(`site-start-application`)}
               </a>
             </li>
@@ -61,7 +61,10 @@ const title = _title || t("site-name");
             {
               LANGUAGE_CODES.map((l) => (
                 <li class="nav-item">
-                  <a class:list={["nav-link", { active: lang === l, "aria-disabled": "lang === l" }]} href={`/${l}`}>
+                  <a
+                    class:list={["nav-link", { active: lang === l, "aria-disabled": "lang === l" }]}
+                    href={`${import.meta.env.BASE_URL}${l}`}
+                  >
                     {t(`lang-${l}`)}
                   </a>
                 </li>
