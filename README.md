@@ -34,6 +34,7 @@ To translate the platform to another language, you must:
 1. Translate one of the existing translations file in the `translations` directory to the language you want
 2. Update all other translation files, to add translation for the new `"lang-XXX"` key, with `XXX` the new language code (this new key is used for the related "switch to language" header button)
 3. Open [`src/core/translation.tsx`](./src/core/translation.tsx), and add you language codes to the `LANGUAGE_CODES`, `langToLocale` and `langToJSLocale` variables
+4. Add an Astro redirection rule similar to the other ones in [`astro.config.mjs`](./astro.config.mjs) (because of [this bug 😢](https://github.com/withastro/astro/issues/12036))
 
 ### How can I update the list of all available sample datasets?
 

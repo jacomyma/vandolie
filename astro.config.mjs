@@ -15,6 +15,9 @@ export default defineConfig({
   integrations: [react(), mdx()],
   redirects: {
     "/": "/da",
-    "/[lang]/app": "/[lang]/app/data",
+    // We have to declare a redirection rule for each language, because of that
+    // bug: https://github.com/withastro/astro/issues/12036
+    "/en/app": "/en/app/data",
+    "/da/app": "/da/app/data",
   },
 });
