@@ -6,9 +6,15 @@ import {
   type TranslationObject,
   type Translations,
   langToJSLocale,
-} from "../consts.ts";
-import { useAppContext } from "../context.ts";
-import commonTranslations from "./translations.tsx";
+} from "./consts.ts";
+import { useAppContext } from "./context.ts";
+import DA from "./translations/da.tsx";
+import EN from "./translations/en.tsx";
+
+const commonTranslations: Translations = {
+  en: EN,
+  da: DA,
+};
 
 const i18n = {
   defaultLocale: "en",

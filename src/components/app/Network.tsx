@@ -2,7 +2,7 @@ import { SigmaContainer } from "@react-sigma/core";
 import { type FC, useMemo, useState } from "react";
 
 import { useAppContext } from "../../core/context.ts";
-import { useTranslate } from "../../core/i18n";
+import { useTranslate } from "../../core/translation";
 import { DEFAULT_NETWORK_OPTIONS, type NetworkOptions, makeNetwork } from "../../core/network.ts";
 
 export const NetworkComponent: FC = () => {

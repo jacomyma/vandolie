@@ -4,7 +4,7 @@ import { axisBottom, axisLeft, scaleBand, scaleLinear, select, stack } from "d3"
 import { type FC, useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { useAppContext } from "../../core/context.ts";
-import { useTranslate } from "../../core/i18n";
+import { useTranslate } from "../../core/translation";
 import { computeTopWords, countCategories, extractPassage } from "../../core/wordsCount.ts";
 
 const CategoriesChart = withSize<{ categories: ReturnType<typeof countCategories> } & SizeState>(

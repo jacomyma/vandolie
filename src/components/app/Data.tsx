@@ -8,7 +8,7 @@ import { BsDownload, BsFileEarmarkPlusFill, BsTrash, BsUpload, BsX } from "react
 import { type Document, SAMPLES, getEmptyDataset } from "../../core/consts.ts";
 import { useAppContext } from "../../core/context.ts";
 import { loadDataset, parseDataset, unparseDataset } from "../../core/data.ts";
-import { useTranslate } from "../../core/i18n";
+import { useTranslate } from "../../core/translation";
 import { ConfirmModal } from "../modals/ConfirmModal.tsx";
 import { UploadFileModal } from "../modals/UploadFileModal.tsx";
 

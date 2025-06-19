@@ -1,7 +1,7 @@
 import { Modal, useModal } from "@ouestware/modals";
 import { type FC, type ReactNode, useCallback } from "react";
 
-import { useTranslate } from "../../core/i18n";
+import { useTranslate } from "../../core/translation";
 
 export const ConfirmModal: FC<{
   title?: ReactNode;

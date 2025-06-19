@@ -2,7 +2,7 @@ import { SigmaContainer, useRegisterEvents, useSigma } from "@react-sigma/core";
 import { type FC, useEffect, useMemo, useState } from "react";
 
 import { useAppContext } from "../../core/context.ts";
-import { useTranslate } from "../../core/i18n";
+import { useTranslate } from "../../core/translation";
 import { type DocumentNode, getGraph, useEmbedding, useExtractor, useUMAP } from "../../core/semantic.ts";
 
 const GraphEventsController: FC<{
