@@ -17,12 +17,14 @@ const commonTranslations: Translations = {
     "clear-all": "Clear all",
     file: "File",
     upload: "Upload",
+
     // App navigation:
     "app-home": "Home",
     "app-data": "Documents",
     "app-count": "Count the words",
     "app-network": "Co-word network",
     "app-semantic": "Semantic map",
+
     // Data page:
     "data-documents": "Documents",
     "data-intro": (
@@ -58,6 +60,7 @@ const commonTranslations: Translations = {
       </>
     ),
     "data-save-csv": "Save (CSV)",
+
     // "Count the words" page:
     "count-title": "Count the words",
     "count-settings": "Settings: what word to count?",
@@ -72,6 +75,7 @@ const commonTranslations: Translations = {
     "count-by-category": "Count by category",
     "count-details": "Details",
     "count-missing": "Missing",
+
     // "Co-word network" page:
     "network-title": "Co-word network",
     "network-subtitle": "Follow the steps of the algorithm, and see the resulting network in the end.",
@@ -147,6 +151,17 @@ const commonTranslations: Translations = {
     ),
     "network-4-settings-cooccurrence-remove-orphans": "Remove disconnected words (Recommended)",
     "network-4-network": "Network",
+
+    // "Semantic map" page:
+    "semantic-title": "Semantic map",
+    "semantic-compute": "🧠 Compute",
+    "semantic-embedding-progress": (props) => (
+      <>
+        {props.processed}/{props.total} documents embedded
+      </>
+    ),
+    "semantic-umap-progress": (props) => <>{props.progress}% 2D projection</>,
+    "semantic-network-placeholder": "You can click on a document, to see its content.",
   },
   da: {
     "site-name": "Vandolie",

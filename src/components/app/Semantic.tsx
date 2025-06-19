@@ -2,6 +2,7 @@ import { SigmaContainer, useRegisterEvents, useSigma } from "@react-sigma/core";
 import { type FC, useEffect, useMemo, useState } from "react";
 
 import { useAppContext } from "../../core/context.ts";
+import { useTranslate } from "../../core/i18n";
 import { type DocumentNode, getGraph, useEmbedding, useExtractor, useUMAP } from "../../core/semantic.ts";
 
 const GraphEventsController: FC<{
@@ -28,6 +29,7 @@ const GraphEventsController: FC<{
 };
 
 export const SemanticComponent: FC = () => {
+  const { t } = useTranslate();
   const { dataset } = useAppContext();
   const [selectedNode, setSelectedNode] = useState<DocumentNode | null>(null);
   const extractor = useExtractor();
@@ -39,11 +41,11 @@ export const SemanticComponent: FC = () => {
     <main>
       <div className="container bg-body pb-4">
         <div className="container pt-4">
-          <h1>Semantic map</h1>
+          <h1>{t("semantic-title")}</h1>
 
           {/* Load bars (in a card) */}
           <div className="card">
-            <div className="card-header">🧠 Compute</div>
+            <div className="card-header">{t("semantic-compute")}</div>
             <div className="card-body">
               <div className="progress mb-1" role="progressbar">
                 <div
@@ -51,12 +53,17 @@ export const SemanticComponent: FC = () => {
                   style={{ width: embeddingProgress * 100 + "%" }}
                   id="embeddings-progress-bar"
                 >
-                  {embeddedDocuments.length}/{dataset.documents.length} documents embedded
+                  {t("semantic-embedding-progress", {
+                    processed: embeddedDocuments.length,
+                    total: dataset.documents.length,
+                  })}
                 </div>
               </div>
               <div className="progress" role="progressbar">
                 <div className="progress-bar" style={{ width: projectionProgress * 100 + "%" }} id="umap-progress-bar">
-                  {projectionProgress * 100}% 2D projection
+                  {t("semantic-umap-progress", {
+                    progress: projectionProgress * 100,
+                  })}
                 </div>
               </div>
             </div>
@@ -91,7 +98,9 @@ export const SemanticComponent: FC = () => {
               )}
               {!selectedNode && !!projectedDocuments?.length && (
                 <div className="h-100 p-4 d-flex align-items-center justify-content-center">
-                  <p className="text-center text-muted">You can click on a document, to see its content.</p>
+                  <p className="text-center text-muted">{
+                    t('semantic-network-placeholder')
+                  }</p>
                 </div>
               )}
             </div>
