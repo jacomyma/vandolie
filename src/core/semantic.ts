@@ -1,4 +1,4 @@
-import { getAsyncMemoData, useAsyncMemo } from "@ouestware/hooks";
+import { getAsyncMemoData, useAsyncMemo, useStorage } from "@ouestware/hooks";
 import { FeatureExtractionPipeline, pipeline } from "@xenova/transformers";
 import Graph from "graphology";
 import { keyBy, sortBy } from "lodash";
@@ -6,7 +6,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import type { Coordinates } from "sigma/types";
 import { UMAP } from "umap-js";
 
-import type { Dataset, Document } from "./consts.ts";
+import { type Dataset, type Document, STORAGE_KEYS } from "./consts.ts";
 
 type EmbeddedDocument = {
   document: Document;
@@ -33,10 +33,12 @@ export function useExtractor() {
 }
 
 export function useEmbedding(dataset: Dataset, extractor?: FeatureExtractionPipeline) {
-  const [state, setState] = useState<{
-    documentsToProcess: Document[];
-    embeddedDocuments: { document: Document; features: number[] }[];
-  }>({ documentsToProcess: dataset.documents, embeddedDocuments: [] });
+  const [state, setState] = useStorage("localStorage", STORAGE_KEYS.embedding, {
+    defaultValue: { documentsToProcess: dataset.documents, embeddedDocuments: [] } as {
+      documentsToProcess: Document[];
+      embeddedDocuments: { document: Document; features: number[] }[];
+    },
+  });
 
   const embedFirstDocument = useCallback(() => {
     if (!extractor) return;
@@ -75,11 +77,13 @@ export function useEmbedding(dataset: Dataset, extractor?: FeatureExtractionPipe
 }
 
 export function useUMAP(embeddedDocuments?: { document: Document; features: number[] }[]) {
-  const [state, setState] = useState<{
-    progress: number;
-    projection?: number[][];
-  }>({
-    progress: 0,
+  const [state, setState] = useStorage("localStorage", STORAGE_KEYS.umap, {
+    defaultValue: {
+      progress: 0,
+    } as {
+      progress: number;
+      projection?: number[][];
+    },
   });
   const epochs = useMemo(() => Math.min(1000, 50 * (embeddedDocuments?.length || 0)), [embeddedDocuments]);
   const umap = useMemo(
@@ -110,6 +114,10 @@ export function useUMAP(embeddedDocuments?: { document: Document; features: numb
 
   useEffect(() => {
     if (!embeddedDocuments?.length || !umap) return;
+
+    // Also, don't reprocess everything if it looks like the projections are already processed
+    // for the proper input (which can happen on reload, for instance):
+    if (state.progress === 1 && embeddedDocuments.length === state.projection?.length) return;
 
     umap
       .fitAsync(

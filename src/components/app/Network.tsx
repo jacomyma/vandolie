@@ -1,14 +1,18 @@
+import { useStorage } from "@ouestware/hooks";
 import { SigmaContainer } from "@react-sigma/core";
-import { type FC, useMemo, useState } from "react";
+import { type FC, useMemo } from "react";
 
+import { STORAGE_KEYS } from "../../core/consts.ts";
 import { useAppContext } from "../../core/context.ts";
-import { DEFAULT_NETWORK_OPTIONS, type NetworkOptions, makeNetwork } from "../../core/network.ts";
+import { DEFAULT_NETWORK_OPTIONS, makeNetwork } from "../../core/network.ts";
 import { useTranslate } from "../../core/translation";
 
 export const NetworkComponent: FC = () => {
   const { t } = useTranslate();
   const { dataset } = useAppContext();
-  const [options, setOptions] = useState<NetworkOptions>(DEFAULT_NETWORK_OPTIONS);
+  const [options, setOptions] = useStorage("localStorage", STORAGE_KEYS.networkOptions, {
+    defaultValue: DEFAULT_NETWORK_OPTIONS,
+  });
 
   const { graph, vocabulary, vocabularyData, filteredVocabularyData, stopWords, cooccurrences } = useMemo(
     () => makeNetwork(dataset, options),
@@ -191,7 +195,7 @@ export const NetworkComponent: FC = () => {
                     .join("\n")}
                 ></textarea>
                 <label htmlFor="cooccurrence-result-top-pairs" className="form-label">
-                  Top 50 most co-occurring word pairs
+                  {t("network-3-top-50")}
                 </label>
               </div>
             </div>

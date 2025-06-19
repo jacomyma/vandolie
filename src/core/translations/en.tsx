@@ -154,6 +154,7 @@ const translations: Record<string, Translation> = {
       word pairs.
     </>
   ),
+  "network-3-top-50": "Top 50 most co-occurring word pairs",
   "network-4-display": "4. Display network",
   "network-4-settings": "Settings",
   "network-4-settings-pmi": (

@@ -1,5 +1,7 @@
+import { version } from "../../package.json";
+
 /**
- * Navigation management:
+ * Navigation management
  */
 
 export const APPLICATION_PAGES = ["data", "count", "network", "semantic"] as const;
@@ -26,3 +28,17 @@ export function getEmptyDataset(): Dataset {
 }
 
 export const SAMPLES = [{ url: "/data/sample-1.csv", title: "Sample 1" }];
+
+/**
+ * Local storage management
+ */
+const STORAGE_KEYS_PREFIX = `vandolie-${version}-`;
+export const STORAGE_KEYS = {
+  dataset: `${STORAGE_KEYS_PREFIX}dataset`,
+  wordsCount: `${STORAGE_KEYS_PREFIX}wordsCount`,
+  networkOptions: `${STORAGE_KEYS_PREFIX}networkOptions`,
+  embedding: `${STORAGE_KEYS_PREFIX}embedding`,
+  umap: `${STORAGE_KEYS_PREFIX}umap`,
+} as const;
+
+export const KEYS_TO_FLUSH_ON_UPDATE_DATASET = [STORAGE_KEYS.wordsCount, STORAGE_KEYS.embedding, STORAGE_KEYS.umap];

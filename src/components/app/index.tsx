@@ -1,8 +1,13 @@
 import { useStorage } from "@ouestware/hooks";
 import { ModalProvider } from "@ouestware/modals";
-import type { ComponentType, FC, PropsWithChildren } from "react";
+import { type ComponentType, type FC, type PropsWithChildren, useCallback } from "react";
 
-import { type ApplicationPage, getEmptyDataset } from "../../core/consts.ts";
+import {
+  type ApplicationPage,
+  KEYS_TO_FLUSH_ON_UPDATE_DATASET,
+  STORAGE_KEYS,
+  getEmptyDataset,
+} from "../../core/consts.ts";
 import { AppContext } from "../../core/context.ts";
 import type { LanguageCode } from "../../core/translation.tsx";
 import { CountComponent } from "./Count";
@@ -22,14 +27,22 @@ export const ApplicationComponent: FC<PropsWithChildren<{ page: ApplicationPage;
   page,
   lang,
 }) => {
-  const [dataset, setDataset] = useStorage("localStorage", "vandolie-dataset", {
+  const [dataset, setDataset] = useStorage("localStorage", STORAGE_KEYS.dataset, {
     defaultValue: getEmptyDataset(),
   });
+
+  const setDatasetAndFlushOtherKeys: typeof setDataset = useCallback(
+    (...args) => {
+      KEYS_TO_FLUSH_ON_UPDATE_DATASET.forEach((key) => localStorage.removeItem(key));
+      setDataset(...args);
+    },
+    [setDataset],
+  );
 
   const Component = APPLICATION_COMPONENTS[page];
 
   return (
-    <AppContext.Provider value={{ dataset, setDataset, lang }}>
+    <AppContext.Provider value={{ lang, dataset, setDataset: setDatasetAndFlushOtherKeys }}>
       <ModalProvider>
         <Component />
       </ModalProvider>

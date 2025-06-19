@@ -3,6 +3,7 @@ import { useStorage } from "@ouestware/hooks";
 import { axisBottom, axisLeft, scaleBand, scaleLinear, select, stack } from "d3";
 import { type FC, useCallback, useEffect, useMemo, useRef, useState } from "react";
 
+import { STORAGE_KEYS } from "../../core/consts.ts";
 import { useAppContext } from "../../core/context.ts";
 import { useTranslate } from "../../core/translation";
 import { computeTopWords, countCategories, extractPassage } from "../../core/wordsCount.ts";
@@ -101,7 +102,7 @@ export const CountComponent: FC = () => {
     query: string;
     exactWordOnly: boolean;
     categories: ReturnType<typeof countCategories>;
-  }>("localStorage", "vandolie-count-cache");
+  }>("localStorage", STORAGE_KEYS.wordsCount);
   const [query, setQuery] = useState<string | undefined>(computed?.query);
   const [exactWordOnly, setExactWordOnly] = useState(!!computed?.exactWordOnly);
   const topWords = useMemo(() => computeTopWords(dataset, exactWordOnly), [dataset, exactWordOnly]);
