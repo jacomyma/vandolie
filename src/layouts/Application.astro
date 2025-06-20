@@ -74,7 +74,7 @@ const title = _title || t("site-name");
                 <li class="nav-item">
                   <a
                     class:list={["nav-link", { active: lang === l, "aria-disabled": "lang === l" }]}
-                    href={`/${l}/app/${pageId}`}
+                    href={`${import.meta.env.BASE_URL}${l}/app/${pageId}`}
                   >
                     {t(`lang-${l}`)}
                   </a>
