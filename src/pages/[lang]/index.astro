@@ -38,9 +38,37 @@ const { t } = getTranslationsHelpers(lang);
       }
     </section>
 
-    <!-- Presentation -->
-    <section class="row mb-5">
-      TODO: Pitch
+    <!-- Intro pitch (card) -->
+    <section class="row justify-content-md-center rounded-top py-5" style="background-color: steelblue">
+      <div class="col" style="max-width: 600px">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <p class="card-text"><strong>You will copy-paste two types of documents from the internet. Are they the same, or are they different? Use this tool to see whether they separate like water and oil.</strong></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Intro pitch (images) -->
+    <section class="row justify-content-md-center rounded-bottom  px-5" style="background-color: steelblue">
+      <div class="col text-center mb-5" style="max-width: 300px">
+        <div class="card shadow-sm">
+          <img src={`${import.meta.env.BASE_URL}img/Glass01.jpg`} alt="Mixed glass"/>
+          <div class="card-body">
+            <h5 class="card-title">Mixed</h5>
+            <p class="card-text">Your documents do not differentiate: they are the same!</p>
+          </div>
+        </div>
+      </div>
+      <div class="col text-center mb-5" style="max-width: 300px">
+        <div class="card shadow-sm">
+          <img src={`${import.meta.env.BASE_URL}img/Glass04.jpg`} alt="Separated glass"/>
+          <div class="card-body">
+            <h5 class="card-title">Separated</h5>
+            <p class="card-text">Your documents separate because they have a different meaning: what makes them different?</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Links -->
