@@ -13,7 +13,7 @@ const { t } = getTranslationsHelpers(lang);
 
 <Website lang={lang}>
   <main class="container">
-    <section class="row py-5 my-5">
+    <section class="row my-5">
       <h1 class="text-center">
         <img src={`${import.meta.env.BASE_URL}img/vandolie-logo.svg`} alt="Logo" width="30" height="24" />
         {t("site-name")}
@@ -21,24 +21,36 @@ const { t } = getTranslationsHelpers(lang);
       <h2 class="text-center fs-4">{t("site-description")}</h2>
     </section>
 
-    <section class="row">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consetetur enim, no eros iure ullamco est dignissim
-        officia sed aliquyam eirmod ullamcorper sit lorem veniam proident nonumy qui est facer nonummy eos feugait justo
-        cum gubergren lobortis iriure. Autem suscipit lorem eos sadipscing sadipscing assum takimata aliqua justo
-        sadipscing delenit lobortis veniam sunt fugiat. Accumsan laoreet nisl illum eum assum imperdiet invidunt culpa
-        quis aliqua consequat aliquam tempor stet excepteur stet sea volutpat laborum officia elit amet doming molestie.
-        Eros dignissim dolore ad. Illum reprehenderit magna sit. Commodo accumsan nobis lorem. Justo adipiscing euismod.
-        Qui congue pariatur obcaecat cupiditat. Est justo iriure.
-      </p>
+    <!-- Pick your language -->
+    <section class="row mb-5">
+      {
+        LANGUAGE_CODES.map((l) => (
+          <div class="col">
+            <div class="d-grid">
+              <a
+                role="button"
+                class:list={["btn", "btn-lg", { "btn-primary": lang === l, "btn-outline-primary": lang !== l, "disabled": lang === l, "aria-disabled": "lang === l" }]}
+                href={`${import.meta.env.BASE_URL}${l}`}
+              >{t(`lang-${l}`)}</a>
+            </div>
+          </div>
+        ))
+      }
+    </section>
 
-      <p>
-        Velit duo, feugait mazim exercitation assum obcaecat eiusmod nisi diam dolore volutpat quis enim consetetur
-        suscipit. Dolor gubergren consequat eros clita aliquip. Proident aliquid rebum nonummy quod, aliqua veniam
-        invidunt reprehenderit aliquid excepteur proident facer incidunt consectetuer accusam. Deserunt adipisici
-        commodi. Amet lorem sanctus sea volutpat assum laoreet aute. Sint odio volutpat consectetuer veniam laoreet sea
-        accumsan. Molestie tempor lobortis. Exerci vero sit eiusmod accusam aliquyam. Nulla praesent aliquip.
-      </p>
+    <!-- Presentation -->
+    <section class="row mb-5">
+      TODO: Pitch
+    </section>
+
+    <!-- Links -->
+    <section class="row mb-5">
+      TODO: Choices: use tool, how to use, I'm a teacher, credits
+    </section>
+
+    <!-- About -->
+    <section class="row mb-5">
+      TODO: Footer/about/acknowledgements
     </section>
   </main>
 </Website>
