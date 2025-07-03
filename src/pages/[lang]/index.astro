@@ -12,73 +12,85 @@ const { t } = getTranslationsHelpers(lang);
 ---
 
 <Website lang={lang}>
-  <main class="container">
-    <section class="row my-5">
-      <h1 class="text-center">
-        <img src={`${import.meta.env.BASE_URL}img/vandolie-logo.svg`} alt="Logo" height="52" />
-        {t("site-name")}
-      </h1>
-      <h2 class="text-center fs-4">{t("site-description")}</h2>
-    </section>
+  <main>
+    <div class="container bg-body pb-4">
 
-    <!-- Pick your language -->
-    <section class="row mb-5">
-      {
-        LANGUAGE_CODES.map((l) => (
-          <div class="col">
-            <div class="d-grid">
-              <a
-                role="button"
-                class:list={["btn", "btn-lg", { "btn-primary": lang === l, "btn-outline-primary": lang !== l, "disabled": lang === l, "aria-disabled": "lang === l" }]}
-                href={`${import.meta.env.BASE_URL}${l}`}
-              >{t(`lang-${l}`)}</a>
+      <section class="row pt-5 mb-5">
+        <h1 class="text-center">
+          <img src={`${import.meta.env.BASE_URL}img/vandolie-logo.svg`} alt="Logo" height="52" />
+          {t("site-name")}
+        </h1>
+        <h2 class="text-center fs-4">{t("site-description")}</h2>
+      </section>
+
+      <!-- Pick your language -->
+      <section class="row mb-5">
+        {
+          LANGUAGE_CODES.map((l) => (
+            <div class="col">
+              <div class="d-grid">
+                <a
+                  role="button"
+                  class:list={["btn", "btn-lg", { "btn-primary": lang === l, "btn-outline-secondary": lang !== l, "disabled": lang === l, "aria-disabled": "lang === l" }]}
+                  href={`${import.meta.env.BASE_URL}${l}`}
+                >{t(`lang-${l}`)}</a>
+              </div>
+            </div>
+          ))
+        }
+      </section>
+
+      <!-- Intro pitch (card) -->
+      <section class="row justify-content-md-center py-5" style="background-color: #d2dde5">
+        <div class="col" style="max-width: 600px">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <p class="card-text"><strong>{t("landing-pitch")}</strong></p>
             </div>
           </div>
-        ))
-      }
-    </section>
+        </div>
+      </section>
 
-    <!-- Intro pitch (card) -->
-    <section class="row justify-content-md-center rounded-top py-5" style="background-color: steelblue">
-      <div class="col" style="max-width: 600px">
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <p class="card-text"><strong>{t("landing-pitch")}</strong></p>
+      <!-- Intro pitch (images) -->
+      <section class="row justify-content-md-center  px-5" style="background-color: #d2dde5">
+        <div class="col text-center mb-5" style="max-width: 300px">
+          <div class="card shadow-sm">
+            <img src={`${import.meta.env.BASE_URL}img/Glass01.jpg`} alt="Mixed glass"/>
+            <div class="card-body">
+              <h5 class="card-title">{t("landing-mixed")}</h5>
+              <p class="card-text">{t("landing-mixed-info")}</p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Intro pitch (images) -->
-    <section class="row justify-content-md-center rounded-bottom  px-5" style="background-color: steelblue">
-      <div class="col text-center mb-5" style="max-width: 300px">
-        <div class="card shadow-sm">
-          <img src={`${import.meta.env.BASE_URL}img/Glass01.jpg`} alt="Mixed glass"/>
-          <div class="card-body">
-            <h5 class="card-title">{t("landing-mixed")}</h5>
-            <p class="card-text">{t("landing-mixed-info")}</p>
+        <div class="col text-center mb-5" style="max-width: 300px">
+          <div class="card shadow-sm">
+            <img src={`${import.meta.env.BASE_URL}img/Glass04.jpg`} alt="Separated glass"/>
+            <div class="card-body">
+              <h5 class="card-title">{t("landing-separated")}</h5>
+              <p class="card-text">{t("landing-separated-info")}</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col text-center mb-5" style="max-width: 300px">
-        <div class="card shadow-sm">
-          <img src={`${import.meta.env.BASE_URL}img/Glass04.jpg`} alt="Separated glass"/>
-          <div class="card-body">
-            <h5 class="card-title">{t("landing-separated")}</h5>
-            <p class="card-text">{t("landing-separated-info")}</p>
-          </div>
+      </section>
+
+      <!-- Links -->
+      <section class="row mb-5">
+        TODO: Choices: use tool, how to use, I'm a teacher, credits
+      </section>
+
+      <!-- About -->
+      <section class="row mb-5">
+        TODO: Footer/about/acknowledgements
+      </section>
+    </div>
+    <footer class="py-5">
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col">Test 1</div>
+          <div class="col">Test 2</div>
+          <div class="col">Test 3</div>
         </div>
       </div>
-    </section>
-
-    <!-- Links -->
-    <section class="row mb-5">
-      TODO: Choices: use tool, how to use, I'm a teacher, credits
-    </section>
-
-    <!-- About -->
-    <section class="row mb-5">
-      TODO: Footer/about/acknowledgements
-    </section>
+    </footer>
   </main>
 </Website>
