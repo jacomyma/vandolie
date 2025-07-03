@@ -192,9 +192,9 @@ export const DataComponent: FC = () => {
 
         <div className="container py-5 my-5">
           <div class="row justify-content-md-center">
-            <div class="col vdl-action-card">
+            <div class="col vdl-action-card mb-4">
               <div class="card shadow">
-                <img class="card-img-top" src={`${import.meta.env.BASE_URL}img/count-words.jpg`} alt="Mixed glass"/>
+                <img class="card-img-top" src={`${import.meta.env.BASE_URL}img/thumbnail-count.jpg`} alt="Mixed glass"/>
                 <div class="card-body">
                   <h5 class="card-title">{t("app-count")}</h5>
                   <p class="card-text">{t("data-count-info")}</p>
@@ -202,9 +202,9 @@ export const DataComponent: FC = () => {
                 </div>
               </div>
             </div>
-            <div class="col vdl-action-card">
+            <div class="col vdl-action-card mb-4">
               <div class="card shadow">
-                <img class="card-img-top" src={`${import.meta.env.BASE_URL}img/co-word-network.jpg`} alt="Mixed glass"/>
+                <img class="card-img-top" src={`${import.meta.env.BASE_URL}img/thumbnail-network.jpg`} alt="Mixed glass"/>
                 <div class="card-body">
                   <h5 class="card-title">{t("app-network")}</h5>
                   <p class="card-text">{t("data-network-info")}</p>
@@ -212,9 +212,9 @@ export const DataComponent: FC = () => {
                 </div>
               </div>
             </div>
-            <div class="col vdl-action-card">
+            <div class="col vdl-action-card mb-4">
               <div class="card shadow">
-                <img class="card-img-top" src={`${import.meta.env.BASE_URL}img/semantic-map.jpg`} alt="Mixed glass"/>
+                <img class="card-img-top" src={`${import.meta.env.BASE_URL}img/thumbnail-semantic-map.jpg`} alt="Mixed glass"/>
                 <div class="card-body">
                   <h5 class="card-title">{t("app-semantic")}</h5>
                   <p class="card-text">{t("data-semantic-info")}</p>
