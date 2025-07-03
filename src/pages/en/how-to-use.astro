@@ -5,6 +5,8 @@ import { getTranslationsHelpers, LANGUAGE_CODES } from "../../core/translation";
 const lang = "en";
 
 const { t, T } = getTranslationsHelpers(lang)
+
+import {Content} from '../../core/translations/en/how-to-use.md';
 ---
 
 <Website lang={lang}>
@@ -17,10 +19,8 @@ const { t, T } = getTranslationsHelpers(lang)
         </h1>
       </section>
 
-      <section class="row mb-5">
-        TODO: Add content
-
-        Note: This is the ENGLISH version of the page
+      <section class="vandolie-markdown-content px-5">
+        <Content />
       </section>
 
     </div>
