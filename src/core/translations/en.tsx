@@ -42,6 +42,13 @@ const translations: Record<string, Translation> = {
     </>
   ),
 
+  // Landing page:
+  "landing-pitch": "Analyze text documents. Will they separate like water and oil?",
+  "landing-mixed": "Mixed",
+  "landing-mixed-info": "Your documents have a similar content.",
+  "landing-separated": "Separated",
+  "landing-separated-info": "Your documents have 2 distinct kinds of content. What makes them different?",
+
   // Data page:
   "data-documents": "Documents",
   "data-intro": (

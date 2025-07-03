@@ -42,6 +42,13 @@ const translations: Record<string, Translation> = {
     </>
   ),
 
+  // Landing page:
+  "landing-pitch": "Analyser tekstdokumenter. Vil de skille som vand og olie?",
+  "landing-mixed": "Blandet",
+  "landing-mixed-info": "Dine dokumenter har et lignende indhold.",
+  "landing-separated": "Adskilt",
+  "landing-separated-info": "Dine dokumenter har to forskellige slags indhold. Hvad gør dem forskellige?",
+
   // Data page:
   "data-documents": "Dokumenter",
   "data-intro": (

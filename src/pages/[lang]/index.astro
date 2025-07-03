@@ -43,7 +43,7 @@ const { t } = getTranslationsHelpers(lang);
       <div class="col" style="max-width: 600px">
         <div class="card shadow-sm">
           <div class="card-body">
-            <p class="card-text"><strong>Analyze text documents. Will they separate like water and oil?</strong></p>
+            <p class="card-text"><strong>{t("landing-pitch")}</strong></p>
           </div>
         </div>
       </div>
@@ -55,8 +55,8 @@ const { t } = getTranslationsHelpers(lang);
         <div class="card shadow-sm">
           <img src={`${import.meta.env.BASE_URL}img/Glass01.jpg`} alt="Mixed glass"/>
           <div class="card-body">
-            <h5 class="card-title">Mixed</h5>
-            <p class="card-text">Your documents have a similar content.</p>
+            <h5 class="card-title">{t("landing-mixed")}</h5>
+            <p class="card-text">{t("landing-mixed-info")}</p>
           </div>
         </div>
       </div>
@@ -64,8 +64,8 @@ const { t } = getTranslationsHelpers(lang);
         <div class="card shadow-sm">
           <img src={`${import.meta.env.BASE_URL}img/Glass04.jpg`} alt="Separated glass"/>
           <div class="card-body">
-            <h5 class="card-title">Separated</h5>
-            <p class="card-text">Your documents have 2 distinct kinds of content. What makes them different?</p>
+            <h5 class="card-title">{t("landing-separated")}</h5>
+            <p class="card-text">{t("landing-separated-info")}</p>
           </div>
         </div>
       </div>
