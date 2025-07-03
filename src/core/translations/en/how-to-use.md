@@ -14,7 +14,15 @@ But it has to be just text (no images or other media).
 
 First, let's see how it works, then we will see where to find documents and how to select them.
 
-Click on "Get started" in the menu to load the "Documents" page, then click on "Add document" to start editing your first document.
+#### Get started
+
+Click on "Get started" in the menu to load the "Documents" page.
+
+**If you just want to see the tool in action**, just load an existing example from the menu at the bottom of the screen.
+
+<img class="w-25 border vdl-pic" src="/vandolie/img/screenshots/en/dataset-load-example.png" alt="Add document">
+
+**If you want to make your own corpus**, then click on "Add document" to start editing your first document.
 
 <img class="w-25 border vdl-pic" src="/vandolie/img/screenshots/en/dataset-add-doc.png" alt="Add document">
 
@@ -32,16 +40,27 @@ A document consists of three parts:
 
 Let's assume that you have a source of information, like a Wikipedia page, to use as a document.
 
-* **First, give a title to your document.** You can invent it, or reuse the title of your source if it has one. The title is just a way to identify your document easily. Type it in the top field of the interface.
+* **First, give a title.** You can invent it, or reuse your source's title (if it has one). It is just a way to identify your document easily. Type it in the top field of the interface.
 * **Second, copy-paste the textual content of your source** into the middle field of the interface.
-* **Third, type a category** in the bottom field. Be consistent in your spelling, or else each different spelling will count as a different category. We will explain how to pick good categories later on.
+* **Third, type a category** in the bottom field. *Be consistent in your spelling, or else each different spelling will count as a different category.* We explain how to decide categories down below.
 
 Once you have filled all three parts, you can save your document by clicking on the "Save" button. *Note that you cannot save your document if it is not complete.*
 
+#### How to manage the dataset
 
+You can create as many documents as you want.
 
+<img class="w-100 border vdl-pic" src="/vandolie/img/screenshots/en/dataset-saved-docs.png" alt="3 documents">
 
+We think you need at least 10 documents, but 20 is a better number. You could go up to 50, or more if your computer is powerful (it will take more time to compute).
 
+Click on a saved to enter edit mode again. You can change it, or even delete it. Remember to save (or cancel) your changes.
+
+<img class="w-100 border vdl-pic" src="/vandolie/img/screenshots/en/dataset-saved-docs-edit.png" alt="3 documents">
+
+**You can save your dataset** by clicking on the "Save (CSV)" button.
+
+**Once you are ready... TODO**
 
 
 
