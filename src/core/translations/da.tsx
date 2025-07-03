@@ -7,8 +7,8 @@ const translations: Record<string, Translation> = {
 
   // Static files:
   "site-name": "Vandolie",
-  "site-description": "Digital controversy mapping for high school students",
-  "site-start-application": "Get started",
+  "site-description": "Digital kontroverskortlægning på gymnasieniveau",
+  "site-start-application": "Kom i gang",
   "javascript-needed": "Du skal aktivere JavaScript for at vise denne side.",
 
   // Common:
