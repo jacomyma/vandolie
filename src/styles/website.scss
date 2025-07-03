@@ -1,2 +1,22 @@
 // These styles are dedicated for the static website documents:
-// TODO
+
+body {
+  width: 100%;
+  max-height: 100vh;
+  min-height: 100vh;
+  background-color: steelblue;
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex-grow: 1;
+  overflow: auto;
+}
+footer {
+  flex: none;
+  background-color: #31506a;
+  color: #9eb8cc;
+}
+footer .footer-supported-by-img {
+  max-width: 220px
+}
