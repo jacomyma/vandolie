@@ -82,7 +82,7 @@ const translations: Record<string, Translation> = {
   "data-documents": "Dokumenter",
   "data-intro": (
     <>
-      Indtast dokumenter her, eller indlæs et eksempel-datasæt. Hvert dokument kunne være en avisartikel, et opslag på
+      <strong>Kopier og indsæt dokumenter her</strong>, eller indlæs et eksempel-datasæt. Hvert dokument kunne være en avisartikel, et opslag på
       sociale medier, eller andet der kun består af tekst. Kopier og indsæt tekstindholdet i hovedfeltet, giv en titel,
       og vælg en kategori. Vi anbefaler 10 til 50 dokumenter, og 2 til 5 forskellige kategorier.
     </>

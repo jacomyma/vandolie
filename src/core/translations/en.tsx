@@ -82,7 +82,7 @@ const translations: Record<string, Translation> = {
   "data-documents": "Documents",
   "data-intro": (
     <>
-      Input documents here, or load an example dataset. Each document could be a newspaper article, a post on social
+      <strong>Copy-paste documents here</strong>, or load an example dataset. Each document could be a newspaper article, a post on social
       media, or anything else consisting of just text. Copy-paste the text content in the main field, give a title, and
       choose a category. We recommend 10 to 50 documents, and 2 to 5 different categories.
     </>
