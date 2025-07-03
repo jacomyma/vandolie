@@ -1,0 +1,29 @@
+---
+import Website from "../../layouts/Website.astro";
+import { getTranslationsHelpers, LANGUAGE_CODES } from "../../core/translation";
+
+const lang = "en";
+
+const { t, T } = getTranslationsHelpers(lang)
+
+import {Content} from '../../core/translations/en/how-to-use.md';
+---
+
+<Website lang={lang}>
+  <main>
+    <div class="container bg-body pb-4">
+
+      <section class="row pt-5 mb-5">
+        <h1 class="text-center">
+          {t("website-how-to-use")}
+        </h1>
+      </section>
+
+      <section class="vandolie-markdown-content px-5">
+        <Content />
+      </section>
+
+    </div>
+    
+  </main>
+</Website>

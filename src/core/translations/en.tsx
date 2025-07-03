@@ -23,7 +23,10 @@ const translations: Record<string, Translation> = {
   file: "File",
   upload: "Upload",
 
-  // Website commons:
+  // Static website commons
+  "website-how-to-use": "How to use",
+
+  // Static website footer
   "footer-credits": (
     <>
       <p><em>Vandolie</em> is a free, open source tool developed by Mathieu Jacomy, Matilde Ficozzi, Cathrine Hofmann Fried, Jesper Wad Larsen, and <a class="link-info" href="https://www.ouestware.com/en/" target="_blank">Ouestware</a>.</p>
@@ -56,7 +59,6 @@ const translations: Record<string, Translation> = {
   "landing-mixed-info": "Your documents have a similar content.",
   "landing-separated": "Separated",
   "landing-separated-info": "Your documents have 2 distinct kinds of content. What makes them different?",
-  "landing-how-to-use": "How to use?",
   "landing-teacher": "I am a teacher...",
 
   // App navigation:
@@ -82,7 +84,7 @@ const translations: Record<string, Translation> = {
   "data-documents": "Documents",
   "data-intro": (
     <>
-      Input documents here, or load an example dataset. Each document could be a newspaper article, a post on social
+      <strong>Copy-paste documents here</strong>, or load an example dataset. Each document could be a newspaper article, a post on social
       media, or anything else consisting of just text. Copy-paste the text content in the main field, give a title, and
       choose a category. We recommend 10 to 50 documents, and 2 to 5 different categories.
     </>

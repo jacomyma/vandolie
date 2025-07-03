@@ -2,8 +2,8 @@ import type { Translation } from "../translation.tsx";
 
 const translations: Record<string, Translation> = {
   // Available languages:
-  "lang-en": "🇬🇧 English",
-  "lang-da": "🇩🇰 Danish",
+  "lang-en": "🇬🇧 Engelsk",
+  "lang-da": "🇩🇰 Dansk",
 
   // Static files:
   "site-name": "Vandolie",
@@ -23,7 +23,10 @@ const translations: Record<string, Translation> = {
   file: "Fil",
   upload: "Upload",
 
-  // Website commons:
+  // Static website commons
+  "website-how-to-use": "Hvordan bruges det",
+
+  // Static website footer
   "footer-credits": (
     <>
       <p><em>Vandolie</em> er et gratis open source-værktøj udviklet af Mathieu Jacomy, Matilde Ficozzi, Cathrine Hofmann Fried, Jesper Wad Larsen, og <a class="link-info" href="https://www.ouestware.com/en/" target="_blank">Ouestware</a>.</p>
@@ -56,9 +59,8 @@ const translations: Record<string, Translation> = {
   "landing-mixed-info": "Dine dokumenter har et lignende indhold.",
   "landing-separated": "Adskilt",
   "landing-separated-info": "Dine dokumenter har to forskellige slags indhold. Hvad gør dem forskellige?",
-  "landing-how-to-use": "Hvordan bruges den?",
   "landing-teacher": "Jeg er lærer...",
-  
+
   // App navigation:
   "app-home": "Hjem",
   "app-data": "Dokumenter",
@@ -82,7 +84,7 @@ const translations: Record<string, Translation> = {
   "data-documents": "Dokumenter",
   "data-intro": (
     <>
-      Indtast dokumenter her, eller indlæs et eksempel-datasæt. Hvert dokument kunne være en avisartikel, et opslag på
+      <strong>Kopier og indsæt dokumenter her</strong>, eller indlæs et eksempel-datasæt. Hvert dokument kunne være en avisartikel, et opslag på
       sociale medier, eller andet der kun består af tekst. Kopier og indsæt tekstindholdet i hovedfeltet, giv en titel,
       og vælg en kategori. Vi anbefaler 10 til 50 dokumenter, og 2 til 5 forskellige kategorier.
     </>

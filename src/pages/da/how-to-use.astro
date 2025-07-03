@@ -1,0 +1,29 @@
+---
+import Website from "../../layouts/Website.astro";
+import { getTranslationsHelpers, LANGUAGE_CODES } from "../../core/translation";
+
+const lang = "da";
+
+const { t, T } = getTranslationsHelpers(lang)
+---
+
+<Website lang={lang}>
+  <main>
+    <div class="container bg-body pb-4">
+
+      <section class="row pt-5 mb-5">
+        <h1 class="text-center">
+          {t("website-how-to-use")}
+        </h1>
+      </section>
+
+      <section class="row mb-5">
+        TODO: Add content
+
+        Note: This is the Danish version of the page
+      </section>
+
+    </div>
+    
+  </main>
+</Website>

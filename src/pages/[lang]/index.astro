@@ -12,7 +12,7 @@ const { t, T } = getTranslationsHelpers(lang)
 ---
 
 <Website lang={lang}>
-  <main>
+
     <div class="container bg-body pb-4">
 
       <section class="row pt-5 mb-5">
@@ -41,13 +41,9 @@ const { t, T } = getTranslationsHelpers(lang)
       </section>
 
       <!-- Intro pitch (card) -->
-      <section class="row justify-content-md-center py-5" style="background-color: #d2dde5">
+      <section class="row justify-content-md-center pt-5 pb-3" style="background-color: #d2dde5">
         <div class="col" style="max-width: 600px">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <p class="card-text"><strong>{t("landing-pitch")}</strong></p>
-            </div>
-          </div>
+          <h5 class="text-center"><em>{t("landing-pitch")}</em></h5>
         </div>
       </section>
 
@@ -55,7 +51,7 @@ const { t, T } = getTranslationsHelpers(lang)
       <section class="row justify-content-md-center  px-5" style="background-color: #d2dde5">
         <div class="col text-center mb-5" style="max-width: 300px">
           <div class="card shadow-sm">
-            <img src={`${import.meta.env.BASE_URL}img/Glass01.jpg`} alt="Mixed glass"/>
+            <img class="card-img-top" src={`${import.meta.env.BASE_URL}img/Glass01.jpg`} alt="Mixed glass"/>
             <div class="card-body">
               <h5 class="card-title">{t("landing-mixed")}</h5>
               <p class="card-text">{t("landing-mixed-info")}</p>
@@ -64,7 +60,7 @@ const { t, T } = getTranslationsHelpers(lang)
         </div>
         <div class="col text-center mb-5" style="max-width: 300px">
           <div class="card shadow-sm">
-            <img src={`${import.meta.env.BASE_URL}img/Glass04.jpg`} alt="Separated glass"/>
+            <img class="card-img-top" src={`${import.meta.env.BASE_URL}img/Glass04.jpg`} alt="Separated glass"/>
             <div class="card-body">
               <h5 class="card-title">{t("landing-separated")}</h5>
               <p class="card-text">{t("landing-separated-info")}</p>
@@ -88,7 +84,7 @@ const { t, T } = getTranslationsHelpers(lang)
               role="button"
               class="btn btn-lg btn-outline-primary"
               href={`${import.meta.env.BASE_URL}${lang}/how-to-use`}
-            >{t("landing-how-to-use")}</a>
+            >{t("website-how-to-use")}</a>
           </div>
           <div class="d-grid">
             <a
@@ -103,35 +99,5 @@ const { t, T } = getTranslationsHelpers(lang)
       </section>
 
     </div>
-    <footer class="pt-5 pb-5">
-      <div class="container">
-        <div class="row justify-content-md-center">
-          <div class="col mb-2" style="min-width: 180px">
-            <a href="https://www.it-vest.dk/" target="_blank">
-              <div class="card p-3">
-                <T k="footer-supported-by"/>
-              </div>
-            </a>
-          </div>
-          <div class="col mb-2" style="min-width: 180px"><T k="footer-credits"/></div>
-          <div class="col mb-2" style="min-width: 180px">
-            <ul>
-              <li><T k="footer-license"/></li>
-              <li><T k="footer-repository"/></li>
-              <li><T k="footer-feedback"/></li>
-            </ul>
-          </div>
-          <div class="col mb-2" style="min-width: 180px">
-            <a href="https://www.en.culture.aau.dk/research/research-groups/tantlab" target="_blank">
-              <img class="mb-3" src={`${import.meta.env.BASE_URL}img/tantlab_logo_white.svg`} alt="Tantlab" style="max-height:24px"/>
-            </a>
-            <br>
-            <a href="https://www.ssh.aau.dk/forskning/signaturer/computationel-ssh-masshine" target="_blank">
-              <img src={`${import.meta.env.BASE_URL}img/Masshine_Logo_White.svg`} alt="MASSHINE" style="max-height:24px"/>
-            </a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  </main>
+
 </Website>
