@@ -23,7 +23,10 @@ const translations: Record<string, Translation> = {
   file: "Fil",
   upload: "Upload",
 
-  // Website commons:
+  // Static website commons
+  "website-how-to-use": "Hvordan bruges det",
+
+  // Static website footer
   "footer-credits": (
     <>
       <p><em>Vandolie</em> er et gratis open source-værktøj udviklet af Mathieu Jacomy, Matilde Ficozzi, Cathrine Hofmann Fried, Jesper Wad Larsen, og <a class="link-info" href="https://www.ouestware.com/en/" target="_blank">Ouestware</a>.</p>
@@ -56,7 +59,6 @@ const translations: Record<string, Translation> = {
   "landing-mixed-info": "Dine dokumenter har et lignende indhold.",
   "landing-separated": "Adskilt",
   "landing-separated-info": "Dine dokumenter har to forskellige slags indhold. Hvad gør dem forskellige?",
-  "landing-how-to-use": "Hvordan bruges den?",
   "landing-teacher": "Jeg er lærer...",
 
   // App navigation:
