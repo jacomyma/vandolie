@@ -118,7 +118,7 @@ const DocumentEditComponent: FC<{
 export const DataComponent: FC = () => {
   const { t } = useTranslate();
   const { openModal } = useModal();
-  const { dataset, setDataset } = useAppContext();
+  const { dataset, setDataset, lang } = useAppContext();
   const [editedDocIndex, setEditedDocIndex] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -131,7 +131,7 @@ export const DataComponent: FC = () => {
             <p>{t("data-intro")}</p>
           </div>
 
-          <div className="container">
+          <div className="container pb-4">
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-4 g-3">
               {dataset?.documents.map((document, i) => (
                 <div key={i} className="col">
@@ -184,6 +184,41 @@ export const DataComponent: FC = () => {
                       <BsFileEarmarkPlusFill /> {t("data-add-document")}
                     </button>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="container py-5 my-5">
+          <div class="row justify-content-md-center">
+            <div class="col vdl-action-card">
+              <div class="card shadow">
+                <img class="card-img-top" src={`${import.meta.env.BASE_URL}img/count-words.jpg`} alt="Mixed glass"/>
+                <div class="card-body">
+                  <h5 class="card-title">{t("app-count")}</h5>
+                  <p class="card-text">{t("data-count-info")}</p>
+                  <a href={`${import.meta.env.BASE_URL}${lang}/app/count`} class="btn btn-secondary btn-sm stretched-link">{t("data-use-this")}</a>
+                </div>
+              </div>
+            </div>
+            <div class="col vdl-action-card">
+              <div class="card shadow">
+                <img class="card-img-top" src={`${import.meta.env.BASE_URL}img/co-word-network.jpg`} alt="Mixed glass"/>
+                <div class="card-body">
+                  <h5 class="card-title">{t("app-network")}</h5>
+                  <p class="card-text">{t("data-network-info")}</p>
+                  <a href={`${import.meta.env.BASE_URL}${lang}/app/network`} class="btn btn-secondary btn-sm stretched-link">{t("data-use-this")}</a>
+                </div>
+              </div>
+            </div>
+            <div class="col vdl-action-card">
+              <div class="card shadow">
+                <img class="card-img-top" src={`${import.meta.env.BASE_URL}img/semantic-map.jpg`} alt="Mixed glass"/>
+                <div class="card-body">
+                  <h5 class="card-title">{t("app-semantic")}</h5>
+                  <p class="card-text">{t("data-semantic-info")}</p>
+                  <a href={`${import.meta.env.BASE_URL}${lang}/app/semantic`} class="btn btn-secondary btn-sm stretched-link">{t("data-use-this")}</a>
                 </div>
               </div>
             </div>

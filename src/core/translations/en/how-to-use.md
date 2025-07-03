@@ -5,7 +5,7 @@ foo: 'bar'
 <!-- Do not translate this code -->
 <a id="dataset"/>
 
-## Create a corpus (dataset)
+## 1. Create a corpus (dataset)
         
 This tool will analyze a corpus (a dataset) of text documents.
 Each document is simply a bit of text that you found on the web (or elsewhere).
@@ -14,11 +14,11 @@ But it has to be just text (no images or other media).
 
 First, let's see how it works, then we will see where to find documents and how to select them.
 
-#### Get started
+#### How to get started
 
 Click on "Get started" in the menu to load the "Documents" page.
 
-**If you just want to see the tool in action**, just load an existing example from the menu at the bottom of the screen.
+**If you just want to see the tool in action**, load an example from the menu at the bottom of the screen.
 
 <img class="w-25 border vdl-pic" src="/vandolie/img/screenshots/en/dataset-load-example.png" alt="Add document">
 
@@ -54,11 +54,11 @@ You can create as many documents as you want.
 
 We think you need at least 10 documents, but 20 is a better number. You could go up to 50, or more if your computer is powerful (it will take more time to compute).
 
-Click on a saved to enter edit mode again. You can change it, or even delete it. Remember to save (or cancel) your changes.
+**Click on a saved to enter edit mode again.** You can change it, or even delete it. Remember to save (or cancel) your changes.
 
 <img class="w-100 border vdl-pic" src="/vandolie/img/screenshots/en/dataset-saved-docs-edit.png" alt="3 documents">
 
-**You can save your dataset** by clicking on the "Save (CSV)" button.
+You can **save your dataset** by clicking on the "Save (CSV)" button. You will be able to upload it later on, or share it with other people.
 
 **Once you are ready... TODO**
 
