@@ -21,7 +21,13 @@ footer .footer-supported-by-img {
   max-width: 220px
 }
 
-.vandolie-markdown-content p {
+.vdl-markdown-content p, .vdl-markdown-content ul, .vdl-markdown-content ol {
   font-size: 1.15em;
   max-width: 680px;
+}
+
+img.vdl-pic {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 16px;
 }
