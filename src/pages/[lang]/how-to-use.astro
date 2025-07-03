@@ -1,0 +1,31 @@
+---
+import Website from "../../layouts/Website.astro";
+import { getTranslationsHelpers, LANGUAGE_CODES } from "../../core/translation";
+
+export const getStaticPaths = () => {
+  return LANGUAGE_CODES.map((lang) => ({ params: { lang } }));
+};
+
+const { lang } = Astro.params;
+
+const { t, T } = getTranslationsHelpers(lang)
+---
+
+<Website lang={lang}>
+  <main>
+    <div class="container bg-body pb-4">
+
+      <section class="row pt-5 mb-5">
+        <h1 class="text-center">
+          How to use
+        </h1>
+      </section>
+
+      <section class="row mb-5">
+        TODO: Add content
+      </section>
+
+    </div>
+    
+  </main>
+</Website>
