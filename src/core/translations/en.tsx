@@ -56,6 +56,8 @@ const translations: Record<string, Translation> = {
   "landing-mixed-info": "Your documents have a similar content.",
   "landing-separated": "Separated",
   "landing-separated-info": "Your documents have 2 distinct kinds of content. What makes them different?",
+  "landing-how-to-use": "How to use?",
+  "landing-teacher": "I am a teacher...",
 
   // App navigation:
   "app-home": "Home",

@@ -73,9 +73,33 @@ const { t, T } = getTranslationsHelpers(lang)
         </div>
       </section>
 
-      <!-- Links -->
-      <section class="row mb-5">
-        TODO: Choices: use tool, how to use, I'm a teacher
+      <!-- Actions -->
+      <section class="row justify-content-md-center mb-5">
+        <div class="col py-5" style="max-width: 600px">
+          <div class="d-grid mb-3">
+            <a
+              role="button"
+              class="btn btn-lg btn-primary"
+              href={`${import.meta.env.BASE_URL}${lang}/app`}
+            >👉 {t("site-start-application")}!</a>
+          </div>
+          <div class="d-grid mb-3">
+            <a
+              role="button"
+              class="btn btn-lg btn-outline-primary"
+              href={`${import.meta.env.BASE_URL}${lang}/how-to-use`}
+            >{t("landing-how-to-use")}</a>
+          </div>
+          <div class="d-grid">
+            <a
+              role="button"
+              class="btn btn-lg"
+              href={`${import.meta.env.BASE_URL}${lang}/teacher`}
+            >{t("landing-teacher")}</a>
+          </div>
+        </div>
+        </div>
+
       </section>
 
     </div>
