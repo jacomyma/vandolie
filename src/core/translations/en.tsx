@@ -7,7 +7,7 @@ const translations: Record<string, Translation> = {
 
   // Static files:
   "site-name": "Vandolie",
-  "site-description": "Digital controversy mapping for high school students",
+  "site-description": "Semantic mapping algorithms for high school students",
   "site-start-application": "Get started",
   "javascript-needed": "You need to enable JavaScript to display this page.",
 
@@ -22,6 +22,40 @@ const translations: Record<string, Translation> = {
   "clear-all": "Clear all",
   file: "File",
   upload: "Upload",
+
+  // Website commons:
+  "footer-credits": (
+    <>
+      <p><em>Vandolie</em> is a free, open source tool developed by Mathieu Jacomy, Matilde Ficozzi, Cathrine Hofmann Fried, Jesper Wad Larsen, and <a class="link-info" href="https://www.ouestware.com/en/" target="_blank">Ouestware</a>.</p>
+    </>
+  ),
+  "footer-supported-by": (
+    <>
+      <img class="footer-supported-by-img" src={`${import.meta.env.BASE_URL}img/It-vest_UK_support.jpg`} alt="Supported by IT-Vest"/>
+    </>
+  ),
+  "footer-license": (
+    <>
+      License: <a class="link-info" href="https://github.com/jacomyma/vandolie/blob/main/LICENSE" target="_blank">GPL v3.0</a>
+    </>
+  ),
+  "footer-repository": (
+    <>
+      Clone our <a class="link-info" href="https://github.com/jacomyma/vandolie/" target="_blank">source code</a>
+    </>
+  ),
+  "footer-feedback": (
+    <>
+      Give us your <a class="link-info" href="https://github.com/jacomyma/vandolie/issues" target="_blank">feedback</a>
+    </>
+  ),
+
+  // Landing page:
+  "landing-pitch": "Analyze text documents. Will they separate like water and oil?",
+  "landing-mixed": "Mixed",
+  "landing-mixed-info": "Your documents have a similar content.",
+  "landing-separated": "Separated",
+  "landing-separated-info": "Your documents have 2 distinct kinds of content. What makes them different?",
 
   // App navigation:
   "app-home": "Home",
@@ -41,13 +75,6 @@ const translations: Record<string, Translation> = {
       </p>
     </>
   ),
-
-  // Landing page:
-  "landing-pitch": "Analyze text documents. Will they separate like water and oil?",
-  "landing-mixed": "Mixed",
-  "landing-mixed-info": "Your documents have a similar content.",
-  "landing-separated": "Separated",
-  "landing-separated-info": "Your documents have 2 distinct kinds of content. What makes them different?",
 
   // Data page:
   "data-documents": "Documents",

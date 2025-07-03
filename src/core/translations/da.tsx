@@ -7,7 +7,7 @@ const translations: Record<string, Translation> = {
 
   // Static files:
   "site-name": "Vandolie",
-  "site-description": "Digital kontroverskortlægning på gymnasieniveau",
+  "site-description": "Semantiske kortlægningsalgoritmer på gymnasieniveau",
   "site-start-application": "Kom i gang",
   "javascript-needed": "Du skal aktivere JavaScript for at vise denne side.",
 
@@ -22,6 +22,40 @@ const translations: Record<string, Translation> = {
   "clear-all": "Ryd alt",
   file: "Fil",
   upload: "Upload",
+
+  // Website commons:
+  "footer-credits": (
+    <>
+      <p><em>Vandolie</em> er et gratis open source-værktøj udviklet af Mathieu Jacomy, Matilde Ficozzi, Cathrine Hofmann Fried, Jesper Wad Larsen, og <a class="link-info" href="https://www.ouestware.com/en/" target="_blank">Ouestware</a>.</p>
+    </>
+  ),
+  "footer-supported-by": (
+    <>
+      <img class="footer-supported-by-img" src={`${import.meta.env.BASE_URL}img/It-vest_DK_support.jpg`} alt="Støttet af IT-Vest"/>
+    </>
+  ),
+  "footer-license": (
+    <>
+      Licens: <a class="link-info" href="https://github.com/jacomyma/vandolie/blob/main/LICENSE" target="_blank">GPL v3.0</a>
+    </>
+  ),
+  "footer-repository": (
+    <>
+      Klon vores <a class="link-info" href="https://github.com/jacomyma/vandolie/" target="_blank">kildekode</a>
+    </>
+  ),
+  "footer-feedback": (
+    <>
+      Giv os din <a class="link-info" href="https://github.com/jacomyma/vandolie/issues" target="_blank">feedback</a>
+    </>
+  ),
+
+  // Landing page:
+  "landing-pitch": "Analyser tekstdokumenter. Vil de skille som vand og olie?",
+  "landing-mixed": "Blandet",
+  "landing-mixed-info": "Dine dokumenter har et lignende indhold.",
+  "landing-separated": "Adskilt",
+  "landing-separated-info": "Dine dokumenter har to forskellige slags indhold. Hvad gør dem forskellige?",
 
   // App navigation:
   "app-home": "Hjem",
@@ -41,13 +75,6 @@ const translations: Record<string, Translation> = {
       </p>
     </>
   ),
-
-  // Landing page:
-  "landing-pitch": "Analyser tekstdokumenter. Vil de skille som vand og olie?",
-  "landing-mixed": "Blandet",
-  "landing-mixed-info": "Dine dokumenter har et lignende indhold.",
-  "landing-separated": "Adskilt",
-  "landing-separated-info": "Dine dokumenter har to forskellige slags indhold. Hvad gør dem forskellige?",
 
   // Data page:
   "data-documents": "Dokumenter",
