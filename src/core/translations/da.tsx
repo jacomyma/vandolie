@@ -2,8 +2,8 @@ import type { Translation } from "../translation.tsx";
 
 const translations: Record<string, Translation> = {
   // Available languages:
-  "lang-en": "🇬🇧 English",
-  "lang-da": "🇩🇰 Danish",
+  "lang-en": "🇬🇧 Engelsk",
+  "lang-da": "🇩🇰 Dansk",
 
   // Static files:
   "site-name": "Vandolie",
@@ -58,7 +58,7 @@ const translations: Record<string, Translation> = {
   "landing-separated-info": "Dine dokumenter har to forskellige slags indhold. Hvad gør dem forskellige?",
   "landing-how-to-use": "Hvordan bruges den?",
   "landing-teacher": "Jeg er lærer...",
-  
+
   // App navigation:
   "app-home": "Hjem",
   "app-data": "Dokumenter",
