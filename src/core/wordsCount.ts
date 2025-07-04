@@ -109,9 +109,12 @@ export function countCategories(
   documents.forEach(({ category }) => {
     categoriesCounts[category] = (categoriesCounts[category] || 0) + 1;
   });
-  const categories = sortBy(toPairs(categoriesCounts), 1).map((entry, i) => {
-    return { id: entry[0], count: entry[1], matches: 0, color: palette[i] || paletteDefault };
-  });
+  const categories = sortBy(toPairs(categoriesCounts), 1)
+    .reverse()
+    .map((entry, i) => {
+      return { id: entry[0], count: entry[1], matches: 0, color: palette[i] || paletteDefault };
+    })
+    .reverse();
 
   if (query) {
     // Note: in order of the categories, from the most to the least represented
