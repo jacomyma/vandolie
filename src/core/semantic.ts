@@ -168,7 +168,7 @@ export function getGraph(
   projectedDocuments.forEach(({ document, coordinates: { x, y } }, i) => {
     const { category, title } = document;
     const color = categories[category].color;
-    graph.addNode(i, { id: i + "", label: title, x, y, size: 30, color: color, document });
+    graph.addNode(i, { id: i + "", label: title, x, y, size: 15, color: color, document });
   });
 
   return graph;
