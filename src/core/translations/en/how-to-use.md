@@ -100,7 +100,15 @@ And via libraries, you can also have access to newspaper articles from many outl
 
 ## 2. How to use: Count the words
 
-TODO
+This algorithm simply counts in how many documents a given word is mentioned. Note that it does not matter if the word appears once or multiple times in a same document.
+
+Type any word in the search field (and hit Enter) to start the counting.
+
+<img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/en/count-search.png" alt="Search field">
+
+By default, this will not count the exact word, but any word that contains it. For example, "train" will also count "trains" and "training". If you do not want that, check the setting "Exact word".
+
+<img class="border vdl-pic pic-w-250" src="/vandolie/img/screenshots/en/count-exact.png" alt="Exact word button">
 
 <!-- Do not translate this code -->
 <a id="network"/>
