@@ -84,8 +84,8 @@ export const SemanticComponent: FC = () => {
             {/* Sigma */}
             <SigmaContainer<DocumentNode>
               graph={graph}
-              className="flex-fill"
-              style={{ height: 500, backgroundColor: "#DDD" }}
+              className="flex-fill mh-100"
+              style={{ height: 500, backgroundColor: "#e2ddc7" }}
               settings={{
                 nodeReducer(node, data) {
                   return node === selectedNode?.id ? { ...data, highlighted: true } : data;

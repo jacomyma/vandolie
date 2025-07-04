@@ -1,3 +1,3 @@
-export const DEFAULT_PALETTE = ["#777acd", "#cab21f", "#5ba965", "#ca5e4a", "#c55a9f"];
+export const DEFAULT_PALETTE = ["#3caabe", "#dd942a", "#709d3d", "#ca5353", "#ab67b8"];
 
-export const DEFAULT_COLOR = "#919191";
+export const DEFAULT_COLOR = "#AAAAAA";
