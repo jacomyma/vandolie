@@ -2,6 +2,7 @@ import { type SizeState, withSize } from "@ouestware/hoc";
 import { useStorage } from "@ouestware/hooks";
 import { axisBottom, axisLeft, scaleBand, scaleLinear, select, stack } from "d3";
 import { type FC, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { BsStack } from "react-icons/bs";
 
 import { STORAGE_KEYS } from "../../core/consts.ts";
 import { useAppContext } from "../../core/context.ts";
@@ -97,7 +98,7 @@ const CategoriesChart = withSize<{ categories: ReturnType<typeof countCategories
 
 export const CountComponent: FC = () => {
   const { t } = useTranslate();
-  const { dataset } = useAppContext();
+  const { dataset, lang } = useAppContext();
   const [computed, setComputed] = useStorage<{
     query: string;
     exactWordOnly: boolean;
@@ -133,6 +134,10 @@ export const CountComponent: FC = () => {
       <div className="container bg-body pb-4">
         <div className="container pt-4">
           <h1>{t("count-title")}</h1>
+          <p>
+            <BsStack /> {dataset?.documents.length} {t("docs-loaded")}
+            <small class="ms-2"><a href={`${import.meta.env.BASE_URL}${lang}/app/data`}>{t("edit")}</a></small>
+          </p>
 
           <div className="card">
             <div className="card-header">{t("count-settings")}</div>

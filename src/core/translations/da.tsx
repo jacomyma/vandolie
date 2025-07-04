@@ -22,6 +22,8 @@ const translations: Record<string, Translation> = {
   "clear-all": "Ryd alt",
   file: "Fil",
   upload: "Upload",
+  edit: "Rediger",
+  "docs-loaded": "dokumenter indlæst",
 
   // Static website commons
   "website-how-to-use": "Hvordan bruges det",

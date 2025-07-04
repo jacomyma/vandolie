@@ -1,6 +1,7 @@
 import { useStorage } from "@ouestware/hooks";
 import { SigmaContainer } from "@react-sigma/core";
 import { type FC, useMemo } from "react";
+import { BsStack } from "react-icons/bs";
 
 import { STORAGE_KEYS } from "../../core/consts.ts";
 import { useAppContext } from "../../core/context.ts";
@@ -9,7 +10,7 @@ import { useTranslate } from "../../core/translation";
 
 export const NetworkComponent: FC = () => {
   const { t } = useTranslate();
-  const { dataset } = useAppContext();
+  const { dataset, lang } = useAppContext();
   const [options, setOptions] = useStorage("localStorage", STORAGE_KEYS.networkOptions, {
     defaultValue: DEFAULT_NETWORK_OPTIONS,
   });
@@ -24,6 +25,10 @@ export const NetworkComponent: FC = () => {
       <div className="container bg-body pb-4">
         <div className="container pt-4">
           <h1>{t("network-title")}</h1>
+          <p>
+            <BsStack /> {dataset?.documents.length} {t("docs-loaded")}
+            <small class="ms-2"><a href={`${import.meta.env.BASE_URL}${lang}/app/data`}>{t("edit")}</a></small>
+          </p>
           <p>{t("network-subtitle")}</p>
         </div>
 

@@ -1,5 +1,6 @@
 import { SigmaContainer, useRegisterEvents, useSigma } from "@react-sigma/core";
 import { type FC, useEffect, useMemo, useState } from "react";
+import { BsStack } from "react-icons/bs";
 
 import { useAppContext } from "../../core/context.ts";
 import { type DocumentNode, getGraph, useEmbedding, useExtractor, useUMAP } from "../../core/semantic.ts";
@@ -30,7 +31,7 @@ const GraphEventsController: FC<{
 
 export const SemanticComponent: FC = () => {
   const { t } = useTranslate();
-  const { dataset } = useAppContext();
+  const { dataset, lang } = useAppContext();
   const [selectedNode, setSelectedNode] = useState<DocumentNode | null>(null);
   const extractor = useExtractor();
   const { embeddedDocuments, embeddingProgress } = useEmbedding(dataset, extractor);
@@ -42,6 +43,10 @@ export const SemanticComponent: FC = () => {
       <div className="container bg-body pb-4">
         <div className="container pt-4">
           <h1>{t("semantic-title")}</h1>
+          <p>
+            <BsStack /> {dataset?.documents.length} {t("docs-loaded")}
+            <small class="ms-2"><a href={`${import.meta.env.BASE_URL}${lang}/app/data`}>{t("edit")}</a></small>
+          </p>
 
           {/* Load bars (in a card) */}
           <div className="card">

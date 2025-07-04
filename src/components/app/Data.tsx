@@ -2,7 +2,7 @@ import { Loader } from "@ouestware/loaders";
 import { useModal } from "@ouestware/modals";
 import { saveAs } from "file-saver";
 import { type FC, useMemo, useState } from "react";
-import { BsDownload, BsFileEarmarkPlusFill, BsTrash, BsUpload, BsX } from "react-icons/bs";
+import { BsDownload, BsFileEarmarkPlusFill, BsTrash, BsUpload, BsX, BsStack } from "react-icons/bs";
 
 import { type Document, SAMPLES, getEmptyDataset } from "../../core/consts.ts";
 import { useAppContext } from "../../core/context.ts";
@@ -128,6 +128,9 @@ export const DataComponent: FC = () => {
         <div className="container bg-body pb-4">
           <div className="container pt-4">
             <h1>{t("data-documents")}</h1>
+            <p>
+              <BsStack /> {dataset?.documents.length} {t("docs-loaded")}
+            </p>
             <p>{t("data-intro")}</p>
           </div>
 
