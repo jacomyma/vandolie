@@ -13,13 +13,15 @@ import {Content} from '../../core/translations/en/how-to-use.md';
   <main>
     <div class="container bg-body pb-4">
 
-      <section class="row pt-5 mb-5">
-        <h1 class="text-center">
+      <section class="row px-5 pt-5 mb-5">
+        <h1>
+          <img class="text-left" src={`${import.meta.env.BASE_URL}img/vandolie-logo.svg`} alt="Logo" height="128" />
+          <br>
           {t("website-how-to-use")}
         </h1>
       </section>
 
-      <section class="vandolie-markdown-content px-5">
+      <section class="vdl-markdown-content px-5">
         <Content />
       </section>
 

@@ -2,6 +2,7 @@ import { type SizeState, withSize } from "@ouestware/hoc";
 import { useStorage } from "@ouestware/hooks";
 import { axisBottom, axisLeft, scaleBand, scaleLinear, select, stack } from "d3";
 import { type FC, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { BsStack, BsQuestionCircle } from "react-icons/bs";
 
 import { STORAGE_KEYS } from "../../core/consts.ts";
 import { useAppContext } from "../../core/context.ts";
@@ -48,6 +49,8 @@ const CategoriesChart = withSize<{ categories: ReturnType<typeof countCategories
 
       // Build data
       const data = categories.map((c) => ({
+        number: c.matches,
+        total: c.count,
         present: (100 * c.matches) / c.count,
         absent: (100 * (c.count - c.matches)) / c.count,
         id: c.id,
@@ -87,7 +90,7 @@ const CategoriesChart = withSize<{ categories: ReturnType<typeof countCategories
         .style("font-size", "12px")
         .style("font-weight", "bold")
         .style("text-shadow", "1px 1px 1px rgba(0,0,0,0.5)")
-        .text((d) => `${d.present.toFixed(0)}%`)
+        .text((d) => `${d.number}/${d.total} = ${d.present.toFixed(0)}%`)
         .style("display", (d) => (d.present < 5 ? "none" : "block"));
     }, [categories, containerWidth]);
 
@@ -97,7 +100,7 @@ const CategoriesChart = withSize<{ categories: ReturnType<typeof countCategories
 
 export const CountComponent: FC = () => {
   const { t } = useTranslate();
-  const { dataset } = useAppContext();
+  const { dataset, lang } = useAppContext();
   const [computed, setComputed] = useStorage<{
     query: string;
     exactWordOnly: boolean;
@@ -132,7 +135,19 @@ export const CountComponent: FC = () => {
     <main>
       <div className="container bg-body pb-4">
         <div className="container pt-4">
-          <h1>{t("count-title")}</h1>
+          <h1>
+            {t("count-title")}
+            <a class="btn btn-link" target="_blank" href={`${import.meta.env.BASE_URL}${lang}/how-to-use#count`}>
+              <BsQuestionCircle />
+            </a>
+          </h1>
+          <p>
+            <BsStack /> {dataset?.documents.length} {t("docs-loaded")}
+            <small class="ms-2"><a href={`${import.meta.env.BASE_URL}${lang}/app/data`}>{t("edit")}</a></small>
+          </p>
+          <p>
+            {t("count-intro")}
+          </p>
 
           <div className="card">
             <div className="card-header">{t("count-settings")}</div>
@@ -210,16 +225,16 @@ export const CountComponent: FC = () => {
                     const result = extractPassage(doc.text.toLowerCase(), computed.query, exactWordOnly);
                     return (
                       <div className="col">
-                        <div className="card shadow-sm">
+                        <div className="card shadow-sm" style={{ borderColor: result ? category.color : "#0000002d" }}>
                           <div className="card-header doc-title">{doc.title}</div>
-                          <div className="card-body">
+                          <div className="card-body" style={{ color: result ? category.color : "#333" }}>
                             <p>
                               {result ? "..." + result.before : ""}
                               <strong>{result ? result.matched : ""}</strong>
                               {result ? result.after + "..." : ""}
                               <em className="opacity-50">{result ? "" : t("count-missing")}</em>
                             </p>
-                            <span className="badge" style={{ backgroundColor: category.color }}>
+                            <span className="badge" style={{ backgroundColor: category.color, opacity: result ? 1 : 0.5 }}>
                               {category.id}
                             </span>
                           </div>

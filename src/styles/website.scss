@@ -21,7 +21,45 @@ footer .footer-supported-by-img {
   max-width: 220px
 }
 
-.vandolie-markdown-content p {
+.vdl-markdown-content p, .vdl-markdown-content ul, .vdl-markdown-content ol {
   font-size: 1.15em;
   max-width: 680px;
+}
+
+.vdl-markdown-content h2 {
+  margin-top: 5rem;
+}
+
+.vdl-markdown-content h3 {
+  margin-top: 3rem;
+}
+
+.vdl-markdown-content h4 {
+  margin-top: 2rem;
+}
+
+.vdl-markdown-content h5, .vdl-markdown-content h6 {
+  margin-top: 1rem;
+}
+
+img.vdl-pic {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 16px;
+}
+
+img.pic-w-250 {
+  width:250px;
+}
+
+img.pic-w-500 {
+  width:500px;
+}
+
+img.pic-w-750 {
+  width:750px;
+}
+
+img.pic-w-1000 {
+  width:1000px;
 }

@@ -22,6 +22,8 @@ const translations: Record<string, Translation> = {
   "clear-all": "Clear all",
   file: "File",
   upload: "Upload",
+  edit: "Edit",
+  "docs-loaded": "documents loaded",
 
   // Static website commons
   "website-how-to-use": "How to use",
@@ -89,11 +91,16 @@ const translations: Record<string, Translation> = {
       choose a category. We recommend 10 to 50 documents, and 2 to 5 different categories.
     </>
   ),
+  "data-method-help": "👉 Where to find documents and how to decide categories?",
   "data-add-document": "Add document",
   "data-doc-title": "Document title",
   "data-doc-category": "Category",
   "data-doc-category-placeholder": "Describe document type...",
   "data-doc-content-placeholder": "Paste text content here...",
+  "data-use-this": "Use this algorithm",
+  "data-count-info": "Extract the most important words, and see in which documents they are. Are there words that appear in only a certain category?",
+  "data-network-info": "Extract the important words from the documents, and connect them when they appear together.",
+  "data-semantic-info": "Groups documents with a similar content. Do the groups reflect your categories?",
   "data-clear-dataset": "Clear documents",
   "data-clear-dataset-confirm-message": "Are you sure you want to clear your documents?",
   "data-load-example": "Load example",
@@ -118,6 +125,11 @@ const translations: Record<string, Translation> = {
 
   // "Count the words" page:
   "count-title": "Count the words",
+  "count-intro": (
+    <>
+      <strong>Search a word</strong> or click on one of the top words to see in how many documents of each categories it appears.
+    </>
+  ),
   "count-settings": "Settings: what word to count?",
   "count-query-placeholder": "Word to search and count",
   "count-search-and-count": "Search and count",
@@ -209,7 +221,7 @@ const translations: Record<string, Translation> = {
 
   // "Semantic map" page:
   "semantic-title": "Semantic map",
-  "semantic-compute": "🧠 Compute",
+  "semantic-compute": "Compute",
   "semantic-embedding-progress": (props) => (
     <>
       {props.processed}/{props.total} documents embedded

@@ -2,7 +2,7 @@ import { Loader } from "@ouestware/loaders";
 import { useModal } from "@ouestware/modals";
 import { saveAs } from "file-saver";
 import { type FC, useMemo, useState } from "react";
-import { BsDownload, BsFileEarmarkPlusFill, BsTrash, BsUpload, BsX } from "react-icons/bs";
+import { BsDownload, BsFileEarmarkPlusFill, BsTrash, BsUpload, BsX, BsStack, BsQuestionCircle } from "react-icons/bs";
 
 import { type Document, SAMPLES, getEmptyDataset } from "../../core/consts.ts";
 import { useAppContext } from "../../core/context.ts";
@@ -118,7 +118,7 @@ const DocumentEditComponent: FC<{
 export const DataComponent: FC = () => {
   const { t } = useTranslate();
   const { openModal } = useModal();
-  const { dataset, setDataset } = useAppContext();
+  const { dataset, setDataset, lang } = useAppContext();
   const [editedDocIndex, setEditedDocIndex] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -127,11 +127,23 @@ export const DataComponent: FC = () => {
       <main>
         <div className="container bg-body pb-4">
           <div className="container pt-4">
-            <h1>{t("data-documents")}</h1>
-            <p>{t("data-intro")}</p>
+            <h1>
+              {t("data-documents")}
+              <a class="btn btn-link" target="_blank" href={`${import.meta.env.BASE_URL}${lang}/how-to-use#dataset`}>
+                <BsQuestionCircle />
+              </a>
+            </h1>
+            <p>
+              <BsStack /> {dataset?.documents.length} {t("docs-loaded")}
+            </p>
+            <p>
+              {t("data-intro")}
+              <br/>
+              <a target="_blank" href={`${import.meta.env.BASE_URL}${lang}/how-to-use#method-help`}>{t("data-method-help")}</a>
+            </p>
           </div>
 
-          <div className="container">
+          <div className="container pb-4">
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-4 g-3">
               {dataset?.documents.map((document, i) => (
                 <div key={i} className="col">
@@ -184,6 +196,41 @@ export const DataComponent: FC = () => {
                       <BsFileEarmarkPlusFill /> {t("data-add-document")}
                     </button>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="container py-5 my-5">
+          <div class="row justify-content-md-center">
+            <div class="col vdl-action-card mb-4">
+              <div class="card shadow">
+                <img class="card-img-top" src={`${import.meta.env.BASE_URL}img/thumbnail-count.jpg`} alt="Mixed glass"/>
+                <div class="card-body">
+                  <h5 class="card-title">{t("app-count")}</h5>
+                  <p class="card-text">{t("data-count-info")}</p>
+                  <a href={`${import.meta.env.BASE_URL}${lang}/app/count`} class="btn btn-secondary btn-sm stretched-link">{t("data-use-this")}</a>
+                </div>
+              </div>
+            </div>
+            <div class="col vdl-action-card mb-4">
+              <div class="card shadow">
+                <img class="card-img-top" src={`${import.meta.env.BASE_URL}img/thumbnail-network.jpg`} alt="Mixed glass"/>
+                <div class="card-body">
+                  <h5 class="card-title">{t("app-network")}</h5>
+                  <p class="card-text">{t("data-network-info")}</p>
+                  <a href={`${import.meta.env.BASE_URL}${lang}/app/network`} class="btn btn-secondary btn-sm stretched-link">{t("data-use-this")}</a>
+                </div>
+              </div>
+            </div>
+            <div class="col vdl-action-card mb-4">
+              <div class="card shadow">
+                <img class="card-img-top" src={`${import.meta.env.BASE_URL}img/thumbnail-semantic-map.jpg`} alt="Mixed glass"/>
+                <div class="card-body">
+                  <h5 class="card-title">{t("app-semantic")}</h5>
+                  <p class="card-text">{t("data-semantic-info")}</p>
+                  <a href={`${import.meta.env.BASE_URL}${lang}/app/semantic`} class="btn btn-secondary btn-sm stretched-link">{t("data-use-this")}</a>
                 </div>
               </div>
             </div>

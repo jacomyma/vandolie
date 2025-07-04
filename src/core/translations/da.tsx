@@ -22,6 +22,8 @@ const translations: Record<string, Translation> = {
   "clear-all": "Ryd alt",
   file: "Fil",
   upload: "Upload",
+  edit: "Rediger",
+  "docs-loaded": "dokumenter indlæst",
 
   // Static website commons
   "website-how-to-use": "Hvordan bruges det",
@@ -89,11 +91,16 @@ const translations: Record<string, Translation> = {
       og vælg en kategori. Vi anbefaler 10 til 50 dokumenter, og 2 til 5 forskellige kategorier.
     </>
   ),
+  "data-method-help": "👉 Hvor finder man dokumenter, og hvordan beslutter man kategorier?",
   "data-add-document": "Tilføj dokument",
   "data-doc-title": "Dokumenttitel",
   "data-doc-category": "Kategori",
   "data-doc-category-placeholder": "Beskriv dokumenttype...",
   "data-doc-content-placeholder": "Indsæt tekstindhold her...",
+  "data-use-this": "Brug denne algoritme",
+  "data-count-info": "Udvælg de vigtigste ord, og se i hvilke dokumenter de optræder. Er der ord, der kun optræder i en bestemt kategori?",
+  "data-network-info": "Uddrag de vigtigste ord fra dokumenterne, og forbind dem, når de optræder sammen.",
+  "data-semantic-info": "Grupperer dokumenter med lignende indhold. Afspejler grupperne dine kategorier?",
   "data-clear-dataset": "Ryd dokumenter",
   "data-clear-dataset-confirm-message": "Er du sikker på, at du vil rydde dine dokumenter?",
   "data-load-example": "Indlæs eksempel",
@@ -118,6 +125,11 @@ const translations: Record<string, Translation> = {
 
   // "Count the words" page:
   "count-title": "Tæl ordene",
+  "count-intro": (
+    <>
+      <strong>Søg efter et ord</strong>, eller klik på et af de øverste ord for at se, hvor mange dokumenter det optræder i inden for hver kategori.
+    </>
+  ),
   "count-settings": "Indstillinger: hvilket ord skal tælles?",
   "count-query-placeholder": "Ord at søge efter og tælle",
   "count-search-and-count": "Søg og tæl",
@@ -208,7 +220,7 @@ const translations: Record<string, Translation> = {
 
   // "Semantic map" page:
   "semantic-title": "Semantisk kort",
-  "semantic-compute": "🧠 Beregn",
+  "semantic-compute": "Beregn",
   "semantic-embedding-progress": (props) => (
     <>
       {props.processed}/{props.total} dokumenter indlejret

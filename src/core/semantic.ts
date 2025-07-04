@@ -2,10 +2,11 @@ import { getAsyncMemoData, useAsyncMemo, useStorage } from "@ouestware/hooks";
 import { FeatureExtractionPipeline, pipeline } from "@xenova/transformers";
 import Graph from "graphology";
 import { keyBy, sortBy } from "lodash";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import type { Coordinates } from "sigma/types";
 import { UMAP } from "umap-js";
 
+import { DEFAULT_COLOR, DEFAULT_PALETTE } from "./colors.ts";
 import { type Dataset, type Document, STORAGE_KEYS } from "./consts.ts";
 
 type EmbeddedDocument = {
@@ -146,10 +147,7 @@ export function useUMAP(embeddedDocuments?: { document: Document; features: numb
 
 export function getGraph(
   projectedDocuments?: ProjectedDocument[],
-  {
-    palette = ["#777acd", "#cab21f", "#5ba965", "#ca5e4a", "#c55a9f"],
-    paletteDefault = "#919191",
-  }: { palette?: string[]; paletteDefault?: string } = {},
+  { palette = DEFAULT_PALETTE, paletteDefault = DEFAULT_COLOR }: { palette?: string[]; paletteDefault?: string } = {},
 ): DocumentsGraph {
   const graph = new Graph<DocumentNode>();
   if (!projectedDocuments?.length) return graph;
@@ -159,7 +157,7 @@ export function getGraph(
     categoriesIndex[category] = (categoriesIndex[category] || 0) + 1;
   });
   const categories = keyBy(
-    sortBy(Object.entries(categoriesIndex), [(d) => d[1]]).map(([id, count], i) => ({
+    sortBy(Object.entries(categoriesIndex), [(d) => -d[1], 0]).map(([id, count], i) => ({
       id,
       count,
       color: palette[i] || paletteDefault,
@@ -170,7 +168,7 @@ export function getGraph(
   projectedDocuments.forEach(({ document, coordinates: { x, y } }, i) => {
     const { category, title } = document;
     const color = categories[category].color;
-    graph.addNode(i, { id: i + "", label: title, x, y, size: 30, color: color, document });
+    graph.addNode(i, { id: i + "", label: title, x, y, size: 15, color: color, document });
   });
 
   return graph;
