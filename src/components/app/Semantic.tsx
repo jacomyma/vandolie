@@ -84,7 +84,7 @@ export const SemanticComponent: FC = () => {
             {/* Sigma */}
             <SigmaContainer<DocumentNode>
               graph={graph}
-              className="flex-fill mh-100"
+              className="flex-fill mh-100 rounded"
               style={{ height: 500, backgroundColor: "#e2ddc7" }}
               settings={{
                 nodeReducer(node, data) {
