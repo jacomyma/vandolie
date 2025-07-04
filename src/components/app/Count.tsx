@@ -49,6 +49,8 @@ const CategoriesChart = withSize<{ categories: ReturnType<typeof countCategories
 
       // Build data
       const data = categories.map((c) => ({
+        number: c.matches,
+        total: c.count,
         present: (100 * c.matches) / c.count,
         absent: (100 * (c.count - c.matches)) / c.count,
         id: c.id,
@@ -88,7 +90,7 @@ const CategoriesChart = withSize<{ categories: ReturnType<typeof countCategories
         .style("font-size", "12px")
         .style("font-weight", "bold")
         .style("text-shadow", "1px 1px 1px rgba(0,0,0,0.5)")
-        .text((d) => `${d.present.toFixed(0)}%`)
+        .text((d) => `${d.number}/${d.total} = ${d.present.toFixed(0)}%`)
         .style("display", (d) => (d.present < 5 ? "none" : "block"));
     }, [categories, containerWidth]);
 
@@ -142,6 +144,9 @@ export const CountComponent: FC = () => {
           <p>
             <BsStack /> {dataset?.documents.length} {t("docs-loaded")}
             <small class="ms-2"><a href={`${import.meta.env.BASE_URL}${lang}/app/data`}>{t("edit")}</a></small>
+          </p>
+          <p>
+            {t("count-intro")}
           </p>
 
           <div className="card">

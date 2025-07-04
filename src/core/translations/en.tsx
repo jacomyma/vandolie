@@ -125,6 +125,11 @@ const translations: Record<string, Translation> = {
 
   // "Count the words" page:
   "count-title": "Count the words",
+  "count-intro": (
+    <>
+      <strong>Search a word</strong> or click on one of the top words to see in how many documents of each categories it appears.
+    </>
+  ),
   "count-settings": "Settings: what word to count?",
   "count-query-placeholder": "Word to search and count",
   "count-search-and-count": "Search and count",
