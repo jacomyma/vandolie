@@ -191,7 +191,7 @@ export function makeNetwork(
       label: d.token,
       x: Math.random() * 100 - 50,
       y: Math.random() * 100 - 50,
-      size: 1 + Math.log(1 + 3 * d.count),
+      size: 1 + 0.3 * Math.log(1 + 3 * d.count),
       color: col,
     });
   });
