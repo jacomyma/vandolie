@@ -4,6 +4,7 @@ import forceAtlas2 from "graphology-layout-forceatlas2";
 import { filter, keyBy, sortBy, uniq } from "lodash";
 import stopWordsISO from "stopwords-iso/stopwords-iso.json";
 
+import { DEFAULT_COLOR, DEFAULT_PALETTE } from "./colors.ts";
 import type { Dataset } from "./consts.ts";
 
 export type NetworkOptions = {
@@ -59,10 +60,7 @@ export function makeNetwork(
     threshold,
     cooccurrenceThreshold,
   }: NetworkOptions,
-  {
-    palette = ["#777acd", "#cab21f", "#5ba965", "#ca5e4a", "#c55a9f"],
-    paletteDefault = "#919191",
-  }: { palette?: string[]; paletteDefault?: string } = {},
+  { palette = DEFAULT_PALETTE, paletteDefault = DEFAULT_COLOR }: { palette?: string[]; paletteDefault?: string } = {},
 ) {
   const documents = includeTitle
     ? dataset.documents.map((d) => d.title + " \n" + d.text)

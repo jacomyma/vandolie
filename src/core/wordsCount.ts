@@ -1,6 +1,7 @@
 import { sortBy, toPairs } from "lodash";
 import stopWordsISO from "stopwords-iso/stopwords-iso.json";
 
+import { DEFAULT_COLOR, DEFAULT_PALETTE } from "./colors.ts";
 import type { Dataset } from "./consts.ts";
 
 export function extractPassage(text: string, query: string, exactWordsOnly: boolean, contextLength = 75) {
@@ -101,10 +102,7 @@ export function countCategories(
   { documents }: Dataset,
   query: string | undefined,
   exactWordsOnly: boolean,
-  {
-    palette = ["#777acd", "#cab21f", "#5ba965", "#ca5e4a", "#c55a9f"],
-    paletteDefault = "#919191",
-  }: { palette?: string[]; paletteDefault?: string } = {},
+  { palette = DEFAULT_PALETTE, paletteDefault = DEFAULT_COLOR }: { palette?: string[]; paletteDefault?: string } = {},
 ) {
   // Compute categories
   const categoriesCounts: Record<string, number> = {};
