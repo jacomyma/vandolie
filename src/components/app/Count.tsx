@@ -220,16 +220,16 @@ export const CountComponent: FC = () => {
                     const result = extractPassage(doc.text.toLowerCase(), computed.query, exactWordOnly);
                     return (
                       <div className="col">
-                        <div className="card shadow-sm">
+                        <div className="card shadow-sm" style={{ borderColor: result ? category.color : "#0000002d" }}>
                           <div className="card-header doc-title">{doc.title}</div>
-                          <div className="card-body">
+                          <div className="card-body" style={{ color: result ? category.color : "#333" }}>
                             <p>
                               {result ? "..." + result.before : ""}
                               <strong>{result ? result.matched : ""}</strong>
                               {result ? result.after + "..." : ""}
                               <em className="opacity-50">{result ? "" : t("count-missing")}</em>
                             </p>
-                            <span className="badge" style={{ backgroundColor: category.color }}>
+                            <span className="badge" style={{ backgroundColor: category.color, opacity: result ? 1 : 0.5 }}>
                               {category.id}
                             </span>
                           </div>
