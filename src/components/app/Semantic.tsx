@@ -1,6 +1,6 @@
 import { SigmaContainer, useRegisterEvents, useSigma } from "@react-sigma/core";
 import { type FC, useEffect, useMemo, useState } from "react";
-import { BsStack, BsCpuFill } from "react-icons/bs";
+import { BsStack, BsCpuFill, BsQuestionCircle } from "react-icons/bs";
 
 import { useAppContext } from "../../core/context.ts";
 import { type DocumentNode, getGraph, useEmbedding, useExtractor, useUMAP } from "../../core/semantic.ts";
@@ -42,7 +42,12 @@ export const SemanticComponent: FC = () => {
     <main>
       <div className="container bg-body pb-4">
         <div className="container pt-4">
-          <h1>{t("semantic-title")}</h1>
+          <h1>
+            {t("semantic-title")}
+            <a class="btn btn-link" target="_blank" href={`${import.meta.env.BASE_URL}${lang}/how-to-use#semantic`}>
+              <BsQuestionCircle />
+            </a>
+          </h1>
           <p>
             <BsStack /> {dataset?.documents.length} {t("docs-loaded")}
             <small class="ms-2"><a href={`${import.meta.env.BASE_URL}${lang}/app/data`}>{t("edit")}</a></small>

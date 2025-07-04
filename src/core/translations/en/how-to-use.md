@@ -5,7 +5,7 @@ foo: 'bar'
 <!-- Do not translate this code -->
 <a id="dataset"/>
 
-## 1. Create a corpus (dataset)
+## 1. How to create a corpus (dataset)
         
 This tool will analyze a corpus (a dataset) of text documents.
 Each document is simply a bit of text that you found on the web (or elsewhere).
@@ -95,10 +95,21 @@ And via libraries, you can also have access to newspaper articles from many outl
 <!-- Do not translate this code -->
 <a id="count"/>
 
-## 2. Count the words
+## 2. How to use: Count the words
 
-test test
+TODO
 
+<!-- Do not translate this code -->
+<a id="network"/>
 
-<!-- ![Vandolie Logo](/vandolie/img/vandolie-logo.svg) -->
-<!-- <img class="" src="/vandolie/img/vandolie-logo.svg" alt="Vandolie Logo"> -->
+## 3. How to use: Co-word network
+
+TODO
+
+<!-- Do not translate this code -->
+<a id="semantic"/>
+
+## 4. How to use: Semantic map
+
+TODO
+

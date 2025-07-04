@@ -1,7 +1,7 @@
 import { useStorage } from "@ouestware/hooks";
 import { SigmaContainer } from "@react-sigma/core";
 import { type FC, useMemo } from "react";
-import { BsStack } from "react-icons/bs";
+import { BsStack, BsQuestionCircle } from "react-icons/bs";
 
 import { STORAGE_KEYS } from "../../core/consts.ts";
 import { useAppContext } from "../../core/context.ts";
@@ -24,7 +24,12 @@ export const NetworkComponent: FC = () => {
     <main>
       <div className="container bg-body pb-4">
         <div className="container pt-4">
-          <h1>{t("network-title")}</h1>
+          <h1>
+            {t("network-title")}
+            <a class="btn btn-link" target="_blank" href={`${import.meta.env.BASE_URL}${lang}/how-to-use#network`}>
+              <BsQuestionCircle />
+            </a>
+          </h1>
           <p>
             <BsStack /> {dataset?.documents.length} {t("docs-loaded")}
             <small class="ms-2"><a href={`${import.meta.env.BASE_URL}${lang}/app/data`}>{t("edit")}</a></small>

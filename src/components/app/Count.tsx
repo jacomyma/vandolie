@@ -133,7 +133,12 @@ export const CountComponent: FC = () => {
     <main>
       <div className="container bg-body pb-4">
         <div className="container pt-4">
-          <h1>{t("count-title")} <a class="btn" target="_blank" href={`${import.meta.env.BASE_URL}${lang}/how-to-use#count`}><BsQuestionCircle /></a></h1>
+          <h1>
+            {t("count-title")}
+            <a class="btn btn-link" target="_blank" href={`${import.meta.env.BASE_URL}${lang}/how-to-use#count`}>
+              <BsQuestionCircle />
+            </a>
+          </h1>
           <p>
             <BsStack /> {dataset?.documents.length} {t("docs-loaded")}
             <small class="ms-2"><a href={`${import.meta.env.BASE_URL}${lang}/app/data`}>{t("edit")}</a></small>
