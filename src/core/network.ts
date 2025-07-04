@@ -87,7 +87,7 @@ export function makeNetwork(
     // Tokenize: convert to lowercase, remove punctuation, split by whitespace
     const tokens = doc
       .toLowerCase()
-      .replace(/[^\p{L}\s]/gu, "")
+      .replace(/[^\p{L}\s-]/gu, "")
       .split(/\s+/);
     // Add to vocabulary
     tokens.forEach((token) => vocabulary.add(token));
