@@ -2,10 +2,11 @@ import { getAsyncMemoData, useAsyncMemo, useStorage } from "@ouestware/hooks";
 import { FeatureExtractionPipeline, pipeline } from "@xenova/transformers";
 import Graph from "graphology";
 import { keyBy, sortBy } from "lodash";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import type { Coordinates } from "sigma/types";
 import { UMAP } from "umap-js";
 
+import { DEFAULT_COLOR, DEFAULT_PALETTE } from "./colors.ts";
 import { type Dataset, type Document, STORAGE_KEYS } from "./consts.ts";
 
 type EmbeddedDocument = {
@@ -146,10 +147,7 @@ export function useUMAP(embeddedDocuments?: { document: Document; features: numb
 
 export function getGraph(
   projectedDocuments?: ProjectedDocument[],
-  {
-    palette = ["#777acd", "#cab21f", "#5ba965", "#ca5e4a", "#c55a9f"],
-    paletteDefault = "#919191",
-  }: { palette?: string[]; paletteDefault?: string } = {},
+  { palette = DEFAULT_PALETTE, paletteDefault = DEFAULT_COLOR }: { palette?: string[]; paletteDefault?: string } = {},
 ): DocumentsGraph {
   const graph = new Graph<DocumentNode>();
   if (!projectedDocuments?.length) return graph;
