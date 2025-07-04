@@ -54,7 +54,7 @@ export const NetworkComponent: FC = () => {
                   onChange={(e) => setOptions((o) => ({ ...o, includeTitle: e.target.checked }))}
                 />
                 <label className="form-check-label" htmlFor="settings-include-title">
-                  {"network-1-settings-include-title"}
+                  {t("network-1-settings-include-title")}
                 </label>
               </div>
 
