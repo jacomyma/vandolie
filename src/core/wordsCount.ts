@@ -1,4 +1,4 @@
-import { sortBy, toPairs } from "lodash";
+import { sortBy, toPairs, keyBy } from "lodash";
 import stopWordsISO from "stopwords-iso/stopwords-iso.json";
 
 import { DEFAULT_COLOR, DEFAULT_PALETTE } from "./colors.ts";
@@ -105,20 +105,24 @@ export function countCategories(
   { palette = DEFAULT_PALETTE, paletteDefault = DEFAULT_COLOR }: { palette?: string[]; paletteDefault?: string } = {},
 ) {
   // Compute categories
-  const categoriesCounts: Record<string, number> = {};
-  documents.forEach(({ category }) => {
-    categoriesCounts[category] = (categoriesCounts[category] || 0) + 1;
+
+  const categoriesIndex: Record<string, number> = {};
+  documents.forEach((document) => {
+    categoriesIndex[document.category] = (categoriesIndex[document.category] || 0) + 1;
   });
-  const categories = sortBy(toPairs(categoriesCounts), 1)
-    .reverse()
-    .map((entry, i) => {
-      return { id: entry[0], count: entry[1], matches: 0, color: palette[i] || paletteDefault };
-    })
-    .reverse();
+  const categories = keyBy(
+    sortBy(Object.entries(categoriesIndex), [(d) => -d[1], 0]).map(([id, count], i) => ({
+      id,
+      count,
+      matches:0,
+      color: palette[i] || paletteDefault,
+    })),
+    "id",
+  );
+  const categoriesSorted = sortBy(Object.values(categories), ["id"]).reverse();
 
   if (query) {
-    // Note: in order of the categories, from the most to the least represented
-    categories.forEach((cat) => {
+    categoriesSorted.forEach((cat) => {
       documents
         .filter(({ category }) => category == cat.id)
         .forEach(({ text }) => {
@@ -127,5 +131,5 @@ export function countCategories(
     });
   }
 
-  return categories;
+  return categoriesSorted;
 }

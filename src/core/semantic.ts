@@ -157,7 +157,7 @@ export function getGraph(
     categoriesIndex[category] = (categoriesIndex[category] || 0) + 1;
   });
   const categories = keyBy(
-    sortBy(Object.entries(categoriesIndex), [(d) => -d[1]]).map(([id, count], i) => ({
+    sortBy(Object.entries(categoriesIndex), [(d) => -d[1], 0]).map(([id, count], i) => ({
       id,
       count,
       color: palette[i] || paletteDefault,

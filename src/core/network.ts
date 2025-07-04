@@ -1,5 +1,6 @@
 import { UndirectedGraph } from "graphology";
 import louvain from "graphology-communities-louvain";
+import { color, rgb } from "d3-color";
 import forceAtlas2 from "graphology-layout-forceatlas2";
 import { filter, keyBy, sortBy, uniq } from "lodash";
 import stopWordsISO from "stopwords-iso/stopwords-iso.json";
@@ -66,6 +67,20 @@ export function makeNetwork(
     ? dataset.documents.map((d) => d.title + " \n" + d.text)
     : dataset.documents.map((d) => d.text);
 
+  // Step 0: keep track of categories
+  const categoriesIndex: Record<string, number> = {};
+  dataset.documents.forEach((document) => {
+    categoriesIndex[document.category] = (categoriesIndex[document.category] || 0) + 1;
+  });
+  const categories = keyBy(
+    sortBy(Object.entries(categoriesIndex), [(d) => -d[1]], 0).map(([id, count], i) => ({
+      id,
+      count,
+      color: palette[i] || paletteDefault,
+    })),
+    "id",
+  );
+  
   // Step 1: Tokenize and create vocabulary
   const vocabulary = new Set<string>();
   const tokenizedDocs = documents.map((doc) => {
@@ -100,11 +115,20 @@ export function makeNetwork(
 
   // Step 4: Count total occurrences per word
   const vocabularyCounts = vocabularyArray.map((token, index) => {
-    return { index, token, count: 0 };
+    // Init categories mix
+    let mix = Object.fromEntries(
+        Object.keys(categories).map(key => [key, 0])
+    );
+    return { index, token, count: 0, mix:mix };
   });
-  bagOfWords.forEach((counts) => {
+  bagOfWords.forEach((counts, idoc) => {
+    const cat = dataset.documents[idoc].category
     counts.forEach((count, i) => {
-      vocabularyCounts[i].count += count;
+      const vc = vocabularyCounts[i];
+      vc.count += count;
+      if (count>0) {
+        vc.mix[cat]++;
+      }
     });
   });
 
@@ -154,11 +178,21 @@ export function makeNetwork(
   // Step 9: Create the network
   const graph = new UndirectedGraph();
   filteredVocabularyData.forEach((d) => {
+
+    // Determine rgb blend from categories mix
+    const colorCats = Object.keys(d.mix).map((cat) => { return {color: color(categories[cat].color), count: d.mix[cat]} });
+    const total = colorCats.map((d) => d.count).reduce((acc, num) => acc + num, 0);
+    const rgb_ = ['r', 'g', 'b'].map((channel) => {
+      return colorCats.map((d) => { return Math.floor(d.color[channel] * d.count / total) }).reduce((acc, num) => acc + num, 0);
+    })
+    const col = rgb(rgb_[0], rgb_[1], rgb_[2]).hex()
+
     graph.addNode(d.token, {
       label: d.token,
       x: Math.random() * 100 - 50,
       y: Math.random() * 100 - 50,
       size: 1 + Math.log(1 + 3 * d.count),
+      color: col,
     });
   });
 
@@ -181,20 +215,20 @@ export function makeNetwork(
     });
   }
 
-  // Step 10: Compute Louvain
-  const nodesModularityClasses = louvain(graph);
-  const communitiesSizes: Record<string, number> = {};
-  Object.entries(nodesModularityClasses).forEach(([_node, modularityClass]) => {
-    communitiesSizes[modularityClass] = (communitiesSizes[modularityClass] || 0) + 1;
-  });
+  // // Step 10: Compute Louvain
+  // const nodesModularityClasses = louvain(graph);
+  // const communitiesSizes: Record<string, number> = {};
+  // Object.entries(nodesModularityClasses).forEach(([_node, modularityClass]) => {
+  //   communitiesSizes[modularityClass] = (communitiesSizes[modularityClass] || 0) + 1;
+  // });
 
-  const communities = sortBy(Object.entries(communitiesSizes), [(a) => -a[1]]).map((entry, i) => {
-    return { id: entry[0], count: entry[1], color: palette[i] || paletteDefault };
-  });
-  const communitiesIndex = keyBy(communities, "id");
-  graph.nodes().forEach((nid) => {
-    graph.setNodeAttribute(nid, "color", communitiesIndex[nodesModularityClasses[nid]].color);
-  });
+  // const communities = sortBy(Object.entries(communitiesSizes), [(a) => -a[1]]).map((entry, i) => {
+  //   return { id: entry[0], count: entry[1], color: palette[i] || paletteDefault };
+  // });
+  // const communitiesIndex = keyBy(communities, "id");
+  // graph.nodes().forEach((nid) => {
+  //   graph.setNodeAttribute(nid, "color", communitiesIndex[nodesModularityClasses[nid]].color);
+  // });
 
   // Step 11: Compute Layout
   const fa2Settings = forceAtlas2.inferSettings(graph);
