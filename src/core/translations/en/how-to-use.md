@@ -20,15 +20,15 @@ Click on "Get started" in the menu to load the "Documents" page.
 
 **If you just want to see the tool in action**, load an example from the menu at the bottom of the screen.
 
-<img class="w-25 border vdl-pic" src="/vandolie/img/screenshots/en/dataset-load-example.png" alt="Add document">
+<img class="border vdl-pic pic-w-250" src="/vandolie/img/screenshots/en/dataset-load-example.png" alt="Add document">
 
 **If you want to make your own corpus**, then click on "Add document" to start editing your first document.
 
-<img class="w-25 border vdl-pic" src="/vandolie/img/screenshots/en/dataset-add-doc.png" alt="Add document">
+<img class="border vdl-pic pic-w-250" src="/vandolie/img/screenshots/en/dataset-add-doc.png" alt="Add document">
 
 This will open an interface to edit your first document.
 
-<img class="w-25 border vdl-pic" src="/vandolie/img/screenshots/en/dataset-doc-empty.png" alt="Empty document">
+<img class="border vdl-pic pic-w-250" src="/vandolie/img/screenshots/en/dataset-doc-empty.png" alt="Empty document">
 
 A document consists of three parts:
 
@@ -50,21 +50,51 @@ Once you have filled all three parts, you can save your document by clicking on 
 
 You can create as many documents as you want.
 
-<img class="w-100 border vdl-pic" src="/vandolie/img/screenshots/en/dataset-saved-docs.png" alt="3 documents">
+<img class="border vdl-pic pic-w-1000" src="/vandolie/img/screenshots/en/dataset-saved-docs.png" alt="3 documents">
 
-We think you need at least 10 documents, but 20 is a better number. You could go up to 50, or more if your computer is powerful (it will take more time to compute).
+We think you need at least 10 documents, but 20 is a better number. You could go up to 50, or more if your computer is powerful enough (it will take more time to compute).
 
 **Click on a saved to enter edit mode again.** You can change it, or even delete it. Remember to save (or cancel) your changes.
 
-<img class="w-100 border vdl-pic" src="/vandolie/img/screenshots/en/dataset-saved-docs-edit.png" alt="3 documents">
+<img class="border vdl-pic pic-w-1000" src="/vandolie/img/screenshots/en/dataset-saved-docs-edit.png" alt="3 documents with one in edit mode">
 
 You can **save your dataset** by clicking on the "Save (CSV)" button. You will be able to upload it later on, or share it with other people.
 
-**Once you are ready... TODO**
+**Once your corpus is ready, click on one of the three algorithms available** just below your set of documents. They do different things. You can try them all. You will be able to come back to your documents and edit them if you want.
 
+<img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/en/dataset-actions.png" alt="3 algorithms">
 
+### Where to find documents and how to decide categories?
 
+First of all, you can just try the tool and experiment with it to understand why categories matter. Feel free to **experiment**.
 
+That being said, you will obtain the best results if, first, you can find documents that naturally separate in two parts, like water and oil; second, that your categories reflect these two parts; and third, that it is not completely obvious that the two groups are well separated.
+
+If you add two groups of documents that are completely different, for instance articles about cheese and articles about sailing, they will separate but that is not interesting because we know for sure that they will. Maybe that would be interesting if they did *not* separate.
+
+**The good documents and categories should always be a little bit surprising.** If you add two groups of documents where it is hard to know if they will be the same or not, then it is interesting. It provides a new information, because we did not know. You will find examples below.
+
+The documents and the categories go together. Select them to make an interesting **comparison**. Think of them as a way to ask question such as: "Do you think that documents A and documents B are similar or different?" And of course, that question is interesting if it does not have an obvious answer. The algorithms will allow you to find and answer to the question you ask.
+
+You could **compare how we talk of two similar things**. For example, you could compare how we talk about two religions, or men and women, or two nationalities, etc. That could be a way to look into discrimination. For instance, you could compare Wikipedia articles about male pop artists with Wikipedia articles about female pop artists. This would ask the question: "Are Wikipedia articles about male and female pop artists different or the same?" The answer is not obvious because, on the one hand, they are all pop artists, but on the other hand, they are men and women. So it is an interesting thing to look at.
+
+You could also **compare how two different media write about the same thing**. You could compare how left-wing newspapers and right-wing newspapers write about the same subject, for instance immigration, the European Union, or nuclear energy. Or you could compare how a same topic is discussed on social media (Reddit, Facebook...) versus on mainstream media (newspapers, TV channels...). Or you could compare local press and national press, or the local press in one region and in another region, etc.
+
+There are yet other ways to make interesting comparisons, like old articles versus new articles (ex: before and after Covid), science versus popular culture, etc. Be creative!
+
+The important is to pick documents that have the difference you aim to compare, but no other difference. If you compare documents from two media, keep a same topic; conversely, if you compare two topics, pick documents from the same media or similar ones.
+
+In this tool, **a document can be any text**. Don't be afraid to copy-paste texts that don't look like traditional documents, for example discussions on social media. Not every document has to look serious and official. It depends on what you want to compare. What normal people say over the internet also counts as a information worth analyzing.
+
+You will find documents in many public websites: [Wikipedia](https://www.wikipedia.org/), the [Internet Movie Database](https://www.imdb.com/), [Fandom](https://www.fandom.com/)...
+
+You can also use social media such as [Reddit](https://www.reddit.com/), [YouTube](https://www.youtube.com/) (look at the comments), etc.
+
+And via libraries, you can also have access to newspaper articles from many outlets. Those are normally behind a paywall, but libraries often provide a special free access to them.
+
+## 2. Count the words
+
+test test
 
 
 <!-- ![Vandolie Logo](/vandolie/img/vandolie-logo.svg) -->
