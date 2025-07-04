@@ -125,6 +125,11 @@ const translations: Record<string, Translation> = {
 
   // "Count the words" page:
   "count-title": "Tæl ordene",
+  "count-intro": (
+    <>
+      <strong>Søg efter et ord</strong>, eller klik på et af de øverste ord for at se, hvor mange dokumenter det optræder i inden for hver kategori.
+    </>
+  ),
   "count-settings": "Indstillinger: hvilket ord skal tælles?",
   "count-query-placeholder": "Ord at søge efter og tælle",
   "count-search-and-count": "Søg og tæl",
