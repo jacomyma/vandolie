@@ -1,6 +1,6 @@
 import { SigmaContainer, useRegisterEvents, useSigma } from "@react-sigma/core";
 import { type FC, useEffect, useMemo, useState } from "react";
-import { BsStack } from "react-icons/bs";
+import { BsStack, BsCpuFill } from "react-icons/bs";
 
 import { useAppContext } from "../../core/context.ts";
 import { type DocumentNode, getGraph, useEmbedding, useExtractor, useUMAP } from "../../core/semantic.ts";
@@ -50,7 +50,7 @@ export const SemanticComponent: FC = () => {
 
           {/* Load bars (in a card) */}
           <div className="card">
-            <div className="card-header">{t("semantic-compute")}</div>
+            <div className="card-header"><BsCpuFill /> {t("semantic-compute")}</div>
             <div className="card-body">
               <div className="progress mb-1" role="progressbar">
                 <div

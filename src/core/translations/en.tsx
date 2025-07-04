@@ -215,7 +215,7 @@ const translations: Record<string, Translation> = {
 
   // "Semantic map" page:
   "semantic-title": "Semantic map",
-  "semantic-compute": "🧠 Compute",
+  "semantic-compute": "Compute",
   "semantic-embedding-progress": (props) => (
     <>
       {props.processed}/{props.total} documents embedded
