@@ -92,6 +92,9 @@ You can also use social media such as [Reddit](https://www.reddit.com/), [YouTub
 
 And via libraries, you can also have access to newspaper articles from many outlets. Those are normally behind a paywall, but libraries often provide a special free access to them.
 
+<!-- Do not translate this code -->
+<a id="count"/>
+
 ## 2. Count the words
 
 test test
