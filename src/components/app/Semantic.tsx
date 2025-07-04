@@ -70,9 +70,9 @@ export const SemanticComponent: FC = () => {
                 </div>
               </div>
               <div className="progress" role="progressbar">
-                <div className="progress-bar" style={{ width: projectionProgress * 100 + "%" }} id="umap-progress-bar">
+                <div className="progress-bar" style={{ width: Math.round(projectionProgress * 100) + "%" }} id="umap-progress-bar">
                   {t("semantic-umap-progress", {
-                    progress: projectionProgress * 100,
+                    progress: Math.round(projectionProgress * 100),
                   })}
                 </div>
               </div>
