@@ -91,6 +91,7 @@ const translations: Record<string, Translation> = {
       og vælg en kategori. Vi anbefaler 10 til 50 dokumenter, og 2 til 5 forskellige kategorier.
     </>
   ),
+  "data-method-help": "👉 Hvor finder man dokumenter, og hvordan beslutter man kategorier?",
   "data-add-document": "Tilføj dokument",
   "data-doc-title": "Dokumenttitel",
   "data-doc-category": "Kategori",

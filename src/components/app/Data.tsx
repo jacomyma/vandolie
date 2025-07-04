@@ -136,7 +136,11 @@ export const DataComponent: FC = () => {
             <p>
               <BsStack /> {dataset?.documents.length} {t("docs-loaded")}
             </p>
-            <p>{t("data-intro")}</p>
+            <p>
+              {t("data-intro")}
+              <br/>
+              <a target="_blank" href={`${import.meta.env.BASE_URL}${lang}/how-to-use#method-help`}>{t("data-method-help")}</a>
+            </p>
           </div>
 
           <div className="container pb-4">

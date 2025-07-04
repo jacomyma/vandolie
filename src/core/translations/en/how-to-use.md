@@ -64,6 +64,9 @@ You can **save your dataset** by clicking on the "Save (CSV)" button. You will b
 
 <img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/en/dataset-actions.png" alt="3 algorithms">
 
+<!-- Do not translate this code -->
+<a id="method-help"/>
+
 ### Where to find documents and how to decide categories?
 
 First of all, you can just try the tool and experiment with it to understand why categories matter. Feel free to **experiment**.

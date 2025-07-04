@@ -91,6 +91,7 @@ const translations: Record<string, Translation> = {
       choose a category. We recommend 10 to 50 documents, and 2 to 5 different categories.
     </>
   ),
+  "data-method-help": "👉 Where to find documents and how to decide categories?",
   "data-add-document": "Add document",
   "data-doc-title": "Document title",
   "data-doc-category": "Category",
