@@ -101,7 +101,7 @@ export const SemanticComponent: FC = () => {
                 <div className="h-100 overflow-y-auto">
                   <h3>{selectedNode.document.title}</h3>
                   <p>
-                    <span className="badge text-bg-secondary">Category {selectedNode.document.category}</span>
+                    <span className="badge" style={{ backgroundColor: selectedNode.color }}>{selectedNode.document.category}</span>
                   </p>
                   <p>{selectedNode.document.text}</p>
                 </div>
