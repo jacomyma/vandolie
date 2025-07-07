@@ -27,7 +27,10 @@ export function getEmptyDataset(): Dataset {
   };
 }
 
-export const SAMPLES = [{ url: `${import.meta.env.BASE_URL}data/sample-1.csv`, title: "Sample 1" }];
+export const SAMPLES = [
+  { url: `${import.meta.env.BASE_URL}data/Folkedrab.csv`, title: "🇩🇰 Avisartikler om folkedrab" },
+  { url: `${import.meta.env.BASE_URL}data/Male and female pop artists on Wikipedia.csv`, title: "🇬🇧 Wikipedia - Male and female pop artists" },
+];
 
 /**
  * Local storage management
