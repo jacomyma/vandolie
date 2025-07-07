@@ -22,10 +22,10 @@ export type NetworkOptions = {
 export const DEFAULT_NETWORK_OPTIONS: NetworkOptions = {
   includeTitle: false,
   multiPerDoc: false,
-  stopWordsEN: false,
+  stopWordsEN: true,
   stopWordsDK: true,
-  removeOrphans: false,
-  usePmi: false,
+  removeOrphans: true,
+  usePmi: true,
   threshold: 3,
   cooccurrenceThreshold: 0,
 };
