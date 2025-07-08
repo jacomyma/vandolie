@@ -142,10 +142,11 @@ export function makeNetwork(
   let stopWords: string[] = [];
   if (stopWordsEN) stopWords = stopWords.concat(stopWordsISO.en); // Add English stop words
   if (stopWordsDK) stopWords = stopWords.concat(stopWordsISO.da); // Add Danish stop words
-  stopWords = stopWords.map((token) => token.replace(/[^\p{L}\s]/gu, "")).filter((d) => d.length > 0); // Remove punctuation
+  stopWords = stopWords.map((token) => token.replace(/[^\p{L}\s-]/gu, "")).filter((d) => d.length > 0); // Remove punctuation
   stopWords.sort();
+  let glitchStopWords: string[] = ["", " ", "-"];
   vocabularyData.forEach((d) => {
-    d.keep = d.keep && stopWords.indexOf(d.token) < 0;
+    d.keep = d.keep && stopWords.indexOf(d.token) < 0 && glitchStopWords.indexOf(d.token) < 0;
   });
   const filteredVocabularyData = vocabularyData.filter((d) => d.keep);
 
