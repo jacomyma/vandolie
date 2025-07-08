@@ -110,6 +110,56 @@ By default, this will not count the exact word, but any word that contains it. F
 
 <img class="border vdl-pic pic-w-250" src="/vandolie/img/screenshots/en/count-exact.png" alt="Exact word button">
 
+Alternatively, click on one of the **top words** to search for it. Those are defined as the 25 words appearing in the largest number of documents, stop words aside. The number in parentheses indicates in how many documents they appear.
+
+<img class="border vdl-pic pic-w-1000" src="/vandolie/img/screenshots/en/count-topwords.png" alt="Top word buttons">
+
+*Note: you can find other good words to analyze in "Co-word network".*
+
+### Word counting results
+
+Your search will show you the result of counting how many documents contain your word in two ways.
+
+*First*, a bar chart displaying the percentage of documents mentioning your query for each category. The bigger the bar for each category, the largest proportion of documents in that category mention the word you queried.
+
+<img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/en/count-barchart1.png" alt="Bar chart">
+
+*Second*, details about where the word is mentioned in each document (if it is).
+
+<img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/en/count-details.png" alt="Details about each document">
+
+Use those details to verify that your query works as intended.
+
+### Try to find words that match only one category
+
+The interesting words are those appearing in only one of those categories, and not the other. These words characterize a specific category.
+
+Here is an example with the dataset about male and female pop artists on Wikipedia, which is one of the sample datasets you can try.
+
+The word "he" is only present in the descriptions of male artists...
+
+<img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/en/count-barchart2.png" alt="Bar chart">
+
+...while the word "she" is (almost) only present in the descriptions of female artists.
+
+<img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/en/count-barchart3.png" alt="Bar chart">
+
+*Note: this only works if you search for the **exact word**, since of course "he" is contained in "she"!*
+
+This example may be too obvious to be really interesting, but it shows you what it means, for a word, to be characteristic of a single category. The next examples, with the same dataset, might be more interesting.
+
+The word "band" is mostly associated with male artists. Perhaps more of them play in a band than female artists?
+
+<img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/en/count-barchart4.png" alt="Bar chart">
+
+The word "highest-paid" is mostly associated with female artists. Perhaps the success of female artists is more often measured with money than the success of male artists?
+
+<img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/en/count-barchart5.png" alt="Bar chart">
+
+This algorithm does not give you a definitive answer, but it helps asking interesting questions.
+
+To find interesting words, use the next algorithm, "Co-word network", and look for words colored strongly like one specific category.
+
 <!-- Do not translate this code -->
 <a id="network"/>
 
