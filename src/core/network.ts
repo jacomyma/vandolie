@@ -133,10 +133,10 @@ export function makeNetwork(
   });
 
   // Step 5: Remove words per threshold
-  const vocabularyData = sortBy(vocabularyCounts, [(o) => -o.count, "token"]).map((o) => ({
+  const vocabularyData = sortBy(sortBy(vocabularyCounts, [(o) => -o.count, "token"]).map((o) => ({
     ...o,
     keep: o.count > threshold,
-  }));
+  })), "index")
 
   // Step 6: Remove stop words
   let stopWords: string[] = [];
@@ -153,6 +153,7 @@ export function makeNetwork(
   // Step 7: Count co-occurrences
   const allCooccurrences: Record<string, number> = {};
   bagOfWords.forEach((counts) => {
+
     for (let i in counts) {
       if (vocabularyData[i].keep && counts[i] > 0) {
         for (let j in counts) {
