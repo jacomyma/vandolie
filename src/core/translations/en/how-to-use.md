@@ -71,11 +71,14 @@ You can **save your dataset** by clicking on the "Save (CSV)" button. You will b
 
 First of all, you can just try the tool and experiment with it to understand why categories matter. Feel free to **experiment**.
 
-That being said, you will obtain the best results if, first, you can find documents that naturally separate in two parts, like water and oil; second, that your categories reflect these two parts; and third, that it is not completely obvious that the two groups are well separated.
+That being said, you will obtain the best results at three conditions:
+1. Find **documents** that **naturally separate** into two parts, like water and oil.
+2. Pick **categories** that **reflect** these two parts.
+3. It should **not** be completely **obvious** that the two groups are well separated.
 
 If you add two groups of documents that are completely different, for instance articles about cheese and articles about sailing, they will separate but that is not interesting because we know for sure that they will. Maybe that would be interesting if they did *not* separate.
 
-**The good documents and categories should always be a little bit surprising.** If you add two groups of documents where it is hard to know if they will be the same or not, then it is interesting. It provides a new information, because we did not know. You will find examples below.
+The **good documents and categories** should always be **a little bit surprising.** If you add two groups of documents where it is hard to know if they will be the same or not, then it is interesting. It provides a new information, because we did not know. You will find examples below.
 
 The documents and the categories go together. Select them to make an interesting **comparison**. Think of them as a way to ask question such as: "Do you think that documents A and documents B are similar or different?" And of course, that question is interesting if it does not have an obvious answer. The algorithms will allow you to find and answer to the question you ask.
 
@@ -165,7 +168,39 @@ To find interesting words, use the next algorithm, "Co-word network", and look f
 
 ## 3. How to use: Co-word network
 
-TODO
+This algorithm makes a network of **words connected when they appear in the same documents**. Let's look at the resulting network before returning to the settings.
+
+If you have two very different kinds of documents, the network will have two distinct parts. In the example below, you have the words from BBC news articles about fishing (in blue) and about trains (in yellow). As fishing and trains have nothing in common, the network separates quite well.
+
+<img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/en/network-1.png" alt="Example network">
+
+*Note: there is a word that connects the blue part to the yellow part. We call it a "bridge". It is one of the rare things the two kinds of documents have in common. In this case, it is the word "future".*
+
+If your documents are relatively similar, the network will not look like it has distinct parts. In the example below, you have the words from Wikipedia articles about male (blue) and female (yellow) pop artists. The articles are very similar, and most of the words are the same ("award", "grammy", "artist"...).
+
+<img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/en/network-2.png" alt="Example network">
+
+Nevertheless, if you look closely, you will see that there is a more blue side (on the left) and a more yellow side (on the right). That is because there are still some differences even though the documents are very similar.
+
+The network helps you **find words** that are **specific to one category**, and words that are connecting the categories ("**bridges**").
+
+You can reuse interesting words as queries in the "count the word" algorithm.
+
+If your documents are very similar and it looks like your categories do not separate well, also try the third algorithm "semantic map", as it is even better at finding differences. However, the semantic map visualizes documents, while this network visualizes words.
+
+## How to use network settings
+
+This algorithm is also just counting the words, except in a more fancy way than the "count the words" algorithms. Sometimes, there are different ways to count. That is why there are settings: you could decide to count one way or another. You can just try different settings and look at the results to explore the algorithm!
+
+#### Settings about counting word occurrences
+
+Should the title be analyzed as part of the text, or not? If you have invented the title of your documents, then you should probably not use it as part of the text. But if the title was actually from the document, for instance with newspaper articles, then it's a good idea to include it.
+
+<img class="border vdl-pic pic-w-250" src="/vandolie/img/screenshots/en/network-setting-includetitle.png" alt="Include title setting">
+
+
+
+
 
 <!-- Do not translate this code -->
 <a id="semantic"/>
