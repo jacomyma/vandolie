@@ -28,9 +28,10 @@ export function getEmptyDataset(): Dataset {
 }
 
 export const SAMPLES = [
-  { url: `${import.meta.env.BASE_URL}data/Folkedrab.csv`, title: "🇩🇰 Avisartikler om folkedrab" },
-  { url: `${import.meta.env.BASE_URL}data/Male and female pop artists on Wikipedia.csv`, title: "🇬🇧 Wikipedia - Male and female pop artists" },
   { url: `${import.meta.env.BASE_URL}data/Fishing and Trains.csv`, title: "🇬🇧 BBC - Fishing & trains" },
+  { url: `${import.meta.env.BASE_URL}data/Male and female pop artists on Wikipedia.csv`, title: "🇬🇧 Wikipedia - Male and female pop artists" },
+  { url: `${import.meta.env.BASE_URL}data/Mænd og kvinder popartister på Wikipedia.csv`, title: "🇩🇰 Wikipedia - Mænd og kvinder popartister" },
+  { url: `${import.meta.env.BASE_URL}data/Folkedrab.csv`, title: "🇩🇰 Avisartikler om folkedrab" },
 ];
 
 /**

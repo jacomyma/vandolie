@@ -60,6 +60,8 @@ We think you need at least 10 documents, but 20 is a better number. You could go
 
 You can **save your dataset** by clicking on the "Save (CSV)" button. You will be able to upload it later on, or share it with other people.
 
+<img class="border vdl-pic pic-w-250" src="/vandolie/img/screenshots/en/dataset-save-csv.png" alt="Save CSV">
+
 **Once your corpus is ready, click on one of the three algorithms available** just below your set of documents. They do different things. You can try them all. You will be able to come back to your documents and edit them if you want.
 
 <img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/en/dataset-actions.png" alt="3 algorithms">
