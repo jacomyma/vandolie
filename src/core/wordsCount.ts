@@ -39,7 +39,7 @@ export function computeTopWords(dataset: Dataset, exactWordsOnly: boolean) {
     // Tokenize: convert to lowercase, remove punctuation, split by whitespace
     const tokens = doc
       .toLowerCase()
-      .replace(/[^\p{L}\s]/gu, "")
+      .replace(/[^\p{L}\s-]/gu, "")
       .split(/\s+/);
 
     // Add to vocabulary
@@ -51,14 +51,16 @@ export function computeTopWords(dataset: Dataset, exactWordsOnly: boolean) {
   let stopWords: string[] = [];
   stopWords = stopWords.concat(stopWordsISO.en); // Add English stop words
   stopWords = stopWords.concat(stopWordsISO.da); // Add Danish stop words
-  stopWords = stopWords.map((token) => token.replace(/[^\p{L}\s]/gu, "")).filter((d) => d.length > 0); // Remove punctuation
-
+  stopWords = stopWords.map((token) => token.replace(/[^\p{L}\s-]/gu, "")).filter((d) => d.length > 0); // Remove punctuation
+  let glitchStopWords: string[] = ["", " ", "-"];
+  
   // Truncation
   const top = 25;
 
   // Count (efficient)
   let topWords = Array.from(vocabulary)
     .filter((w) => stopWords.indexOf(w) < 0)
+    .filter((w) => glitchStopWords.indexOf(w) < 0)
     .map((w) => {
       const c = tokenizedDocs.filter((tokens) => {
         return tokens.indexOf(w) >= 0;

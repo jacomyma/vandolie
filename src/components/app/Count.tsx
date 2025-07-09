@@ -83,13 +83,13 @@ const CategoriesChart = withSize<{ categories: ReturnType<typeof countCategories
         .enter()
         .append("text")
         .attr("y", (d) => y(d.id)! + y.bandwidth() / 2)
-        .attr("x", (d) => x(d.present / 2))
+        .attr("x", (d) => (d.present < 50) ? (x(d.present)+6) : x(d.present / 2))
         .attr("dy", "0.35em")
-        .attr("text-anchor", "middle")
-        .style("fill", "white")
+        .attr("text-anchor", (d) => `${(d.present < 50) ? "start" : "middle"}`)
+        .style("fill", (d) => `${(d.present < 50) ? "#666" : "white"}`)
         .style("font-size", "12px")
         .style("font-weight", "bold")
-        .style("text-shadow", "1px 1px 1px rgba(0,0,0,0.5)")
+        .style("text-shadow", (d) => `${(d.present < 50) ? ("") : ("1px 1px 1px rgba(0,0,0,0.5)")}`)
         .text((d) => `${d.number}/${d.total} = ${d.present.toFixed(0)}%`)
         .style("display", (d) => (d.present < 5 ? "none" : "block"));
     }, [categories, containerWidth]);
@@ -212,7 +212,7 @@ export const CountComponent: FC = () => {
 
         {computed && (
           <div className="container mt-3" style={{ minHeight: 200 }}>
-            <h2>{t("count-by-category")}</h2>
+            <h2>{t("count-by-category")} - &ldquo;{query}&rdquo;</h2>
             <div id="counts-by-category">
               <CategoriesChart categories={computed.categories} />
             </div>
@@ -245,7 +245,7 @@ export const CountComponent: FC = () => {
               )}
             </div>
           </div>
-        )}
+        )}{" "}
       </div>
     </main>
   );
