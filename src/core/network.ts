@@ -133,10 +133,13 @@ export function makeNetwork(
   });
 
   // Step 5: Remove words per threshold
-  const vocabularyData = sortBy(sortBy(vocabularyCounts, [(o) => -o.count, "token"]).map((o) => ({
+  // Note: the "top" version is sorted for display
+  const vocabularyData = sortBy(vocabularyCounts, [(o) => -o.count, "token"]).map((o) => ({
     ...o,
     keep: o.count > threshold,
-  })), "index")
+  }))
+  // Note: this version preserves the original order for algorithmic reasons
+  const vocabularyDataIndex = sortBy(vocabularyData, "index")
 
   // Step 6: Remove stop words
   let stopWords: string[] = [];
@@ -147,6 +150,7 @@ export function makeNetwork(
   let glitchStopWords: string[] = ["", " ", "-"];
   vocabularyData.forEach((d) => {
     d.keep = d.keep && stopWords.indexOf(d.token) < 0 && glitchStopWords.indexOf(d.token) < 0;
+    vocabularyDataIndex[d.index].keep = d.keep
   });
   const filteredVocabularyData = vocabularyData.filter((d) => d.keep);
 
@@ -155,10 +159,10 @@ export function makeNetwork(
   bagOfWords.forEach((counts) => {
 
     for (let i in counts) {
-      if (vocabularyData[i].keep && counts[i] > 0) {
+      if (vocabularyDataIndex[i].keep && counts[i] > 0) {
         for (let j in counts) {
-          if (i < j && vocabularyData[j].keep && counts[j] > 0) {
-            const pair = vocabularyData[i].token + "|" + vocabularyData[j].token;
+          if (i < j && vocabularyDataIndex[j].keep && counts[j] > 0) {
+            const pair = vocabularyDataIndex[i].token + "|" + vocabularyDataIndex[j].token;
             if (multiPerDoc) {
               allCooccurrences[pair] = (allCooccurrences[pair] || 0) + Math.min(counts[i], counts[j]);
             } else {
