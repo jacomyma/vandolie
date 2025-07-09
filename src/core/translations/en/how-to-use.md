@@ -194,13 +194,84 @@ This algorithm is also just counting the words, except in a more fancy way than 
 
 #### Settings about counting word occurrences
 
-Should the title be analyzed as part of the text, or not? If you have invented the title of your documents, then you should probably not use it as part of the text. But if the title was actually from the document, for instance with newspaper articles, then it's a good idea to include it.
+The first step is simply about counting the words, essentially the same way as the first algorithm.
 
 <img class="border vdl-pic pic-w-250" src="/vandolie/img/screenshots/en/network-setting-includetitle.png" alt="Include title setting">
 
+Should the title be analyzed as part of the text, or not? If you have invented the title of your documents, then you should probably not use it as part of the text. But if the title was actually from the document, for instance with newspaper articles, then it's a good idea to include it.
 
+<img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/en/network-setting-howtocount.png" alt="How to count the words">
 
+How to count the words? We have two options.
 
+1. Count them **once per document**, not matter how many times they appear in that document.
+2. Count **how many times** they appear **in total**, including when they appear multiple times in a same document.
+
+We think that the first option works better, but you can try the other one. It's interesting to look at the effect it produces.
+
+With the first option, the highest score is the number of documents in your dataset.
+
+<img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/en/network-setting-count-1.png" alt="One count per word per document">
+
+With the second option, the highest score is much higher, as some words appear many times in a same document.
+
+<img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/en/network-setting-count-2.png" alt="Multiple counts per word per document">
+
+As you can see by comparing the results, the words with the highest score are not the same.
+
+#### Settings about removing unnecessary words
+
+We call "stop words" the words of a language that we don't find interesting. Those are the tool words we use to make sentences work, but that do not carry much meaning because they are everywhere, all the time. For example "the", "of", or "and". 
+
+<img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/en/network-setting-stopwords.png" alt="Stop words">
+
+The stop words are not the same in different languages. This tool has a stop words list for each language it supports. Use the list corresponding to the language of your documents.
+
+The words with the highest count tend to be stop words, as you can see above. Which is why we want to remove them. Once stop words removed, the top words are more interesting:
+
+<img class="border vdl-pic pic-w-250" src="/vandolie/img/screenshots/en/network-setting-remainingwords.png" alt="Remaining words">
+
+In addition to that, we also want to remove the words that do not appear often *enough*.
+
+<img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/en/network-setting-threshold.png" alt="Remove words appearing too rarely">
+
+Use that setting to make your network bigger or smaller, which depends on how many documents you have, and how long they are.
+
+On the one hand, we don't need the network to be too big (slower to compute, more difficult to read). But on the other hand, if you keep words that appear less often, the network will be less interesting (because the separation pattern will be weaker). Try finding the best setting!
+
+#### Co-occurrences
+
+Everytime two given words appear together in a document, we say they "co-occur". Therefore, the "co-occurrence" score is counting how strongly two words are connected *in the dataset*.
+
+<img class="border vdl-pic pic-w-250" src="/vandolie/img/screenshots/en/network-cooccurrences.png" alt="Co-occurrence list">
+
+There are no settings, as this calculation is straightforward. But it's interesting to see which pairs co-occur the most. Those pairs will become the links of the network.
+
+#### Settings about displaying the network
+
+The network visualization uses a layout algorithm to position the words in the picture so that they are close when they are connected (that is, when they co-occur). The goal is to make it visible when there are two or more groups of words (clusters) that match the categories. Two settings are used to improve the result, but you can disable them if you want.
+
+The *first improvement* is to *normalize* the co-occurrence scores by using a metric known as [pointwise mutual information](https://en.wikipedia.org/wiki/Pointwise_mutual_information). In short, it helps by taking into account that some of the words are mentioned more often, which makes them more likely to co-occur. On a practical level, it makes the network more readable.
+
+<img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/en/network-setting-pmi.png" alt="Pointwise mutual information setting">
+
+The *second improvement* is to *remove the disconnected words*. Those are rare, but it may happen sometimes. They are distracting and are not very interesting, since they are not linked to any other word, so we can just remove them.
+
+<img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/en/network-setting-orphans.png" alt="Remove orphans setting">
+
+## How to read the co-word network
+
+Each dot is a word, colored according to categories. Each dot has a color blend corresponding to the categories of the documents where it is mentioned the most.
+
+Each white line is a co-occurrence relation between the two connected words.
+
+Two dots (words) that are connected (co-occur) tend to be placed closer through the effect of the layout algorithm [Force Atlas 2](https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0098679). As a result, distinct visual groups, even if they are not completely disconnected, indicate **topics** (a topic being a group of words that tend to be mentioned together).
+
+*Note that **the layout algorithm is "non-deterministic"**: the result varies from one time to another because it requires a randomized initialization. Yet, as you can see if you try, **the clusters (topics) are always the same**. They can be rotated, flipped, or slightly changed, but they will always be the same, have the same size, etc.*
+
+You can move the network view by dragging with the cursor or your finger on a touch screen, and zoom in and out with the scroll wheel, pinch zoom, or equivalent supported by your device. Use it to explore the network and find interesting words.
+
+<img class="border vdl-pic" src="/vandolie/img/screenshots/en/network-zoom-123.png" alt="Zoom levels">
 
 <!-- Do not translate this code -->
 <a id="semantic"/>
