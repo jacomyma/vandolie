@@ -352,7 +352,7 @@ When **colors and clusters match**, which may look like the example below, then 
 
 <img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/semantic-06.jpg" alt="Two clusters color-coded">
 
-#### Anomalies in the map
+#### Anomalies and nuances in the map
 
 Note that real-world datasets are not as well defined as the examples above. *That is even better!* Every time you see an anomaly, you have found something interesting to talk about. *Anomalies are relevant and valuable.*
 
@@ -362,9 +362,16 @@ In the following example, we see two very well separated clusters, which are mos
 
 This dataset contains BBC news about fishing (blue) and trains (yellow), which should have nothing to do with each other. In that sense, it's not surprising that we have two very distinct clusters. But what is going on with the blue dot? We can zoom in and click on the dot to take a look at the document.
 
-<img class="border vdl-pic pic-w-1000" src="/vandolie/img/screenshots/en/semantic-outlier2.png" alt="One outlier">
+<img class="border vdl-pic pic-w-1000" src="/vandolie/img/screenshots/en/semantic-outlier2.png" alt="One outlier, zoomed in">
 
 This reveals something interesting: this article is not about real trains, but toy trains and, importantly, toy boats. This is why the embedding has considered that it was more similar to the news about fishing than to the other train-related news. That is an interesting find!
 
 Also remark that, of all the documents of that cluster, the anomaly is the closest to the other cluster: that is not a coincidence.
 
+If we look at another dataset, the male and female pop artists on Wikipedia, we see that the semantic map has two clusters but they are not very far apart. Of course, that is because the two categories have more in common (being pop artists) than fishing and trains.
+
+<img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/en/semantic-nuanced.png" alt="Nuanced semantic map">
+
+It is not an issue that the two clusters are not completely separate. On the contrary, if we look at the details, we can identify the dots that are the most in-between or the most on the sides. For instance, Taylor Swift is the female artist who is the most similar to the male artists, and Adam Levine is the male artist most similar to female artists. Conversely, Cher is the most different from male artists and Billy Joel is the most different from female artists.
+
+Once again, one cannot find a definitive interpretation for these nuances, but it begs intriguing questions. Semantic maps have a lot of interesting details to analyze.
