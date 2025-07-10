@@ -12,187 +12,193 @@ foo: 'bar'
 
 ## Learning goals
 
-Vandolie addresses 3 main goals:
-1. Allow a discussion about algorithms and information
-2. Allow mapping controversies in a simple way
-3. Empower students for their own projects
+*Vandolie* pursues three main educational objectives:
+1. Enable discussion about algorithms and information processing
+2. Facilitate the mapping of controversies through accessible methods
+3. Empower students to conduct their own research projects
 
+### Understanding Algorithms
 
-The **key message about algorithms** is that **analyzing text is just about counting words in fancy ways**. Vandolie proposes three algorithms, from simple to complicated ways of counting words. With the help of their teacher, the students can understand some of these algorithms, and demystify them.
+The **key message about algorithms** is that **text analysis is fundamentally about counting words in fancy ways**. *Vandolie* offers three algorithms that demonstrate progressively complex word-counting methods. With your guidance, students can understand these algorithms and demystify computational text analysis.
 
-The purpose of these algorithms is to allow you to identify patterns in the content of some documents. The process is not magical. It can be done manually, at least for the simple algorithms. We offer an activity to do it in a fun way, the "**Bingo of words**" (more info below).
+These algorithms help identify patterns in document content through systematic analysis rather than intuition. The process is transparent and can be performed manually, at least for simpler algorithms. We provide a hands-on activity, the "**Bingo of Words**" (detailed below), to demonstrate this principle engagingly.
 
+### Mapping Controversies
 
-The **key message about mapping controversies** is that people disagree because they have **different perspectives and priorities**.
+The **key message about controversy mapping** is that people disagree due to **differing perspectives and priorities**, not fundamental opposition to the same concepts.
 
-Contrary to what one may believe, people rarely have a firm opinion and rarely disagree about whether one specific thing is good or bad. Most of the time, either they don't know, or they agree. Most people don't know if polyfluoroalkyl substances are carcinogen. And most people agree that being healthy and having empathy are good things, while pollution and violence are bad things.
+Contrary to common assumptions, people rarely hold firm opinions about whether specific things are definitively good or bad. Most often, they either lack knowledge or actually agree on basic values. For example, most people don't know whether polyfluoroalkyl substances are carcinogenic, and most agree that health and empathy are positive while pollution and violence are negative.
 
-But people have different priorities. When they think of foie gras, some picture the tasty traditional dishes, while others picture the suffering of the geese. But even food lovers understand the ethical issues with "gavage", and animal rights advocates can acknowledge that foie gras tastes good to many people. They simply have different perspectives and priorities. That is why, when they speak publicly, they will never mention the other sides of the controversy, where they know they would lose the battle. Meat lovers will not try to convince you that geese enjoy force-feeding, because you would not believe it. And similarly, animal welfare advocates will not try to convince you that foie gras taste bad. Instead, the former will tell you about taste and tradition, while the latter will tell you about ethics and animal welfare.
+However, people prioritize different aspects of complex issues. Consider foie gras: some people focus on culinary tradition and taste, while others emphasize animal welfare concerns. Importantly, food enthusiasts generally acknowledge ethical concerns about force-feeding, and animal rights advocates can recognize that many people find foie gras appealing. The difference lies in priorities, not complete disagreement.
 
-At the end of the day, **controversies rarely have proponents and opponents of a same thing**, but rather multiple groups of people who talk about certain aspects of the controversy while actively ignoring others. **The underlying idea with *Vandolie* is to allow you to reveal this kind of pattern with algorithms and visualizations.**
+But communication strategies explain why public discourse often seems polarized. Each side emphasizes their strongest arguments while avoiding topics where they're vulnerable. Meat advocates don't claim geese enjoy force-feeding (because it's unconvincing), while animal welfare advocates don't argue that foie gras tastes bad (because it's irrelevant to their ethical concerns). Instead, the former emphasizes tradition and pleasure, while the latter focuses on ethics and animal welfare.
 
+**Controversies rarely involve simple pro-and-con positions on identical issues.** Instead, they feature multiple groups discussing different aspects of complex topics while strategically avoiding others. ***Vandolie* reveals these patterns through algorithmic analysis and visualization.**
 
-The **key idea about empowering students** is to have them become more **critical** of AI, algorithms, the information society (newspapers, internet and social media) by **engaging with computational means**. *Vandolie* gives them the opportunity to analyze information by themselves, and discover patterns on their own. We expect that this engagement with algorithms and information naturally raises concerns that can then be used in the classroom to spark discussions about of digital environment. We would be really happy that students use *Vandolie* in for their own high school projects, and start learning-by-doing simple text analysis techniques.
+### Empowering Students
 
+The **key objective for student empowerment** is developing **critical thinking** about AI, algorithms, and information systems (news media, internet, social media) through **hands-on computational engagement**. Vandolie enables students to analyze information independently and discover patterns through their own investigation.
+
+This direct engagement with algorithms and information naturally raises questions that can spark classroom discussions about our digital environment. We hope students will use *Vandolie* for their own research projects, developing practical text analysis skills through experiential learning.
 
 <!-- Do not translate this code -->
 <a id="scaffolding"/>
 
 ## Suggested pedagogical scaffolding
 
-*Vandolie* is built to allow various kinds of users to repurpose it in different ways. In that sense, it works on its own without requiring a specific pedagogical scenario. Some teachers may use it to give a feeling of how algorithms and AI function, while others may use it to elicit a discussion about information on social media.
+*Vandolie* supports various pedagogical approaches and works effectively without requiring specific lesson plans. Some educators may use it to demonstrate how algorithms and AI function, while others may focus on information literacy and social media analysis.
 
-That being said, we propose an introductory activity to *Vandolie*, the "Bingo of Words", that could be enacted in about one hour in the classroom. The activity is described below, but in short, it makes the students play the algorithm themselves physically, without the computer, using only special Bingo cards you have to print.
+We recommend beginning with the "Bingo of Words" activity, which can be completed in approximately one class period. This hands-on exercise has students manually perform algorithmic processes using printed materials, making abstract concepts concrete.
 
-We therefore suggest the following scaffolding:
-1. **Play the "Bingo of Words"** with the students
-2. Discuss how **algorithms reveal patterns** in text by just counting the right things
-3. **Introduce *Vandolie*** with the same dataset as the Bingo, and show that it gives the same results
-4. Showcase *Vandolie* with an **example dataset**, and notably the semantic map (not covered by the Bingo)
-5. Make a **collective dataset** with the students. This takes time, but may be worth it if you want to discuss the nature of information on various media.
-6. Discuss some **properties of information**, notably social media versus mainstream media. Help the students be more aware and more critical of information over the internet, and possibly AI-generated texts as well (ChatGPT...).
-7. Help the **students make their own datasets**. This is productive insofar as it can help them achieve some school projects.
+### Recommended Sequence
 
-The most difficult part is *not* to succeed in making the tool work and to become familiar with the algorithms and visualizations.
+1. **Conduct the "Bingo of Words" activity** with students
+2. **Discuss how algorithms reveal patterns** in text through systematic counting
+3. **Introduce *Vandolie*** using the same dataset from the Bingo activity, demonstrating identical results
+4. **Explore *Vandolie* features** with example datasets, particularly the semantic map (not covered in the Bingo activity)
+5. **Create a collaborative dataset** with students (time-intensive but valuable for discussing information sources across different media)
+6. **Analyze information characteristics**, comparing social media versus traditional media. Help students develop awareness and critical thinking about online information, including AI-generated content
+7. **Support student-led projects** using their own datasets, particularly for research assignments
 
-The most difficult part is to find which categories allow you to have an interesting interpretation of the visual patterns.
+### Implementation Notes
 
-**We recommend the following strategy:** look if there are distinct clusters in the semantic map, then walk backwards to find good categories. If the semantic map does not show clusters, it simply means that the documents have essentially the same content. But if there are clusters, then it is possible to understand what they are about. Look at the co-word network, and you should be able to find some clusters too. Think of these clusters as *topics*. Look at the words composing the topics, and find a short label for each topic. These could become your categories. Go back to the dataset, and use these categories to qualify the documents. If this strategy is successful, you should obtain categories that match the clusters in the semantic map.
+The primary challenge is **not** mastering the tool or understanding algorithms and visualizations.
 
+The main difficulty is **identifying categories that enable meaningful interpretation of visual patterns**.
+
+**Recommended strategy:** Examine the semantic map for distinct clusters, then work backward to develop appropriate categories. If the semantic map lacks clear clusters, the documents likely contain similar content. However, when clusters appear, you can understand their themes by examining the co-word network for corresponding patterns. Consider these clusters as *topics*. Analyze the words comprising each topic and create concise labels. Use these labels as categories for your dataset. When successful, your categories should correspond to the clusters in the semantic map.
 
 <!-- Do not translate this code -->
 <a id="bingo"/>
 
 ## Bingo of Words
 
-#### Preparation
+### Pre-Activity Preparation
 
-First, **read** this section.
+**Review Materials**
 
-Second, **print the bingo cards**. The PDF contains 20 different sheets, and you will need all of them, but only once. Only print one set, even if you have more than 20 students.
+Read this entire section before beginning the activity.
+
+**Print Student Materials**
+
+Print the bingo cards (PDF contains 20 unique sheets - print one complete set only, even with more than 20 students).
 
 <a href="../data/Bingo of Words - Documents - EN.pdf" target="_blank">DOWNLOAD the BINGO CARDS [PDF]</a>
 
-Third, **print the guide** for yourself (just once). It will help you during the activity.
+**Print Teacher Guide**
+
+Print the teacher guide for your reference during the activity.
 
 <a href="../data/Guide EN.pdf" target="_blank">DOWNLOAD the TEACHER GUIDE [PDF]</a>
 
-You are now ready.
+### Activity Overview
 
+The bingo cards represent documents simplified as short sentences for accessibility. The topic is veganism, chosen because it's relatable to high school students and demonstrates clear patterns in *Vandolie*. Some documents reflect meat-eating perspectives while others represent vegetarian viewpoints, though students don't need prior awareness as patterns emerge naturally.
 
-#### What it looks like
+Each student receives one bingo card. The activity includes two rounds where you call out words or word combinations. Students raise their hands when their cards contain the specified terms.
 
-The bingo cards represent documents. But to make things easier, they are very short: a short sentence. They will be distributed to the students.
+By counting word combinations, you'll construct a co-occurrence network (or "co-word network") that reveals two distinct perspectives: meat-eating and vegetarian. The activity concludes by demonstrating how systematic counting reveals discourse structures within datasets.
 
-The topic of the cards is veganism. We selected it because it is the kind of topic that is relatable to high school students and works well in *Vandolie*. Intuitively, some documents are on the meat-lover side while others are on the vegan side. But the students do not have to be aware of it, as the pattern will emerge naturally during the activity.
+### Activity Steps
 
-In principle, each student will have one bingo card. There will be two rounds of bingo, during which you (the teacher) will call for a word or a combination of words. Then each student has to raise their hand if they have that word or combination of words in their bingo cards.
+*These steps are summarized in the teacher's PDF guide with additional details provided here.*
 
-By counting word combinations, you will be able to build a network of co-occurrence between words (or "co-word network"). This network will have two sides, one with the meat-eater perspective, and one with the vegetarian perspective. The activity ends on the constatation that we have produced a pattern that reveals the structure of the discourses in the dataset (that there are two distinct perspectives).
+#### Preparation: Distribute Cards
 
+**Distribute bingo cards to students.** Form groups if preferred or if you have more than 20 students. With fewer than 20 students, give multiple cards per student or retain some cards yourself. **Each of the 20 cards must be held by someone** to ensure accurate counting results.
 
-### Bingo steps
+#### Step 1: Compile Word Inventory
 
-Those steps are recapitulated in the <a href="../data/Guide EN.pdf" target="_blank">teacher's PDF guide</a>, but we provide more details here.
+**Create a comprehensive list of all words appearing in all documents.** Rather than doing this manually (which would be tedious), use the prepared list from your guide. Explain to students that this preprocessing step is standard in text analysis.
 
-#### Preparation: Give the cards
-
-**Give the bingo cards to the students.** You may make groups if you prefer, or if you have more than 20 students. If you have less than 20 students, consider giving multiple cards per student, or allocate some cards to yourself. **It is important that each of the 20 cards is in someone's hand**, or else the results of the counting will not be the same and the activity may not be successful.
-
-#### Step 1: Make the list of all the words
-
-We want to **make the list of all the words in all the documents**. We could do it manually, but since it is tedious, we use the list prepared ahead of time. That is something you can tell the students.
-
-The list is provided in the guide. You can either display it from your computer, or take the time to redraw it on a board.
+Display the word list on your screen or write it on the board.
 
 <img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/en/bingo-1.png" alt="Bingo figure 1">
 
-**Discussion point:** Some words are similar (ex: “animal” and “animals”). Should we merge them? This is a good question, as algorithms often give you the choice. The process of merging the words that are essentially the same is called "lemmatization". But it is a complex technique. We will not do it in this activity, and *Vandolie* does not support it, but more advanced tools offer you the choice.
+**Teaching moment:** Students may notice similar words (e.g., "animal" and "animals") and ask whether these should be combined. This excellent question highlights "lemmatization" - the process of reducing words to their root forms. While advanced tools offer this feature, we'll maintain word distinctions for this activity, as does *Vandolie* in its basic settings.
 
-***Note about discussion points:** the other discussion points will always give a similar answer. Ideally, those questions would arise naturally from the students enacting the process of counting. Those questions are always good, as they point to decisions that must be made within the algorithm. The lesson to learn is that the settings of algorithms come from there, from the fact that there are different ways of counting things, and that there is none that is always "the best", and it always depends.*
+*Note: These teaching moments address decisions embedded in algorithmic processes. When students raise these questions naturally, emphasize that algorithm settings derive from such choices, with no universally "best" approach - effectiveness depends on context.*
 
-#### Step 2: Remove the stop words
+#### Step 2: Remove Stop Words
 
-Before we count the words, we need to remove some useless words. We consider that some tool words are always there in a given language, such as "a", "the", "is", etc. We call those "stop words".
+Before counting, eliminate common function words that provide little analytical value. These "stop words" include articles, prepositions, and auxiliary verbs (e.g., "a," "the," "is") that appear frequently in any language but don't contribute to meaning.
 
-Simply cross out the stop words from the list. Check that you get the same result as in the guide, because it matches the list of stop words used in *Vandolie*.
+Cross out stop words from your list. Verify your results match the guide, as this aligns with *Vandolie*'s stop word list.
 
 <img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/en/bingo-2.png" alt="Bingo figure 2">
 
-**Discussion point:** What is a stop word? That is a good question. There are different lists on the internet. Of course, it depends of the language. But even so, some arbitrary choices must be made. It depends on the context. Here we use a generic list that is often considered good-enough for simple tasks.
+**Teaching moment:** What constitutes a stop word? Different lists exist online, varying by language and context. Generic lists work well for basic tasks, but specialized analyses might require custom stop word lists.
 
-#### Step 3: Play BINGO with the remaining words
+#### Step 3: Count Word Occurrences
 
-The bingo cards are the sentences given to the students, and we play with the words. Take each remaining word (not crossed out) in the list, and call for it. The students must look at their card, and raise their hand if they have the document. Ensure that only one hand is raised per card (per group of students if you have groups). Count the raised hands, and report the number in the list, next to that word.
+Using the remaining (non-crossed-out) words, call out each word individually. Students check their cards and raise their hands if the word appears. Ensure only one hand per card/group is raised. Count the responses and record the number beside each word.
 
-In essence, we are counting the number of documents containing each word.
+This process counts how many documents contain each word (not how many times each word appears).
 
-Note that we must respect the differences between the words. If we call for "animal", it does not work with "animals". We must stick to our decision from earlier about not merging similar words.
+Maintain precision - "animal" doesn't match "animals" based on our earlier decision about word variations.
 
-The expected result is in the guide. Ensure you have the same numbers. **If you lack time, you can just start the activity to show the principle then jump to the results.**
+Expected results appear in your guide. **If time is limited, demonstrate the principle briefly, then proceed to the results.**
 
 <img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/en/bingo-3.png" alt="Bingo figure 3">
 
-**Discussion point:** Do we count when a word appears multiple times in the same document? Excellent question. This is something we could decide to do, but we will not in this activity. *Vandolie* gives you the possibility to do it if you want. The results would be different, sometimes better, and sometimes not. It depends on the size and number of documents, among other factors.
+**Teaching moment:** Should we count multiple occurrences of the same word within one document? Excellent observation. This is configurable in *Vandolie*. Results vary depending on document length and quantity - sometimes improving analysis, sometimes not.
 
-#### Step 4: Remove infrequent words
+#### Step 4: Filter Infrequent Words
 
-We are not interested in the words that are too rare. It is a well known fact that in any language, most words are rare while a few words are incredibly frequent (which is known as [Zipf's law](https://en.wikipedia.org/wiki/Zipf%27s_law)). We want to focus on the words that create commonality between documents. We want to focus on the words that appear in multiple documents.
+Remove words that appear too rarely to be meaningful. Language follows Zipf's law - most words are rare while few words are extremely common. We focus on words that create connections between documents by appearing in multiple texts.
 
-We simply do this by removing the words that appear less than a certain threshold. In this activity, we set this threshold to 3. We keep the words that appear in at least 3 documents, and we remove those that appear only once or twice.
-
-In the words list, simply cross out the words with a count of 1 or 2. Doing this is the reason why we counted the number of occurrences at the previous step.
+Set a frequency threshold (3 for this activity) and remove words appearing in fewer than that many documents: cross out words with counts of 1 or 2.
 
 <img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/en/bingo-4.png" alt="Bingo figure 4">
 
-**Discussion point:** How to we know what is the right threshold? This is an excellent question. The answer is that we need to try. We want to have a network that is not too big, but also not too small. It is hard to predict what the threshold will produce until we actually try. In *Vandolie*, you can set your threshold.
+**Teaching moment:** How do we determine the optimal threshold? Experimentation is necessary. We want networks that are neither too large nor too small. *Vandolie* allows threshold adjustment based on your specific dataset.
 
-#### Step 5: Display the co-occurrence matrix
+#### Step 5: Create Co-occurrence Matrix
 
-We will soon count the pairs of words. To do that, we need to draw a table or "matrix" of the pairs of words. The rows and the columns are the remaining words, and we will mark in the cells whether or not the words appear together in a same document (or more).
+Prepare to count word pairs by creating a matrix (a table) where rows and columns represent remaining words. Cells will indicate whether word pairs appear together in documents.
 
-Simply draw or display the matrix as it is shown in the teacher's guide.
+Draw or display the matrix as shown in the teacher guide.
 
 <img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/en/bingo-5.png" alt="Bingo figure 5">
 
-**Remark** that some cells are grey and others are white. The white cells are the useful ones. The grey cells can be ignored. That is due to the matrix being "symmetrical": each pair of word appears twice, once in the top-right half, and once in the bottom-left half. But in this case we don't need to count pairs twice, so we omit one of the halves. Indeed, regardless of whether word A (row) co-occurs with word B (column), it will be the same as word B (row) co-occurring with word A (column). Swapping the words gives the same result. Similarly, we omit the diagonal because any word co-occurs with itself...
+**Note:** Gray cells can be ignored while white cells require attention. The matrix is symmetrical - each word pair appears twice (upper-right and lower-left halves). We use only one half to avoid double-counting. The diagonal is omitted because words naturally co-occur with themselves.
 
-#### Step 6: Play BINGO with the pairs of words
+#### Step 6: Count Word Pairs
 
-We will now play BINGO once again, but a little differently this time. This step is the most interesting, it is the moment where we extract useful information from the set of documents (the bingo cards).
+This is the most analytically valuable step, extracting meaningful patterns from the document collection.
 
-Look at the matrix and take each white cell in order (we omit the grey cells as they are redundant). For each cell, call for the corresponding pair of words (row and column). The students must check whether their bingo card has both words at the same time, and raise their hand if it is the case.
+For each white cell in the matrix, call out the corresponding word pair (row and column words). Students check whether their cards contain both words simultaneously and raise their hands if so.
 
-Simply not down whether at least one document has the pair. No need to count how many documents have it.
+Record whether at least one document contains each pair - exact counts aren't necessary for this activity.
 
-The expected result is in the guide. Ensure you have the same pairs. **If you lack time, you can just start the activity to show the principle then jump to the results.**
+Verify your results match the guide. **If time is limited, demonstrate the principle, then proceed to results.**
 
 <img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/en/bingo-6.png" alt="Bingo figure 6">
 
-**Discussion point:** Should we count how many have each pair, or not? As usual, that is something we could decide to do. In fact, there are even more sophisticated ways of counting co-occurrences, such as "pointwise mutual information", which you can use in *Vandolie* if you want. It often improves the results to some extent.
+**Teaching moment:** Should we count how many documents contain each pair? This is certainly possible and often valuable. Advanced methods like "pointwise mutual information" (available in *Vandolie*) can improve results by weighing co-occurrences more sophisticatedly.
 
-#### Step 7: Draw network
+#### Step 7: Visualize as Network
 
-The last step is simply to draw the matrix as a network map, where each word is a dot, and each co-occurrence (marked cell) is a line connecting the co-occurring words (row and column). You should obtain the figure presented in the guide.
+Transform the matrix into a network visualization where words become nodes and co-occurrences become connecting lines. Each marked cell creates a line between the corresponding row and column words.
+
+Draw this network in front of students so they understand its construction. Place words first, then draw connections by reading the matrix. **Position words as shown in the guide** to minimize line crossings.
 
 <img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/en/bingo-7.png" alt="Bingo figure 7">
 
-We encourage you to actually draw the figure in front of the students, so that they understand where it comes from. Place the words first, then draw the lines by reading the matrix. **The trick is to place the words as in the picture** to avoid too many line crossings.
+### Network Interpretation
 
-#### Interpretation of the network
+Conclude by discussing patterns students can identify in the network.
 
-The end of the activity consists in discussing whether there is a pattern that the students can identify in the network.
+The expected pattern shows two distinct clusters. The left side contains words like "meat," "culture," "eat," "tradition," and "love", representing meat-eating perspectives. The right side includes "animals," "killing," "live," and "welfare", representing vegetarian perspectives. These clusters connect primarily through the word "meat." **Most documents represent only one perspective, creating this separation.** "Killing" doesn't co-occur with "culture," "welfare" doesn't appear with "tradition," etc.
 
-The pattern we expect them to find is that the network has two sides. On the left side, we have words such as "meat", "culture", "eat", "tradition", and "love". This represents the perspective of the people who eat meat. On the right side, with words such as "animals", "killing", "live" and "welfare", we have the vegetarian perspective. What makes them two sides, is that they are only connected through one word: "meat". **Most documents represent only one of the two perspectives, which is why they are disconnected.** "Killing" does not co-occur with "culture", "welfare" does not co-occur with "tradition", etc.
+This demonstrates "distant reading" - analyzing many documents simultaneously to extract patterns impossible to see when reading individually.
 
-The lesson from this is that we can see general patterns emerging from the distribution of words in a set of document. This is called ["Distant reading"](https://en.wikipedia.org/wiki/Distant_reading), and it is a way to read many documents at once to extract useful information.
+**Interesting case study:** Ask students why "love" appears on the meat-eating side rather than the vegetarian side (where we might expect it to relate to loving animals). In this corpus, "love" primarily refers to loving meat. Have students with "love" cards read their sentences aloud to verify this. This illustrates that words don't always behave as expected, highlighting the importance of combining distant reading with close reading (traditional reading).
 
-A good question to ask to the students is about the word "love". It is plausible that "love" would be on the side of vegetarians, who love animals and want to save their lives. Then why is it on the meat-eaters' side? Because "love" is mostly mentioned, in this corpus, to signify the love of meat. This can be verified by asking the students who have a card with "love" to read it out loud. The lesson to learn from this is that the words do not always behave like they should, or rather like we expect; which is why it is important to complement distant reading with "close reading" (that is, normal reading).
+### Connection to *Vandolie*
 
-#### How the Bingo of Words is related to *Vandolie*
+*Vandolie*'s "co-word network" algorithm performs exactly the same process as the Bingo of Words. The various counting decisions discussed during the activity appear as configurable settings in the tool.
 
-The algorithm "co-word network", in *Vandolie*, does exactly the same thing as the Bingo of Words. If you have had the occasion to discuss the different ways to count the words with the students, mention that some of those choices are appearing as settings in the tool.
-
-If the students want to check that they get the same results as the Bingo of Words, they will find the corpus in the provided examples. Of course, the result will be the same if they use the same settings!
+Students can verify identical results by using the same corpus (available in *Vandolie*'s examples) with matching settings.
 
 <img class="border vdl-pic" src="/vandolie/img/screenshots/en/bingo-8.png" alt="Bingo figure 8">
