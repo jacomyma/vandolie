@@ -154,6 +154,8 @@ export function makeNetwork(
   });
   const filteredVocabularyData = vocabularyData.filter((d) => d.keep);
 
+  console.log(vocabularyCounts.map((d)=>{return d.token+","+(stopWords.indexOf(d.token)>=0)+","+d.count}).join("\n"))
+
   // Step 7: Count co-occurrences
   const allCooccurrences: Record<string, number> = {};
   bagOfWords.forEach((counts) => {
