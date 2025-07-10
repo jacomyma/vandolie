@@ -60,6 +60,8 @@ We think you need at least 10 documents, but 20 is a better number. You could go
 
 You can **save your dataset** by clicking on the "Save (CSV)" button. You will be able to upload it later on, or share it with other people.
 
+<img class="border vdl-pic pic-w-250" src="/vandolie/img/screenshots/en/dataset-save-csv.png" alt="Save CSV">
+
 **Once your corpus is ready, click on one of the three algorithms available** just below your set of documents. They do different things. You can try them all. You will be able to come back to your documents and edit them if you want.
 
 <img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/en/dataset-actions.png" alt="3 algorithms">
@@ -96,7 +98,7 @@ You will find documents in many public websites: [Wikipedia](https://www.wikiped
 
 You can also use social media such as [Reddit](https://www.reddit.com/), [YouTube](https://www.youtube.com/) (look at the comments), etc.
 
-And via libraries, you can also have access to newspaper articles from many outlets. Those are normally behind a paywall, but libraries often provide a special free access to them.
+And via libraries, you can also have access to newspaper articles from many outlets. Those are normally behind a paywall, but libraries often provide a special free access to them. And sometimes, you can search them for free, for instance the [BBC](https://www.bbc.com/search).
 
 <!-- Do not translate this code -->
 <a id="count"/>
@@ -278,5 +280,100 @@ You can move the network view by dragging with the cursor or your finger on a to
 
 ## 4. How to use: Semantic map
 
-TODO
+This algorithm is entirely automatic and requires no settings. It works in two parts.
 
+The **first part** consists of using a "**text embedding model**", and more precisely [all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2), which is multilingual (it "speaks" most languages). It transforms any text into a semantic representation. We will not explain how it works, but rather what it does.
+
+This model uses AI to transform any text into a series of numbers. In mathematics, we say it gets "embedded" into a "vector". Each vector is very long (hundreds of dimensions) and encodes the meaning of that text. On a practical level, these vectors have a very interesting property: **similar texts produce similar vectors**.
+
+The distance between vectors encodes semantic similarity:
+* Completely different documents produce very distant vectors
+* Documents about the same topic produce quite close vectors
+* Documents that mean the same thing but written differently have very close vectors
+* Almost-identical documents produce almost-overlapping vectors.
+
+We use this property to produce the semantic map.
+
+The **second part** of the algorithm consists of visualizing the vector space as a map. This is called "**dimensionality reduction**" because we reduce the very long vectors to two dimensions. In other words, we reduce them to points on a plane. To do this, we use a technique named *UMAP*. You can learn about it [on this page](https://pair-code.github.io/understanding-umap/). In short, it produces a map that preserves the most important property: distance encodes semantic similarity.
+
+The **resulting semantic map** can be read as such:
+* Each dot is a document from your dataset
+* The color of the document indicates its category
+* Dots (documents) are close when they have a similar content, and are far away when they have a different content.
+
+Like for the co-word network, this visualization is *non-deterministic*. Because of a random initialization of the algorithm, the result is a little bit different every time. However, the groups of dots or "clusters" will always be the same. They will simply be flipped or rotated every time.
+
+## How to interpret the semantic map
+
+Look at the semantic map and ask yourself two questions:
+
+1. Are there **distinct groups** of dots (clusters)?
+2. Are there **distinct color groups**?
+
+Those two question may look the same at first glance, but they are in fact two different and independent questions.
+
+#### Are there distinct clusters?
+
+By "distinct groups", we mean groups of dots that are in different parts of the pictures. We can also call them "clusters". Each cluster consists of dots (documents) that are close to each other, while the clusters themselves are far away from each other.
+
+In the example below, we have **one single cluster**. This means that all documents have a **similar content**.
+
+<img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/semantic-01.jpg" alt="One cluster">
+
+In the example below, we have **two distinct clusters**. This means that there are two groups of documents with different contents, probably **two different topics**.
+
+<img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/semantic-02.jpg" alt="Two cluster">
+
+*Note that using different languages in the same dataset can also produce different clusters.*
+
+**The clusters are only about the text content of the documents, not the category.** The clusters are identified by looking solely at the dot placement. Clusters are *independent* of the color. The placement does not take your categories into account. This point is very important, as we will see.
+
+#### Are there distinct color groups?
+
+The second question you should ask is whether the colors are mixed, or grouped together.
+
+If the colors are mixed, it means that your categories do not capture any semantic difference. In other words, documents of the same category are not particularly similar. It could look like this:
+
+<img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/semantic-03.jpg" alt="One cluster mixed">
+
+If the colors form groups, it means that they capture some semantic similarity. It could look like this:
+
+<img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/semantic-04.jpg" alt="One cluster color-polarized">
+
+In the example above, the documents are not *very* different, because they form one single cluster. Nevertheless, the cluster has two sides, which shows that there are semantic differences within the cluster. The categories still capture a small semantic difference.
+
+**Very importantly, having clusters does not mean that your categories capture their semantic difference.**
+
+Indeed, it is possible to have **two clusters** (in terms of dot placements) yet have **mixed colors**. This will look like this:
+
+<img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/semantic-05.jpg" alt="Two clusters mixed">
+
+The right thing to do, in this example, is to understand what the two groups are, and *redo the categories accordingly*. This way, you will be able to explain what makes the documents different.
+
+When **colors and clusters match**, which may look like the example below, then the categories do capture the semantic differences between the documents.
+
+<img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/semantic-06.jpg" alt="Two clusters color-coded">
+
+#### Anomalies and nuances in the map
+
+Note that real-world datasets are not as well defined as the examples above. *That is even better!* Every time you see an anomaly, you have found something interesting to talk about. *Anomalies are relevant and valuable.*
+
+In the following example, we see two very well separated clusters, which are mostly color-coded, but there is one anomaly: there is a blue dot in the yellow dot (look on the right). Is it a mistake?
+
+<img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/en/semantic-outlier1.png" alt="One outlier">
+
+This dataset contains BBC news about fishing (blue) and trains (yellow), which should have nothing to do with each other. In that sense, it's not surprising that we have two very distinct clusters. But what is going on with the blue dot? We can zoom in and click on the dot to take a look at the document.
+
+<img class="border vdl-pic pic-w-1000" src="/vandolie/img/screenshots/en/semantic-outlier2.png" alt="One outlier, zoomed in">
+
+This reveals something interesting: this article is not about real trains, but toy trains and, importantly, toy boats. This is why the embedding has considered that it was more similar to the news about fishing than to the other train-related news. That is an interesting find!
+
+Also remark that, of all the documents of that cluster, the anomaly is the closest to the other cluster: that is not a coincidence.
+
+If we look at another dataset, the male and female pop artists on Wikipedia, we see that the semantic map has two clusters but they are not very far apart. Of course, that is because the two categories have more in common (being pop artists) than fishing and trains.
+
+<img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/en/semantic-nuanced.png" alt="Nuanced semantic map">
+
+It is not an issue that the two clusters are not completely separate. On the contrary, if we look at the details, we can identify the dots that are the most in-between or the most on the sides. For instance, Taylor Swift is the female artist who is the most similar to the male artists, and Adam Levine is the male artist most similar to female artists. Conversely, Cher is the most different from male artists and Billy Joel is the most different from female artists.
+
+Once again, one cannot find a definitive interpretation for these nuances, but it begs intriguing questions. Semantic maps have a lot of interesting details to analyze.

@@ -6,7 +6,7 @@ const lang = "da";
 
 const { t, T } = getTranslationsHelpers(lang)
 
-import {Content} from '../../core/translations/da/how-to-use.md';
+import {Content} from '../../core/translations/da/teacher.md';
 ---
 
 <Website lang={lang}>
@@ -15,9 +15,9 @@ import {Content} from '../../core/translations/da/how-to-use.md';
 
       <section class="row px-5 pt-5 mb-5">
         <h1>
-          <img class="text-left" src={`${import.meta.env.BASE_URL}img/vandolie-logo.svg`} alt="Logo" height="128" />
+          <img class="text-left shadow mb-2" src={`${import.meta.env.BASE_URL}img/vandolie-logo-teaching.svg`} alt="Logo" height="128" />
           <br>
-          {t("website-how-to-use")}
+          {t("website-teacher")}
         </h1>
       </section>
 
