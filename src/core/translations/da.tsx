@@ -27,6 +27,7 @@ const translations: Record<string, Translation> = {
 
   // Static website commons
   "website-how-to-use": "Hvordan bruges det",
+  "website-teacher": "Til lærere",
 
   // Static website footer
   "footer-credits": (
