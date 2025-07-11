@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang="da"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta name="description" content="Semantiske kortlægningsalgoritmer på gymnasieniveau"><meta property="og:locale" content="da_DK"><title>Vandolie</title><!-- Favicon --><link rel="icon" href="/vandolie/favicon/favicon.ico" sizes="32x32"><link rel="icon" href="/vandolie/favicon/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/vandolie/favicon/apple-touch-icon.png"><link rel="stylesheet" href="/vandolie/_astro/_page_.qUkIeBto.css">
+<style>body{width:100%;max-height:100vh;min-height:100vh;background-color:#4682b4;display:flex;flex-direction:column}main{flex-grow:1;overflow:auto}footer{flex:none;background-color:#31506a;color:#9eb8cc}footer .footer-supported-by-img{max-width:220px}.vdl-markdown-content p,.vdl-markdown-content ul,.vdl-markdown-content ol{font-size:1.15em;max-width:680px}.vdl-markdown-content h2{margin-top:5rem}.vdl-markdown-content h3{margin-top:3rem}.vdl-markdown-content h4{margin-top:2rem}.vdl-markdown-content h5,.vdl-markdown-content h6{margin-top:1rem}img.vdl-pic{max-width:100%;height:auto;margin-bottom:16px}img.pic-w-250{width:250px}img.pic-w-500{width:500px}img.pic-w-750{width:750px}img.pic-w-1000{width:1000px}
+</style></head> <body> <nav class="navbar navbar-expand-lg" style="background-color: #f9e3a2;"> <div class="container-fluid"> <a class="navbar-brand" href="/vandolie/da"> <img src="/vandolie/img/vandolie-logo.svg" alt="Logo" width="30" height="24"> Vandolie </a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> <div class="collapse navbar-collapse" id="navbarSupportedContent"> <ul class="navbar-nav me-auto mb-2 mb-lg-0"> <li class="nav-item"> <a class="nav-link" href="/vandolie/da/app"> Kom i gang </a> </li> </ul> <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> <li class="nav-item"> <a class="nav-link aria-disabled" href="/vandolie/en"> 🇬🇧 Engelsk </a> </li><li class="nav-item"> <a class="nav-link active aria-disabled" href="/vandolie/da"> 🇩🇰 Dansk </a> </li> </ul> </div> </div> </nav> <main>  <main> <div class="container bg-body pb-4"> <section class="row px-5 pt-5 mb-5"> <h1> <img class="text-left" src="/vandolie/img/vandolie-logo.svg" alt="Logo" height="128"> <br> Hvordan bruges det </h1> </section> <section class="vdl-markdown-content px-5"> <!-- Do not translate this code -->
+<a id="dataset">
+<h2 id="1-sådan-opretter-du-et-korpus-datasæt">1. Sådan opretter du et korpus (datasæt)</h2>
+<p>Dette værktøj vil analysere et korpus (et datasæt) af tekstdokumenter.
+Hvert dokument er simpelthen et stykke tekst, som du har fundet på nettet (eller andre steder).
+Det kan være så kort som en sætning eller så langt som en avisartikel.
+Men det skal være ren tekst (ingen billeder eller andre medier).</p>
+<p>Lad os først se, hvordan det fungerer, og så vil vi se, hvor man finder dokumenter, og hvordan man udvælger dem.</p>
+<h4 id="sådan-kommer-du-i-gang">Sådan kommer du i gang</h4>
+<p>Klik på “Kom i gang” i menuen for at indlæse “Dokumenter”-siden.</p>
+<p><strong>Hvis du bare vil se værktøjet i aktion</strong>, indlæs et eksempel fra menuen nederst på skærmen.</p>
+<img class="border vdl-pic pic-w-250" src="/vandolie/img/screenshots/da/dataset-load-example.png" alt="Tilføj dokument">
+<p><strong>Hvis du vil lave dit eget korpus</strong>, så klik på “Tilføj dokument” for at begynde at redigere dit første dokument.</p>
+<img class="border vdl-pic pic-w-250" src="/vandolie/img/screenshots/da/dataset-add-doc.png" alt="Tilføj dokument">
+<p>Dette åbner en grænseflade til at redigere dit første dokument.</p>
+<img class="border vdl-pic pic-w-250" src="/vandolie/img/screenshots/da/dataset-doc-empty.png" alt="Tomt dokument">
+<p>Et dokument består af tre dele:</p>
+<ol>
+<li>En titel</li>
+<li>Tekstindhold</li>
+<li>En kategori</li>
+</ol>
+<h4 id="sådan-udfylder-du-et-dokument">Sådan udfylder du et dokument</h4>
+<p>Lad os antage, at du har en informationskilde, som en Wikipedia-side, til at bruge som dokument.</p>
+<ul>
+<li><strong>Først skal du give en titel.</strong> Du kan opfinde den eller genbruge din kildes titel (hvis den har en). Det er bare en måde at identificere dit dokument nemt på. Skriv den i det øverste felt i grænsefladen.</li>
+<li><strong>For det andet skal du kopiere og indsætte det tekstuelle indhold fra din kilde</strong> i det midterste felt i grænsefladen.</li>
+<li><strong>For det tredje skal du skrive en kategori</strong> i det nederste felt. <em>Vær konsistent i din stavning, ellers vil hver forskellige stavning tælle som en anderledes kategori.</em> Vi forklarer, hvordan man beslutter kategorier længere nede.</li>
+</ul>
+<p>Når du har udfyldt alle tre dele, kan du gemme dit dokument ved at klikke på “Gem”-knappen. <em>Bemærk, at du ikke kan gemme dit dokument, hvis det ikke er fuldstændigt.</em></p>
+<h4 id="sådan-håndterer-du-datasættet">Sådan håndterer du datasættet</h4>
+<p>Du kan oprette så mange dokumenter, som du vil.</p>
+<img class="border vdl-pic pic-w-1000" src="/vandolie/img/screenshots/da/dataset-saved-docs.png" alt="3 dokumenter">
+<p>Vi mener, du har brug for mindst 10 dokumenter, men 20 er et bedre antal. Du kunne gå op til 50 eller flere, hvis din computer er kraftig nok (det vil tage længere tid at beregne).</p>
+<p><strong>Klik på et gemt dokument for at gå ind i redigeringstilstand igen.</strong> Du kan ændre det eller endda slette det. Husk at gemme (eller annullere) dine ændringer.</p>
+<img class="border vdl-pic pic-w-1000" src="/vandolie/img/screenshots/da/dataset-saved-docs-edit.png" alt="3 dokumenter med et i redigeringstilstand">
+<p>Du kan <strong>gemme dit datasæt</strong> ved at klikke på “Gem (CSV)“-knappen. Du vil kunne uploade det senere eller dele det med andre mennesker.</p>
+<img class="border vdl-pic pic-w-250" src="/vandolie/img/screenshots/da/dataset-save-csv.png" alt="Save CSV">
+<p><strong>Når dit korpus er klar, skal du klikke på en af de tre tilgængelige algoritmer</strong> lige under dit sæt dokumenter. De gør forskellige ting. Du kan prøve dem alle. Du vil kunne komme tilbage til dine dokumenter og redigere dem, hvis du vil.</p>
+<img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/da/dataset-actions.png" alt="3 algoritmer">
+<!-- Do not translate this code -->
+</a><a id="method-help">
+<h3 id="hvor-finder-man-dokumenter-og-hvordan-beslutter-man-kategorier">Hvor finder man dokumenter, og hvordan beslutter man kategorier?</h3>
+<p>Først og fremmest kan du bare prøve værktøjet og eksperimentere med det for at forstå, hvorfor kategorier betyder noget. Tøv ikke med at <strong>eksperimentere</strong>.</p>
+<p>Det sagt, vil du opnå de bedste resultater under tre betingelser:</p>
+<ol>
+<li>Find <strong>dokumenter</strong>, der <strong>naturligt adskiller sig</strong> i to dele, som vand og olie.</li>
+<li>Vælg <strong>kategorier</strong>, der <strong>afspejler</strong> disse to dele.</li>
+<li>Det bør <strong>ikke</strong> være helt <strong>åbenlyst</strong>, at de to grupper er godt adskilt.</li>
+</ol>
+<p>Hvis du tilføjer to grupper dokumenter, der er helt forskellige, for eksempel artikler om ost og artikler om sejlsport, vil de adskille sig, men det er ikke interessant, fordi vi ved med sikkerhed, at de vil gøre det. Måske ville det være interessant, hvis de <em>ikke</em> adskilte sig.</p>
+<p>De <strong>gode dokumenter og kategorier</strong> bør altid være <strong>lidt overraskende.</strong> Hvis du tilføjer to grupper dokumenter, hvor det er svært at vide, om de vil være ens eller ej, så er det interessant. Det giver ny information, fordi vi ikke vidste det. Du finder eksempler nedenfor.</p>
+<p>Dokumenterne og kategorierne hænger sammen. Vælg dem for at lave en interessant <strong>sammenligning</strong>. Tænk på dem som en måde at stille spørgsmål som: “Synes du, at dokumenter A og dokumenter B er ens eller forskellige?” Og selvfølgelig er det spørgsmål interessant, hvis det ikke har et åbenlyst svar. Algoritmerne vil give dig mulighed for at finde og besvare det spørgsmål, du stiller.</p>
+<p>Du kunne <strong>sammenligne, hvordan vi taler om to lignende ting</strong>. For eksempel kunne du sammenligne, hvordan vi taler om to religioner, eller mænd og kvinder, eller to nationaliteter osv. Det kunne være en måde at se på diskrimination. For eksempel kunne du sammenligne Wikipedia-artikler om mandlige popartister med Wikipedia-artikler om kvindelige popartister. Dette ville stille spørgsmålet: “Er Wikipedia-artikler om mandlige og kvindelige popartister forskellige eller ens?” Svaret er ikke åbenlyst, fordi på den ene side er de alle popartister, men på den anden side er de mænd og kvinder. Så det er noget interessant at se på.</p>
+<p>Du kunne også <strong>sammenligne, hvordan to forskellige medier skriver om den samme ting</strong>. Du kunne sammenligne, hvordan venstrefløjsaviser og højrefløjsaviser skriver om det samme emne, for eksempel immigration, Den Europæiske Union eller atomenergi. Eller du kunne sammenligne, hvordan samme emne diskuteres på sociale medier (Reddit, Facebook…) versus på mainstream medier (aviser, tv-kanaler…). Eller du kunne sammenligne lokalpresse og nationalpresse, eller lokalpressen i en region og i en anden region osv.</p>
+<p>Der er endnu andre måder at lave interessante sammenligninger på, som gamle artikler versus nye artikler (f.eks. før og efter Covid), videnskab versus populærkultur osv. Vær kreativ!</p>
+<p>Det vigtige er at vælge dokumenter, der har den forskel, du sigter mod at sammenligne, men ingen anden forskel. Hvis du sammenligner dokumenter fra to medier, behold det samme emne; omvendt, hvis du sammenligner to emner, vælg dokumenter fra samme medie eller lignende.</p>
+<p>I dette værktøj <strong>kan et dokument være enhver tekst</strong>. Vær ikke bange for at kopiere og indsætte tekster, der ikke ligner traditionelle dokumenter, for eksempel diskussioner på sociale medier. Ikke hvert dokument behøver at se seriøst og officielt ud. Det afhænger af, hvad du vil sammenligne. Hvad normale mennesker siger over internettet, tæller også som information, der er værd at analysere.</p>
+</a><p><a id="method-help">Du finder dokumenter på mange offentlige hjemmesider: </a><a href="https://www.wikipedia.org/">Wikipedia</a>, <a href="https://www.imdb.com/">Internet Movie Database</a>, <a href="https://www.fandom.com/">Fandom</a>…</p>
+<p>Du kan også bruge sociale medier som <a href="https://www.reddit.com/">Reddit</a>, <a href="https://www.youtube.com/">YouTube</a> (se på kommentarerne) osv.</p>
+<p>Og via biblioteker kan du også få adgang til avisartikler fra mange medier. Disse er normalt bag en betalingsmur, men biblioteker giver ofte særlig gratis adgang til dem. Og nogle gange kan du søge i dem gratis, for eksempel <a href="https://www.bbc.com/search">BBC</a>.</p>
+<!-- Do not translate this code -->
+<a id="count">
+<h2 id="2-sådan-bruges-tæl-ordene">2. Sådan bruges: Tæl ordene</h2>
+<p>Denne algoritme tæller simpelthen i hvor mange dokumenter et givet ord er nævnt. Bemærk, at det ikke betyder noget, om ordet optræder en gang eller flere gange i samme dokument.</p>
+<p>Skriv hvilket som helst ord i søgefeltet (og tryk Enter) for at starte optællingen.</p>
+<img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/da/count-search.png" alt="Søgefelt">
+<p>Som standard vil dette ikke tælle det nøjagtige ord, men ethvert ord, der indeholder det. For eksempel vil “tog” også tælle “toge” og “togene”. Hvis du ikke vil det, marker indstillingen “Præcist ord”.</p>
+<img class="border vdl-pic pic-w-250" src="/vandolie/img/screenshots/da/count-exact.png" alt="Præcist ord-knap">
+<p>Alternativt kan du klikke på et af <strong>topordene</strong> for at søge efter det. Disse er defineret som de 25 ord, der optræder i det største antal dokumenter, stopord til side. Tallet i parentes angiver, i hvor mange dokumenter de optræder.</p>
+<img class="border vdl-pic pic-w-1000" src="/vandolie/img/screenshots/da/count-topwords.png" alt="Topord-knapper">
+<p><em>Bemærk: du kan finde andre gode ord at analysere i “Samord-netværk”.</em></p>
+<h3 id="ordtællingsresultater">Ordtællingsresultater</h3>
+<p>Din søgning vil vise dig resultatet af at tælle, hvor mange dokumenter der indeholder dit ord på to måder.</p>
+<p><em>Først</em> et søjlediagram, der viser procentdelen af dokumenter, der nævner din forespørgsel for hver kategori. Jo større søjlen er for hver kategori, jo større andel af dokumenter i den kategori nævner det ord, du søgte efter.</p>
+<img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/da/count-barchart1.png" alt="Søjlediagram">
+<p><em>For det andet</em> detaljer om, hvor ordet er nævnt i hvert dokument (hvis det er det).</p>
+<img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/da/count-details.png" alt="Detaljer om hvert dokument">
+<p>Brug disse detaljer til at verificere, at din forespørgsel fungerer som tilsigtet.</p>
+<h3 id="prøv-at-finde-ord-der-kun-matcher-en-kategori">Prøv at finde ord, der kun matcher en kategori</h3>
+<p>De interessante ord er dem, der kun optræder i en af disse kategorier og ikke den anden. Disse ord karakteriserer en specifik kategori.</p>
+<p>Her er et eksempel med datasættet af avisartikler om folkedrab, hvoraf nogle handler om Holocaust, og andre ikke gør.</p>
+<p>Ordet “Holocaust” er næsten kun til stede i artiklerne om det…</p>
+<img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/da/count-barchart2.png" alt="Søjlediagram">
+<p>…mens ordet “Rwanda” kun er til stede i artiklerne, der ikke handler om Holocaust (dog ikke i dem alle).</p>
+<img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/da/count-barchart3.png" alt="Søjlediagram">
+<p>Dette eksempel viser dig, hvad det betyder for et ord at være karakteristisk for en enkelt kategori.
+For at finde interessante ord skal du bruge den næste algoritme, “Samordnetværk”, og se efter ord, der er farvet stærkt som en specifik kategori.</p>
+<!-- Do not translate this code -->
+</a><a id="network">
+<h2 id="3-sådan-bruges-samordnetværk">3. Sådan bruges: Samordnetværk</h2>
+<p>Denne algoritme laver et netværk af <strong>ord forbundet, når de optræder i samme dokumenter</strong>. Lad os se på det resulterende netværk, før vi vender tilbage til indstillingerne.</p>
+<p>Hvis du har to meget forskellige slags dokumenter, vil netværket have to adskilte dele. I eksemplet nedenfor har du ordene fra BBC-nyhedsartikler om “fishing” (fiskeri, i blåt) og om “trains” (tog, i gult). Da fiskeri og tog ikke har noget til fælles, adskiller netværket sig ganske godt.</p>
+<img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/en/network-1.png" alt="Eksempel på netværk">
+<p><em>Bemærk: der er et ord, der forbinder den blå del med den gule del. Vi kalder det en “bro”. Det er en af de sjældne ting, de to slags dokumenter har til fælles. I dette tilfælde er det ordet “future” (fremtid).</em></p>
+<p>Hvis dine dokumenter er relativt ens, vil netværket ikke se ud som om, det har adskilte dele. I eksemplet nedenfor har du ordene fra Wikipedia-artikler om mandlige og kvindelige popartister. Artiklerne er meget ens, og de fleste af ordene er de samme (“sang”, “music”…).</p>
+<img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/da/network-2.png" alt="Eksempel på netværk">
+<p>Hvis dine dokumenter er meget ens, og det ser ud som om, dine kategorier ikke adskiller sig godt, så prøv også den tredje algoritme “semantisk kort”, da den er endnu bedre til at finde forskelle. Dog visualiserer det semantiske kort dokumenter, mens dette netværk visualiserer ord.</p>
+<h2 id="sådan-bruges-netværksindstillinger">Sådan bruges netværksindstillinger</h2>
+<p>Denne algoritme tæller også bare ordene, undtagen på en mere fancy måde end “tæl ordene”-algoritmen. Nogle gange er der forskellige måder at tælle på. Det er derfor, der er indstillinger: du kunne beslutte at tælle på en måde eller en anden. Du kan bare prøve forskellige indstillinger og se på resultaterne for at udforske algoritmen!</p>
+<h4 id="indstillinger-om-tælling-af-ordforekomster">Indstillinger om tælling af ordforekomster</h4>
+<p>Det første trin handler simpelthen om at tælle ordene, i det væsentlige på samme måde som den første algoritme.</p>
+<img class="border vdl-pic pic-w-250" src="/vandolie/img/screenshots/da/network-setting-includetitle.png" alt="Inkluder titel-indstilling">
+<p>Skal titlen analyseres som del af teksten eller ej? Hvis du har opfundet titlen på dine dokumenter, så bør du formentlig ikke bruge den som del af teksten. Men hvis titlen faktisk var fra dokumentet, for eksempel med avisartikler, så er det en god ide at inkludere den.</p>
+<img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/da/network-setting-howtocount.png" alt="Hvordan man tæller ordene">
+<p>Hvordan tæller man ordene? Vi har to muligheder.</p>
+<ol>
+<li>Tæl dem <strong>en gang pr. dokument</strong>, uanset hvor mange gange de optræder i det dokument.</li>
+<li>Tæl <strong>hvor mange gange</strong> de optræder <strong>i alt</strong>, inklusive når de optræder flere gange i samme dokument.</li>
+</ol>
+<p>Vi tror, at den første mulighed fungerer bedre, men du kan prøve den anden. Det er interessant at se på den effekt, det producerer.</p>
+<p>Med den første mulighed er den højeste score antallet af dokumenter i dit datasæt.</p>
+<img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/da/network-setting-count-1.png" alt="En optælling pr. ord pr. dokument">
+<p>Med den anden mulighed er den højeste score meget højere, da nogle ord optræder mange gange i samme dokument.</p>
+<img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/da/network-setting-count-2.png" alt="Flere optællinger pr. ord pr. dokument">
+<p>Som du kan se ved at sammenligne resultaterne, er ordene med den højeste score ikke de samme.</p>
+<h4 id="indstillinger-om-fjernelse-af-unødvendige-ord">Indstillinger om fjernelse af unødvendige ord</h4>
+<p>Vi kalder “stopord” de ord i et sprog, som vi ikke finder interessante. Det er de værktøjsord, vi bruger til at få sætninger til at fungere, men som ikke bærer meget betydning, fordi de er overalt hele tiden. For eksempel “den”, “af” eller “og”.</p>
+<img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/da/network-setting-stopwords.png" alt="Stopord">
+<p>Stopordene er ikke de samme på forskellige sprog. Dette værktøj har en stopordsliste for hvert sprog, det understøtter. Brug listen svarende til sproget i dine dokumenter.</p>
+<p>Ordene med den højeste optælling har tendens til at være stopord, som du kan se ovenfor. Derfor vil vi fjerne dem. Når stopord er fjernet, er topordene mere interessante:</p>
+<img class="border vdl-pic pic-w-250" src="/vandolie/img/screenshots/da/network-setting-remainingwords.png" alt="Resterende ord">
+<p>Ud over det vil vi også fjerne de ord, der ikke optræder ofte <em>nok</em>.</p>
+<img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/da/network-setting-threshold.png" alt="Fjern ord, der optræder for sjældent">
+<p>Brug den indstilling til at gøre dit netværk større eller mindre, hvilket afhænger af, hvor mange dokumenter du har, og hvor lange de er.</p>
+<p>På den ene side behøver vi ikke, at netværket er for stort (langsommere at beregne, vanskeligere at læse). Men på den anden side, hvis du beholder ord, der optræder sjældnere, vil netværket være mindre interessant (fordi adskillelsesmønstret vil være svagere). Prøv at finde den bedste indstilling!</p>
+<h4 id="samforekomster">Samforekomster</h4>
+<p>Hver gang to givne ord optræder sammen i et dokument, siger vi, at de “samforekommer”. Derfor tæller “samforekomst”-scoren, hvor stærkt to ord er forbundet <em>i datasættet</em>.</p>
+<img class="border vdl-pic pic-w-250" src="/vandolie/img/screenshots/da/network-cooccurrences.png" alt="Samforekomstliste">
+<p>Der er ingen indstillinger, da denne beregning er ligetil. Men det er interessant at se, hvilke par der samforekommer mest. Disse par vil blive til netværkets links.</p>
+<h4 id="indstillinger-om-visning-af-netværket">Indstillinger om visning af netværket</h4>
+<p>Netværksvisualiseringen bruger en layoutalgoritme til at placere ordene i billedet, så de er tæt på hinanden, når de er forbundet (det vil sige, når de samforekommer). Målet er at gøre det synligt, når der er to eller flere grupper af ord (klynger), der matcher kategorierne. To indstillinger bruges til at forbedre resultatet, men du kan deaktivere dem, hvis du vil.</p>
+</a><p><a id="network">Den <em>første forbedring</em> er at <em>normalisere</em> samforekomstscorerne ved at bruge en metrik kendt som </a><a href="https://en.wikipedia.org/wiki/Pointwise_mutual_information">pointwise mutual information</a>. Kort sagt hjælper det ved at tage højde for, at nogle af ordene nævnes oftere, hvilket gør dem mere tilbøjelige til at samforekomme. På et praktisk niveau gør det netværket mere læseligt.</p>
+<img class="border vdl-pic pic-w-750" src="/vandolie/img/screenshots/da/network-setting-pmi.png" alt="Pointwise mutual information-indstilling">
+<p>Den <em>anden forbedring</em> er at <em>fjerne de afkoblede ord</em>. Disse er sjældne, men det kan nogle gange ske. De er distraherende og ikke særlig interessante, da de ikke er forbundet til andre ord, så vi kan bare fjerne dem.</p>
+<img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/da/network-setting-orphans.png" alt="Fjern forældreløse-indstilling">
+<h2 id="sådan-læser-du-samordnetværket">Sådan læser du samordnetværket</h2>
+<p>Hver prik er et ord, farvet efter kategorier. Hver prik har en farveblanding svarende til kategorierne af de dokumenter, hvor det nævnes mest.</p>
+<p>Hver hvid linje er en samforekomstrelation mellem de to forbundne ord.</p>
+<p>To prikker (ord), der er forbundet (samforekommer), har tendens til at blive placeret tættere gennem effekten af layoutalgoritmen <a href="https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0098679">Force Atlas 2</a>. Som resultat indikerer adskilte visuelle grupper, selvom de ikke er fuldstændigt afkoblede, <strong>emner</strong> (et emne værende en gruppe af ord, der har tendens til at blive nævnt sammen).</p>
+<p><em>Bemærk, at <strong>layoutalgoritmen er “ikke-deterministisk”</strong>: resultatet varierer fra gang til gang, fordi det kræver en randomiseret initialisering. Dog, som du kan se, hvis du prøver, <strong>er klyngerne (emnerne) altid de samme</strong>. De kan være roteret, vendt eller lidt ændret, men de vil altid være de samme, have samme størrelse osv.</em></p>
+<p>Du kan flytte netværksvisningen ved at trække med markøren eller fingeren på en touchskærm og zoome ind og ud med scrollhjulet, knib zoom eller tilsvarende understøttet af din enhed. Brug det til at udforske netværket og finde interessante ord.</p>
+<img class="border vdl-pic" src="/vandolie/img/screenshots/en/network-zoom-123.png" alt="Zoomniveauer">
+<!-- Do not translate this code -->
+<a id="semantic">
+<h2 id="4-sådan-bruges-semantisk-kort">4. Sådan bruges: Semantisk kort</h2>
+<p>Denne algoritme er helt automatisk og kræver ingen indstillinger. Den fungerer i to dele.</p>
+</a><p><a id="semantic">Den <strong>første del</strong> består af at bruge en “<strong>tekstindlejringsmodel</strong>”, og mere præcist </a><a href="https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2">all-MiniLM-L6-v2</a>, som er flersproget (den “taler” de fleste sprog). Den transformerer enhver tekst til en semantisk repræsentation. Vi vil ikke forklare, hvordan det fungerer, men snarere hvad det gør.</p>
+<p>Denne model bruger AI til at transformere enhver tekst til en række tal. I matematik siger vi, at den bliver “indlejret” i en “vektor”. Hver vektor er meget lang (hundredvis af dimensioner) og koder betydningen af den tekst. På et praktisk niveau har disse vektorer en meget interessant egenskab: <strong>lignende tekster producerer lignende vektorer</strong>.</p>
+<p>Afstanden mellem vektorer koder semantisk lighed:</p>
+<ul>
+<li>Helt forskellige dokumenter producerer meget fjerne vektorer</li>
+<li>Dokumenter om samme emne producerer ganske tætte vektorer</li>
+<li>Dokumenter, der betyder det samme, men skrevet anderledes, har meget tætte vektorer</li>
+<li>Næsten-identiske dokumenter producerer næsten-overlappende vektorer.</li>
+</ul>
+<p>Vi bruger denne egenskab til at producere det semantiske kort.</p>
+<p>Den <strong>anden del</strong> af algoritmen består af at visualisere vektorrummet som et kort. Dette kaldes “<strong>dimensionalitetsreduktion</strong>”, fordi vi reducerer de meget lange vektorer til to dimensioner. Med andre ord reducerer vi dem til punkter på et plan. For at gøre dette bruger vi en teknik kaldet <em>UMAP</em>. Du kan lære om det <a href="https://pair-code.github.io/understanding-umap/">på denne side</a>. Kort sagt producerer det et kort, der bevarer den vigtigste egenskab: afstand koder semantisk lighed.</p>
+<p>Det <strong>resulterende semantiske kort</strong> kan læses således:</p>
+<ul>
+<li>Hver prik er et dokument fra dit datasæt</li>
+<li>Farven på dokumentet angiver dets kategori</li>
+<li>Prikker (dokumenter) er tæt på hinanden, når de har lignende indhold, og er langt fra hinanden, når de har forskelligt indhold.</li>
+</ul>
+<p>Ligesom for samordnetværket er denne visualisering <em>ikke-deterministisk</em>. På grund af en tilfældig initialisering af algoritmen er resultatet lidt anderledes hver gang. Dog vil grupperne af prikker eller “klynger” altid være de samme. De vil simpelthen blive vendt eller roteret hver gang.</p>
+<h2 id="sådan-fortolker-du-det-semantiske-kort">Sådan fortolker du det semantiske kort</h2>
+<p>Kig på det semantiske kort og stil dig selv to spørgsmål:</p>
+<ol>
+<li>Er der <strong>forskellige grupper</strong> af prikker (klynger)?</li>
+<li>Er der <strong>forskellige farvegrupper</strong>?</li>
+</ol>
+<p>Disse to spørgsmål kan ved første blik se ens ud, men de er faktisk to forskellige og uafhængige spørgsmål.</p>
+<h4 id="er-der-forskellige-klynger">Er der forskellige klynger?</h4>
+<p>Med “forskellige grupper” mener vi grupper af prikker, der befinder sig i forskellige dele af billedet. Vi kan også kalde dem “klynger”. Hver klynge består af prikker (dokumenter), der ligger tæt på hinanden, mens klyngerne selv er langt fra hinanden.</p>
+<p>I eksemplet nedenfor har vi <strong>en enkelt klynge</strong>. Det betyder, at alle dokumenter har et <strong>lignende indhold</strong>.</p>
+<img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/semantic-01.jpg" alt="En klynge">
+<p>I eksemplet nedenfor har vi <strong>to forskellige klynger</strong>. Det betyder, at der er to grupper af dokumenter med forskellige indhold, sandsynligvis <strong>to forskellige emner</strong>.</p>
+<img class="border vz-pic pic-w-500" src="/vandolie/img/screenshots/semantic-02.jpg" alt="To klynger">
+<p><em>Bemærk at brugen af forskellige sprog i samme datasæt også kan producere forskellige klynger.</em></p>
+<p><strong>Klyngerne handler kun om tekstindholdet af dokumenterne, ikke om kategorien.</strong> Klyngerne identificeres ved kun at se på prikkernes placering. Klynger er <em>uafhængige</em> af farven. Placeringen tager ikke hensyn til dine kategorier. Dette punkt er meget vigtigt, som vi vil se.</p>
+<h4 id="er-der-forskellige-farvegrupper">Er der forskellige farvegrupper?</h4>
+<p>Det andet spørgsmål du skal stille er, om farverne er blandet eller grupperet sammen.</p>
+<p>Hvis farverne er blandet, betyder det, at dine kategorier ikke fanger nogen semantisk forskel. Med andre ord er dokumenter af samme kategori ikke særligt ens. Det kunne se sådan ud:</p>
+<img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/semantic-03.jpg" alt="En klynge blandet">
+<p>Hvis farverne danner grupper, betyder det, at de fanger en semantisk lighed. Det kunne se sådan ud:</p>
+<img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/semantic-04.jpg" alt="En klynge farve-polariseret">
+<p>I eksemplet ovenfor er dokumenterne ikke <em>meget</em> forskellige, fordi de danner en enkelt klynge. Ikke desto mindre har klyngen to sider, som viser, at der er semantiske forskelle inden for klyngen. Kategorierne fanger stadig en lille semantisk forskel.</p>
+<p><strong>Meget vigtigt, at have klynger betyder ikke, at dine kategorier fanger deres semantiske forskel.</strong></p>
+<p>Faktisk er det muligt at have <strong>to klynger</strong> (i forhold til prikkernes placering) og alligevel have <strong>blandede farver</strong>. Det vil se sådan ud:</p>
+<img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/semantic-05.jpg" alt="To klynger blandede">
+<p>Det rigtige at gøre i dette eksempel er at forstå, hvad de to grupper er, og <em>gøre kategorierne om i overensstemmelse hermed</em>. På denne måde vil du kunne forklare, hvad der gør dokumenterne forskellige.</p>
+<p>Når <strong>farver og klynger matcher</strong>, som kan se ud som eksemplet nedenfor, så fanger kategorierne de semantiske forskelle mellem dokumenterne.</p>
+<img class="border vdl-pic pic-w-500" src="/vandolie/img/screenshots/semantic-06.jpg" alt="To klynger farve-kodet"> </section> </div> </main>  <footer class="pt-5 pb-5"> <div class="container"> <div class="row justify-content-md-center"> <div class="col mb-2" style="min-width: 180px"> <a href="https://www.it-vest.dk/" target="_blank"> <div class="card p-3"> <link rel="preload" as="image" href="/vandolie/img/It-vest_DK_support.jpg"/><img class="footer-supported-by-img" src="/vandolie/img/It-vest_DK_support.jpg" alt="Støttet af IT-Vest"/> </div> </a> </div> <div class="col mb-2" style="min-width: 180px"><p><em>Vandolie</em> er et gratis open source-værktøj udviklet af Mathieu Jacomy, Matilde Ficozzi, Cathrine Hofmann Fried, Jesper Wad Larsen, og <a class="link-info" href="https://www.ouestware.com/en/" target="_blank">Ouestware</a>.</p></div> <div class="col mb-2" style="min-width: 180px"> <ul> <li>Licens: <a class="link-info" href="https://github.com/jacomyma/vandolie/blob/main/LICENSE" target="_blank">GPL v3.0</a></li> <li>Klon vores <a class="link-info" href="https://github.com/jacomyma/vandolie/" target="_blank">kildekode</a></li> <li>Giv os din <a class="link-info" href="https://github.com/jacomyma/vandolie/issues" target="_blank">feedback</a></li> </ul> </div> <div class="col mb-2" style="min-width: 180px"> <a href="https://www.en.culture.aau.dk/research/research-groups/tantlab" target="_blank"> <img class="mb-3" src="/vandolie/img/tantlab_logo_white.svg" alt="Tantlab" style="max-height:24px"> </a> <br> <a href="https://www.ssh.aau.dk/forskning/signaturer/computationel-ssh-masshine" target="_blank"> <img src="/vandolie/img/Masshine_Logo_White.svg" alt="MASSHINE" style="max-height:24px"> </a> </div> </div> </div> </footer> </main> </body></html>
