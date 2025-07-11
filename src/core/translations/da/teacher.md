@@ -83,13 +83,13 @@ Læs hele dette afsnit, før du begynder aktiviteten.
 
 Print bingo-kortene (PDF indeholder 20 unikke ark - print kun ét komplet sæt, selv med mere end 20 elever).
 
-<a href="../data/Ord-Bingo - Dokumenter - DA.pdf" target="_blank">DOWNLOAD BINGO-KORTENE [PDF]</a>
+<a href="/vandolie/data/data/Ord-Bingo - Dokumenter - DA.pdf" target="_blank">DOWNLOAD BINGO-KORTENE [PDF]</a>
 
 **Print undervisningsvejledning**
 
 Print undervisningsvejledningen til din reference under aktiviteten.
 
-<a href="../data/Guide DA.pdf" target="_blank">DOWNLOAD UNDERVISNINGSVEJLEDNINGEN [PDF]</a>
+<a href="/vandolie/data/data/Guide DA.pdf" target="_blank">DOWNLOAD UNDERVISNINGSVEJLEDNINGEN [PDF]</a>
 
 ### Aktivitetsoverblik
 

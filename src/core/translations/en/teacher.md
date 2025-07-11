@@ -83,13 +83,13 @@ Read this entire section before beginning the activity.
 
 Print the bingo cards (PDF contains 20 unique sheets - print one complete set only, even with more than 20 students).
 
-<a href="../data/Bingo of Words - Documents - EN.pdf" target="_blank">DOWNLOAD the BINGO CARDS [PDF]</a>
+<a href="/vandolie/data/Bingo of Words - Documents - EN.pdf" target="_blank">DOWNLOAD the BINGO CARDS [PDF]</a>
 
 **Print Teacher Guide**
 
 Print the teacher guide for your reference during the activity.
 
-<a href="../data/Guide EN.pdf" target="_blank">DOWNLOAD the TEACHER GUIDE [PDF]</a>
+<a href="/vandolie/data/Guide EN.pdf" target="_blank">DOWNLOAD the TEACHER GUIDE [PDF]</a>
 
 ### Activity Overview
 
